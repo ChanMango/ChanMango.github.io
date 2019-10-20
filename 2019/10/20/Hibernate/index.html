@@ -1,0 +1,1481 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  <title>Hibernate面试题 | Hexo</title>
+  
+  
+
+  
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!-- meta -->
+  
+
+  <!-- link -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.10.1/css/all.min.css">
+  
+
+  
+
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.9.9/css/style.css">
+  
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+
+  
+  
+</head>
+
+<body>
+  
+  
+  <div class="cover-wrapper">
+    <cover class='cover post half'>
+      
+        
+  <h1 class='title'>Demo</h1>
+
+
+  <div class="m_search">
+    <form name="searchform" class="form u-search-form">
+      <input type="text" class="input u-search-input" placeholder="" />
+      <i class="icon fas fa-search fa-fw"></i>
+    </form>
+  </div>
+
+<div class='menu navgation'>
+  <ul class='h-list'>
+    
+      
+        <li>
+          <a class="nav home" href="/"
+            
+            
+            id="home">
+            <i class='fas fa-rss fa-fw'></i>&nbsp;博文
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/projects/"
+            
+            
+            id="projects">
+            <i class='fas fa-code-branch fa-fw'></i>&nbsp;项目
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/friends/"
+            
+              rel="nofollow"
+            
+            
+            id="friends">
+            <i class='fas fa-link fa-fw'></i>&nbsp;友链
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/about/"
+            
+              rel="nofollow"
+            
+            
+            id="about">
+            <i class='fas fa-info-circle fa-fw'></i>&nbsp;关于
+          </a>
+        </li>
+      
+    
+  </ul>
+</div>
+
+      
+    </cover>
+    <header class="l_header pure">
+  <div id="loading-bar-wrapper">
+    <div id="loading-bar" class="pure"></div>
+  </div>
+
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+      <a class="logo flat-box" href='/' >
+        
+          Hexo
+        
+      </a>
+			<div class='menu navgation'>
+				<ul class='h-list'>
+          
+  					
+  						<li>
+								<a class="nav flat-box" href="/"
+                  
+                  
+                  id="home">
+									<i class='fas fa-grin fa-fw'></i>&nbsp;示例
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/categories/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="categories">
+									<i class='fas fa-folder-open fa-fw'></i>&nbsp;分类
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/tags/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="tags">
+									<i class='fas fa-hashtag fa-fw'></i>&nbsp;标签
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/archives/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="archives">
+									<i class='fas fa-archive fa-fw'></i>&nbsp;归档
+								</a>
+							</li>
+      			
+      		
+				</ul>
+			</div>
+
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="Search" />
+						<i class="icon fas fa-search fa-fw"></i>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a class="fas fa-search fa-fw" href='javascript:void(0)'></a></li>
+				
+				<li class='s-menu'><a class="fas fa-bars fa-fw" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+
+		<div class='nav-sub container container--flex'>
+			<a class="logo flat-box"></a>
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a class="flat-btn fas fa-comments fa-fw" href='javascript:void(0)'></a></li>
+        
+          <li class='s-toc'><a class="flat-btn fas fa-list fa-fw" href='javascript:void(0)'></a></li>
+        
+			</ul>
+		</div>
+	</div>
+</header>
+	<aside class="menu-phone">
+    <header>
+		<nav class="menu navgation">
+      <ul>
+        
+          
+            <li>
+							<a class="nav flat-box" href="/"
+                
+                
+                id="home">
+								<i class='fas fa-clock fa-fw'></i>&nbsp;近期文章
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/archives/"
+                
+                  rel="nofollow"
+                
+                
+                id="archives">
+								<i class='fas fa-archive fa-fw'></i>&nbsp;文章归档
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/projects/"
+                
+                
+                id="projects">
+								<i class='fas fa-code-branch fa-fw'></i>&nbsp;开源项目
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/friends/"
+                
+                  rel="nofollow"
+                
+                
+                id="friends">
+								<i class='fas fa-link fa-fw'></i>&nbsp;我的友链
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="https://xaoxuu.com/wiki/material-x/"
+                
+                  rel="nofollow"
+                
+                
+                id="https:xaoxuu.comwikimaterial-x">
+								<i class='fas fa-book fa-fw'></i>&nbsp;主题文档
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/about/"
+                
+                  rel="nofollow"
+                
+                
+                id="about">
+								<i class='fas fa-info-circle fa-fw'></i>&nbsp;关于小站
+							</a>
+            </li>
+          
+       
+      </ul>
+		</nav>
+    </header>
+	</aside>
+<script>setLoadingBarProgress(40);</script>
+
+  </div>
+
+
+  <div class="l_body">
+    <div class='body-wrapper'>
+      <div class='l_main'>
+  
+
+  <article id="post" class="post white-box article-type-post" itemscope itemprop="blogPost">
+    
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  
+    <h1 class="title">
+      <a href="/2019/10/20/Hibernate/">
+        Hibernate面试题
+      </a>
+    </h1>
+  
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    
+      <a href="/" rel="nofollow">
+        
+          <i class="fas fa-user" aria-hidden="true"></i>
+        
+        <p>蜗牛君</p>
+      </a>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2019-10-20</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+          
+            
+  
+    <div class="new-meta-item browse busuanzi">
+      <a class='notlink'>
+        <i class="fas fa-eye" aria-hidden="true"></i>
+        <p>
+          <span id="busuanzi_value_page_pv">
+            <i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i>
+          </span>
+        </p>
+      </a>
+    </div>
+  
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+    <section class="article typo">
+      <div class="article-entry" itemprop="articleBody">
+        <h3 id="1、Hibernate工作原理及为什么要用？"><a href="/2019/10/20/Hibernate/#1、Hibernate工作原理及为什么要用？" class="headerlink" title="1、Hibernate工作原理及为什么要用？"></a>1、Hibernate工作原理及为什么要用？</h3><blockquote>
+<p>Hibernate工作原理及为什么要用？</p>
+</blockquote>
+<ol>
+<li>读取并解析配置文件</li>
+<li>读取并解析映射信息，创建SessionFactory</li>
+<li>打开Sesssion</li>
+<li>创建事务Transation</li>
+<li>持久化操作</li>
+<li>提交事务</li>
+<li>关闭Session</li>
+<li>关闭SesstionFactory</li>
+</ol>
+<p>使用Hibernate框架就不用我们写很多繁琐的SQL语句。<strong>Hibernate实现了ORM，能够将对象映射成数据库表，从而简化我们的开发！</strong></p>
+<h3 id="2、Hibernate是如何延迟加载-懒加载"><a href="/2019/10/20/Hibernate/#2、Hibernate是如何延迟加载-懒加载" class="headerlink" title="2、Hibernate是如何延迟加载(懒加载)?"></a>2、Hibernate是如何延迟加载(懒加载)?</h3><p>通过设置属性<code>lazy</code>进行设置是否需要懒加载</p>
+<p>当Hibernate在查询数据的时候，数据并没有存在于内存中，<strong>当程序真正对数据的操作时，对象才存在与内存中，就实现了延迟加载</strong>，他节省了服务器的内存开销，从而提高了服务器的性能。</p>
+<h3 id="3、Hibernate中怎样实现类之间的关系-如：一对多、多对多的关系"><a href="/2019/10/20/Hibernate/#3、Hibernate中怎样实现类之间的关系-如：一对多、多对多的关系" class="headerlink" title="3、Hibernate中怎样实现类之间的关系?(如：一对多、多对多的关系)"></a>3、Hibernate中怎样实现类之间的关系?(如：一对多、多对多的关系)</h3><p>它们通过配置文件中的<code>many-to-one、one-to-many、many-to-many</code>来实现类之间的关联关系的。</p>
+<h3 id="4、hibernate的三种状态之间如何转换"><a href="/2019/10/20/Hibernate/#4、hibernate的三种状态之间如何转换" class="headerlink" title="4、hibernate的三种状态之间如何转换"></a>4、hibernate的三种状态之间如何转换</h3><p>Hibernate中对象的状态：</p>
+<ul>
+<li><p><strong>临时/瞬时状态</strong>: </p>
+<p>对象刚new出来，还没设id，设了其他值。</p>
+<ul>
+<li>该对象还没有被持久化【没有保存在数据库中】</li>
+<li>不受Session的管理</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">User user=<span class="keyword">new</span> User();<span class="comment">//处于瞬时态</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>持久化状态</strong></p>
+<p>调用了save()、saveOrUpdate()，就变成Persistent，有id.   当保存在数据库中的对象就是持久化状态了</p>
+<ul>
+<li><p>当调用session的save/saveOrUpdate/get/load/list等方法的时候，对象就是持久化状态</p>
+</li>
+<li><p>在数据库有对应的数据</p>
+</li>
+<li><p>受Session的管理</p>
+</li>
+<li><p>当对对象属性进行更改的时候，会反映到数据库中!</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">session.save(idCard);</span><br><span class="line">idCard.setIdCardName(<span class="string">"我是测试持久化对象"</span>);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p><strong>游离状态</strong>.</p>
+<p>当session  close()完之后，变成Detached。数据库中有对应的记录</p>
+</li>
+</ul>
+<img src="/2019/10/20/Hibernate//702434-20151004095413746-2129601422.png" alt="img" style="zoom:67%;">
+
+
+
+<p><strong>new出来的对象是瞬时状态-&gt;保存到数据库中(受Session管理)就是持久化状态-&gt;将session close掉就是游离状态</strong></p>
+<h3 id="5、比较hibernate的三种检索策略优缺点"><a href="/2019/10/20/Hibernate/#5、比较hibernate的三种检索策略优缺点" class="headerlink" title="5、比较hibernate的三种检索策略优缺点"></a>5、比较hibernate的三种检索策略优缺点</h3><ol>
+<li><h5 id="立即检索："><a href="/2019/10/20/Hibernate/#立即检索：" class="headerlink" title="立即检索："></a><strong>立即检索：</strong></h5><ul>
+<li>优点： 对应用程序完全透明，不管对象处于持久化状态，还是游离状态，应用程序都可以方便的从一个对象导航到与它关联的对象；</li>
+<li>缺点： 1.select语句太多；2.可能会加载应用程序不需要访问的对象白白浪费许多内存空间；</li>
+<li>立即检索:<code>lazy=false</code>；</li>
+</ul>
+</li>
+<li><p><strong>延迟检索：</strong></p>
+<ul>
+<li>优点： 由应用程序决定需要加载哪些对象，可以避免可执行多余的select语句，以及避免加载应用程序不需要访问的对象。因此能提高检索性能，并且能节省内存空间；</li>
+<li>缺点： 应用程序如果希望访问游离状态代理类实例，<strong>必须保证他在持久化状态时已经被初始化；</strong></li>
+<li>延迟加载：<code>lazy=true</code>；</li>
+</ul>
+</li>
+<li><p><strong>迫切左外连接检索：</strong></p>
+<ul>
+<li>优点： 1对应用程序完全透明，不管对象处于持久化状态，还是游离状态，应用程序都可以方便地从一个对象导航到与它关联的对象。2使用了外连接，select语句数目少；</li>
+<li>缺点： 1 可能会加载应用程序不需要访问的对象，白白浪费许多内存空间；2复杂的数据库表连接也会影响检索性能；</li>
+<li>预先抓取： <code>fetch=“join”</code>；</li>
+</ul>
+</li>
+</ol>
+<h3 id="6、hibernate都支持哪些缓存策略"><a href="/2019/10/20/Hibernate/#6、hibernate都支持哪些缓存策略" class="headerlink" title="6、hibernate都支持哪些缓存策略"></a>6、hibernate都支持哪些缓存策略</h3><blockquote>
+<p>hibernate都支持哪些缓存策略</p>
+</blockquote>
+<p>usage的属性有4种：</p>
+<ul>
+<li>放入二级缓存的对象，只读(Read-only);</li>
+<li>非严格的读写(Nonstrict read/write)</li>
+<li>读写； 放入二级缓存的对象可以读、写(Read/write)；</li>
+<li>基于事务的策略(Transactional)</li>
+</ul>
+<h3 id="7、hibernate里面的sorted-collection-和ordered-collection有什么区别"><a href="/2019/10/20/Hibernate/#7、hibernate里面的sorted-collection-和ordered-collection有什么区别" class="headerlink" title="7、hibernate里面的sorted collection 和ordered collection有什么区别"></a>7、hibernate里面的sorted collection 和ordered collection有什么区别</h3><p>sorted collection</p>
+<ul>
+<li>是在<strong>内存中通过Java比较器</strong>进行排序的</li>
+</ul>
+<p>ordered collection</p>
+<ul>
+<li>是在<strong>数据库中通过order by</strong>进行排序的</li>
+</ul>
+<p>对于比较大的数据集，<strong>为了避免在内存中对它们进行排序而出现 Java中的OutOfMemoryError，最好使用ordered collection。</strong></p>
+<h3 id="8、说下Hibernate的缓存机制"><a href="/2019/10/20/Hibernate/#8、说下Hibernate的缓存机制" class="headerlink" title="8、说下Hibernate的缓存机制"></a>8、说下Hibernate的缓存机制</h3><ol>
+<li><strong>一级缓存：</strong></li>
+</ol>
+<ul>
+<li><p>Hibenate中一级缓存，也叫做session的缓存，<strong>它可以在session范围内减少数据库的访问次数！ 只在session范围有效！ Session关闭，一级缓存失效！</strong></p>
+</li>
+<li><p><strong>只要是持久化对象状态的，都受Session管理，也就是说，都会在Session缓存中！</strong></p>
+</li>
+<li><p>Session的缓存由hibernate维护，<strong>用户不能操作缓存内容； 如果想操作缓存内容，必须通过hibernate提供的evit/clear方法操作</strong>。</p>
+</li>
+</ul>
+<ol start="2">
+<li><strong>二级缓存：</strong></li>
+</ol>
+<ul>
+<li><p><strong>二级缓存是基于应用程序的缓存，所有的Session都可以使用</strong></p>
+</li>
+<li><p>Hibernate提供的二级缓存有默认的实现，且是一种<strong>可插配的缓存框架</strong>！如果用户想用二级缓存，<strong>只需要在hibernate.cfg.xml中配置即可</strong>； 不想用，直接移除，不影响代码。</p>
+</li>
+</ul>
+<p>如果用户觉得hibernate提供的框架框架不好用，<strong>自己可以换其他的缓存框架或自己实现缓存框架都可以</strong>。</p>
+<p>Hibernate二级缓存：<strong>存储的是常用的类</strong></p>
+<img src="/2019/10/20/Hibernate//20170508165832948.png" alt="这里写图片描述" style="zoom:67%;">
+
+<h3 id="9、Hibernate的查询方式有几种"><a href="/2019/10/20/Hibernate/#9、Hibernate的查询方式有几种" class="headerlink" title="9、Hibernate的查询方式有几种"></a>9、Hibernate的查询方式有几种</h3><ul>
+<li>对象导航查询(objectcomposition)</li>
+<li>HQL查询<ul>
+<li>1、 属性查询</li>
+<li>2、 参数查询、命名参数查询</li>
+<li>3、 关联查询</li>
+<li>4、 分页查询</li>
+<li>5、 统计函数</li>
+</ul>
+</li>
+<li>Criteria 查询</li>
+<li>SQLQuery本地SQL查询</li>
+</ul>
+<h3 id="10、如何优化Hibernate？"><a href="/2019/10/20/Hibernate/#10、如何优化Hibernate？" class="headerlink" title="10、如何优化Hibernate？"></a>10、如何优化Hibernate？</h3><p> 数据库设计调整</p>
+<ul>
+<li>HQL优化</li>
+<li>API的正确使用(如根据不同的业务类型选用不同的集合及查询API)</li>
+<li>主配置参数(日志，查询缓存，fetch_size, batch_size等)</li>
+<li>映射文件优化(ID生成策略，二级缓存，延迟加载，关联优化)</li>
+<li>一级缓存的管理</li>
+<li>针对二级缓存，还有许多特有的策略</li>
+</ul>
+<p>详情可参考资料：</p>
+<ul>
+<li><a href="https://www.cnblogs.com/xhj123/p/6106088.html">https://www.cnblogs.com/xhj123/p/6106088.html</a></li>
+</ul>
+<h3 id="11、谈谈Hibernate中inverse的作用"><a href="/2019/10/20/Hibernate/#11、谈谈Hibernate中inverse的作用" class="headerlink" title="11、谈谈Hibernate中inverse的作用"></a>11、谈谈Hibernate中inverse的作用</h3><p><strong>inverse属性默认是false</strong>,就是说关系的两端都来维护关系。</p>
+<ul>
+<li>比如Student和Teacher是多对多关系，用一个中间表TeacherStudent维护。Gp)</li>
+<li>如果Student这边inverse=”true”, 那么关系由另一端Teacher维护，就是说当插入Student时，不会操作TeacherStudent表（中间表）。只有Teacher插入或删除时才会触发对中间表的操作。所以<strong>两边都inverse=”true”是不对的，会导致任何操作都不触发对中间表的影响</strong>；当两边都inverse=”false”或默认时，会导致在中间表中插入两次关系。</li>
+</ul>
+<p><strong>如果表之间的关联关系是“一对多”的话，那么inverse只能在“一”的一方来配置！</strong></p>
+<p>详情可参考：</p>
+<ul>
+<li><a href="https://zhongfucheng.bitcron.com/post/hibernate/hibernate-inversehe-cascadeshu-xing-zhi-shi-yao-dian">https://zhongfucheng.bitcron.com/post/hibernate/hibernate-inversehe-cascadeshu-xing-zhi-shi-yao-dian</a></li>
+</ul>
+<h3 id="12、JDBC，hibernate-和-ibatis-的区别"><a href="/2019/10/20/Hibernate/#12、JDBC，hibernate-和-ibatis-的区别" class="headerlink" title="12、JDBC，hibernate 和 ibatis 的区别"></a>12、JDBC，hibernate 和 ibatis 的区别</h3><h5 id="jdbc-手动"><a href="/2019/10/20/Hibernate/#jdbc-手动" class="headerlink" title="jdbc:手动"></a>jdbc:手动</h5><ul>
+<li>手动写sql</li>
+<li>delete、insert、update要将对象的值一个一个取出传到sql中,不能直接传入一个对象。</li>
+<li>select:返回的是一个resultset，要从ResultSet中一行一行、一个字段一个字段的取出，然后封装到一个对象中，不直接返回一个对象。</li>
+</ul>
+<h5 id="ibatis的特点-半自动化"><a href="/2019/10/20/Hibernate/#ibatis的特点-半自动化" class="headerlink" title="ibatis的特点:半自动化"></a>ibatis的特点:半自动化</h5><ul>
+<li>sql要手动写</li>
+<li>delete、insert、update:直接传入一个对象</li>
+<li>select:直接返回一个对象</li>
+</ul>
+<h5 id="hibernate-全自动"><a href="/2019/10/20/Hibernate/#hibernate-全自动" class="headerlink" title="hibernate:全自动"></a>hibernate:全自动</h5><ul>
+<li>不写sql,自动封装</li>
+<li>delete、insert、update:直接传入一个对象</li>
+<li>select:直接返回一个对象</li>
+</ul>
+<h3 id="13、在数据库中条件查询速度很慢的时候-如何优化"><a href="/2019/10/20/Hibernate/#13、在数据库中条件查询速度很慢的时候-如何优化" class="headerlink" title="13、在数据库中条件查询速度很慢的时候,如何优化?"></a>13、在数据库中条件查询速度很慢的时候,如何优化?</h3><ul>
+<li>建索引</li>
+<li><strong>减少表之间的关联</strong></li>
+<li>优化sql，尽量让sql很快定位数据，<strong>不要让sql做全表查询</strong>，<strong>应该走索引</strong>,把数据量大的表排在前面</li>
+<li>简化查询字段，<strong>没用的字段不要</strong>，已经对返回结果的控制，<strong>尽量返回少量数据</strong></li>
+</ul>
+<p>详情可参考：</p>
+<ul>
+<li><a href="https://mp.weixin.qq.com/s?timestamp=1520300404&amp;src=3&amp;ver=1&amp;signature=W6Fo7aDHiJtK4ecUcnSJ4h9bN0vRAcTPKBTgLWSJDsMcdQReJC487RYzUIU9UFYQdmgLFyss9cKifM*GFp*CEVLtaLlwjj2HaDOjsCRkTnwfVlUY5cDhSyRi-c8leheofZJVnu6wYQ3IvT*hYyVB1pQCqqnuXIWERaksjXuyNP8=">https://mp.weixin.qq.com/s?timestamp=1520300404&amp;src=3&amp;ver=1&amp;signature=W6Fo7aDHiJtK4ecUcnSJ4h9bN0vRAcTPKBTgLWSJDsMcdQReJC487RYzUIU9UFYQdmgLFyss9cKifM*GFp*CEVLtaLlwjj2HaDOjsCRkTnwfVlUY5cDhSyRi-c8leheofZJVnu6wYQ3IvT*hYyVB1pQCqqnuXIWERaksjXuyNP8=</a></li>
+</ul>
+<h3 id="14、什么是SessionFactory-是线程安全么"><a href="/2019/10/20/Hibernate/#14、什么是SessionFactory-是线程安全么" class="headerlink" title="14、什么是SessionFactory,是线程安全么?"></a>14、什么是SessionFactory,是线程安全么?</h3><p><strong>SessionFactory 是Hibrenate单例数据存储和线程安全的，以至于可以多线程同时访问</strong>。一个SessionFactory 在启动的时候只能建立一次。SessionFactory应该包装各种单例以至于它能很简单的在一个应用代码中储存.</p>
+<h3 id="15、get和load区别"><a href="/2019/10/20/Hibernate/#15、get和load区别" class="headerlink" title="15、get和load区别"></a>15、get和load区别</h3><p><strong>get()立即查询</strong></p>
+<p><img src="/2019/10/20/Hibernate//20170508145321028.png" alt="这里写图片描述"></p>
+<p><strong>load()懒加载</strong></p>
+<p><img src="/2019/10/20/Hibernate//20170508145357323.png" alt="这里写图片描述"></p>
+<ul>
+<li><strong>get</strong>如果没有找到<strong>会返回null</strong>， <strong>load</strong>如果没有找到<strong>会抛出异常</strong>。</li>
+<li>get会先查一级缓存， 再查二级缓存，然后查数据库；load会先查一级缓存，如果没有找到，就创建代理对象， ==等需要的时候去查询二级缓存和数据库==。</li>
+</ul>
+<h3 id="16、merge的含义："><a href="/2019/10/20/Hibernate/#16、merge的含义：" class="headerlink" title="16、merge的含义："></a>16、merge的含义：</h3><blockquote>
+<p>merge的含义：<strong>(返回最新的实例数据)</strong></p>
+</blockquote>
+<ul>
+<li>如果session中<strong>存在相同持久化标识(identifier)的实例</strong>，用用户给出的对象的状态<strong>覆盖旧有的持久实例</strong></li>
+<li>如果session<strong>没有相应的持久实例</strong>，则尝试从数据库中加载，或创建新的持久化实例,最后返回该持久实例</li>
+<li><strong>用户给出的这个对象没有被关联到session上，它依旧是脱管的</strong></li>
+</ul>
+<p>详情可参考：</p>
+<ul>
+<li><a href="http://cp3.iteye.com/blog/786019">http://cp3.iteye.com/blog/786019</a></li>
+</ul>
+<h3 id="17、persist和save的区别"><a href="/2019/10/20/Hibernate/#17、persist和save的区别" class="headerlink" title="17、persist和save的区别"></a>17、persist和save的区别</h3><ul>
+<li><strong>persist不保证立即执行，可能要等到flush；</strong></li>
+<li><strong>persist不更新缓存；</strong></li>
+<li>save, 把一个瞬态的实例持久化标识符，及时的产生,它要返回标识符，所以它会<strong>立即执行Sql insert</strong></li>
+<li>使用 save() 方法保存持久化对象时，<strong>该方法返回该持久化对象的标识属性值(即对应记录的主键值)；</strong></li>
+<li>使用 persist() 方法来保存持久化对象时，<strong>该方法没有任何返回值</strong>。</li>
+</ul>
+<p>参考资料：</p>
+<ul>
+<li><a href="http://blog.csdn.net/u010739551/article/details/47253881">http://blog.csdn.net/u010739551/article/details/47253881</a></li>
+</ul>
+<h3 id="18、主键生成-策略有哪些"><a href="/2019/10/20/Hibernate/#18、主键生成-策略有哪些" class="headerlink" title="18、主键生成 策略有哪些"></a>18、主键生成 策略有哪些</h3><p><strong>主键的自动生成策略</strong></p>
+<ul>
+<li>identity 自增长(mysql,db2)</li>
+<li>sequence 自增长(序列)， oracle中自增长是以序列方法实现**</li>
+<li>native 自增长【==会根据底层数据库自增长的方式==选择identity或sequence】<ul>
+<li><strong>如果是mysql数据库, 采用的自增长方式是identity</strong></li>
+<li><strong>如果是oracle数据库， 使用sequence序列的方式实现自增长</strong></li>
+</ul>
+</li>
+<li>increment 自增长(会有并发访问的问题，一般在服务器集群环境使用会存在问题。)</li>
+</ul>
+<p>指定主键生成策略为<strong>手动指定主键的值</strong></p>
+<ul>
+<li><strong>assigned</strong></li>
+</ul>
+<p>指定主键生成策略为<strong>UUID生成的值</strong></p>
+<ul>
+<li><strong>uuid</strong></li>
+</ul>
+<p><strong>foreign(外键的方式)</strong></p>
+<h3 id="19、简述hibernate中getCurrentSession和openSession区别"><a href="/2019/10/20/Hibernate/#19、简述hibernate中getCurrentSession和openSession区别" class="headerlink" title="19、简述hibernate中getCurrentSession和openSession区别"></a>19、简述hibernate中getCurrentSession和openSession区别</h3><ul>
+<li>getCurrentSession会绑定当前线程，而openSession不会，因为我们把hibernate交给我们的spring来管理之后，我们是有事务配置，这个有事务的线程就会绑定当前的工厂里面的每一个session，而openSession是创建一个新session。</li>
+<li><strong>getCurrentSession事务是有spring来控制的</strong>，而openSession需要我们手动开启和手动提交事务，</li>
+<li><strong>getCurrentSession是不需要我们手动关闭的</strong>，因为工厂会自己管理，而openSession需要我们手动关闭。</li>
+<li>而<strong>getCurrentSession需要我们手动设置绑定事务的机制</strong>，有三种设置方式，<ul>
+<li>jdbc本地的Thread</li>
+<li>JTA</li>
+<li>第三种是spring提供的事务管理机制， org.springframework.orm.hibernate4.SpringSessionContext，而且srping默认使用该种事务管理机制</li>
+</ul>
+</li>
+</ul>
+<h3 id="20、Hibernate中的命名SQL查询指的是什么"><a href="/2019/10/20/Hibernate/#20、Hibernate中的命名SQL查询指的是什么" class="headerlink" title="20、Hibernate中的命名SQL查询指的是什么?"></a>20、Hibernate中的命名SQL查询指的是什么?</h3><ul>
+<li>命名查询指的是用<code>&lt;sql-query&gt;</code>标签在映射文档中定义的SQL查询，可以通过使用Session.getNamedQuery()方法对它进行调用。命名查询使你可以使用你所指定的一个名字拿到某个特定的查询。</li>
+<li>Hibernate中的命名查询可以使用注解来定义，也可以使用我前面提到的xml映射文件来定义。在Hibernate中，@NameQuery用来定义单个的命名查询，@NameQueries用来定义多个命名查询。</li>
+</ul>
+<h3 id="21、为什么在Hibernate的实体类中要提供一个无参数的构造器这一点非常重要？"><a href="/2019/10/20/Hibernate/#21、为什么在Hibernate的实体类中要提供一个无参数的构造器这一点非常重要？" class="headerlink" title="21、为什么在Hibernate的实体类中要提供一个无参数的构造器这一点非常重要？"></a>21、为什么在Hibernate的实体类中要提供一个无参数的构造器这一点非常重要？</h3><p>每个==Hibernate实体类必须包含一个 无参数的构造器==, 这是因为<strong>Hibernate框架要使用Reflection API，通过调用Class.newInstance()来创建这些实体类的实例</strong>。如果在实体类中找不到无参数的构造器，这个方法就会抛出一个InstantiationException异常。</p>
+<h3 id="22、可不可以将Hibernate的实体类定义为final类"><a href="/2019/10/20/Hibernate/#22、可不可以将Hibernate的实体类定义为final类" class="headerlink" title="22、可不可以将Hibernate的实体类定义为final类?"></a>22、可不可以将Hibernate的实体类定义为final类?</h3><p>你<strong>可以</strong>将Hibernate的实体类定义为final类，但这种做法并不好。因为Hibernate会使用代理模式在延迟关联的情况下提高性能，如果你把实体类定义成final类之后，<strong>因为 Java不允许对final类进行扩展，所以Hibernate就无法再使用代理了，</strong> 如此一来就限制了使用可以提升性能的手段。==不能代理就不能使用延迟加载了==</p>
+<h2 id="最后"><a href="/2019/10/20/Hibernate/#最后" class="headerlink" title="最后"></a>最后</h2><p>参考资料：</p>
+<ul>
+<li><a href="http://blog.csdn.net/qq1137623160/article/details/71194677">http://blog.csdn.net/qq1137623160/article/details/71194677</a></li>
+<li><a href="http://blog.csdn.net/u013842976/article/details/52518218">http://blog.csdn.net/u013842976/article/details/52518218</a></li>
+<li><a href="http://blog.csdn.net/yubotianxiao/article/details/52238200">http://blog.csdn.net/yubotianxiao/article/details/52238200</a></li>
+</ul>
+
+      </div>
+      
+        <br>
+        
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-10-20T14:00:16+08:00">
+  <a class='notlink'>
+    <i class="fas fa-clock" aria-hidden="true"></i>
+    <p>updated at Oct 20, 2019</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/IT/" rel="nofollow"><i class="fas fa-tag" aria-hidden="true"></i><p>IT</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/" rel="nofollow"><i class="fas fa-tag" aria-hidden="true"></i><p>技术笔记</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="nofollow"><i class="fas fa-tag" aria-hidden="true"></i><p>数据库</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Hibernate/" rel="nofollow"><i class="fas fa-tag" aria-hidden="true"></i><p>Hibernate</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Job/" rel="nofollow"><i class="fas fa-tag" aria-hidden="true"></i><p>Job</p></a></div>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="QQ好友" rel="external nofollow noopener noreferrer"
+          
+          href="http://connect.qq.com/widget/shareqq/index.html?url=/2019/10/20/Hibernate/&title=Hibernate面试题 | Hexo&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="QQ空间" rel="external nofollow noopener noreferrer"
+          
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=/2019/10/20/Hibernate/&title=Hibernate面试题 | Hexo&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="微博" rel="external nofollow noopener noreferrer"
+          
+          href="http://service.weibo.com/share/share.php?url=/2019/10/20/Hibernate/&title=Hibernate面试题 | Hexo&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+      
+      
+          <div class="prev-next">
+              
+                  <section class="prev">
+                      <span class="art-item-left">
+                          <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;Previous</h6>
+                          <h4>
+                              <a href="/2019/10/20/ZooKeeper%E9%9D%A2%E8%AF%95/" rel="prev" title="ZooKeeper面试">
+                                
+                                    ZooKeeper面试
+                                
+                              </a>
+                          </h4>
+                          
+                              
+                              <h6 class="tags">
+                                  <a class="tag" href="/tags/IT-%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-Job-zookeeper/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> IT - 技术笔记 - Job - zookeeper</a>
+                              </h6>
+                          
+                      </span>
+                  </section>
+              
+              
+                  <section class="next">
+                      <span class="art-item-right" aria-hidden="true">
+                          <h6>Next&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
+                          <h4>
+                              <a href="/2019/10/20/Mybatis%E9%9D%A2%E8%AF%95/" rel="prev" title="Mybatis面试">
+                                  
+                                      Mybatis面试
+                                  
+                              </a>
+                          </h4>
+                          
+                              
+                              <h6 class="tags">
+                                  <a class="tag" href="/tags/IT/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> IT</a> <a class="tag" href="/tags/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> 技术笔记</a> <a class="tag" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> 数据库</a> <a class="tag" href="/tags/Job/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> Job</a> <a class="tag" href="/tags/Mybatis/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> Mybatis</a>
+                              </h6>
+                          
+                      </span>
+                  </section>
+              
+          </div>
+      
+    </section>
+  </article>
+
+
+
+  <!-- 显示推荐文章和评论 -->
+
+
+
+  
+
+
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: 'Hibernate面试题',
+      tools: true
+    }
+  </script>
+
+
+</div>
+<aside class='l_side'>
+  
+    
+    
+      
+      
+        
+          
+          
+            
+              <section class='widget author'>
+  <div class='content pure'>
+    
+      <div class='avatar'>
+        <img class='avatar' src='https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/avatar/avatar.png'/>
+      </div>
+    
+    
+    
+      <div class="social-wrapper">
+        
+          
+            <a href="/atom.xml"
+              class="social fas fa-rss flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="mailto:dmlys@live.com"
+              class="social fas fa-envelope flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="https://github.com/ChanMango"
+              class="social fab fa-github flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="https://music.163.com/#/user/home?id=118376074"
+              class="social fas fa-headphones-alt flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+      </div>
+    
+  </div>
+</section>
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+            
+              
+  <section class='widget toc-wrapper'>
+    
+<header class='pure'>
+  <div><i class="fas fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;TOC</div>
+  
+    <!-- <div class='wrapper'><a class="s-toc rightBtn" rel="external nofollow noopener noreferrer" href="javascript:void(0)"><i class="fas fa-thumbtack fa-fw"></i></a></div> -->
+  
+</header>
+
+    <div class='content pure'>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、Hibernate工作原理及为什么要用？"><span class="toc-text">1、Hibernate工作原理及为什么要用？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、Hibernate是如何延迟加载-懒加载"><span class="toc-text">2、Hibernate是如何延迟加载(懒加载)?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、Hibernate中怎样实现类之间的关系-如：一对多、多对多的关系"><span class="toc-text">3、Hibernate中怎样实现类之间的关系?(如：一对多、多对多的关系)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4、hibernate的三种状态之间如何转换"><span class="toc-text">4、hibernate的三种状态之间如何转换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5、比较hibernate的三种检索策略优缺点"><span class="toc-text">5、比较hibernate的三种检索策略优缺点</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#立即检索："><span class="toc-text">立即检索：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6、hibernate都支持哪些缓存策略"><span class="toc-text">6、hibernate都支持哪些缓存策略</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7、hibernate里面的sorted-collection-和ordered-collection有什么区别"><span class="toc-text">7、hibernate里面的sorted collection 和ordered collection有什么区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8、说下Hibernate的缓存机制"><span class="toc-text">8、说下Hibernate的缓存机制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9、Hibernate的查询方式有几种"><span class="toc-text">9、Hibernate的查询方式有几种</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10、如何优化Hibernate？"><span class="toc-text">10、如何优化Hibernate？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11、谈谈Hibernate中inverse的作用"><span class="toc-text">11、谈谈Hibernate中inverse的作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12、JDBC，hibernate-和-ibatis-的区别"><span class="toc-text">12、JDBC，hibernate 和 ibatis 的区别</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#jdbc-手动"><span class="toc-text">jdbc:手动</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#ibatis的特点-半自动化"><span class="toc-text">ibatis的特点:半自动化</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#hibernate-全自动"><span class="toc-text">hibernate:全自动</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13、在数据库中条件查询速度很慢的时候-如何优化"><span class="toc-text">13、在数据库中条件查询速度很慢的时候,如何优化?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#14、什么是SessionFactory-是线程安全么"><span class="toc-text">14、什么是SessionFactory,是线程安全么?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#15、get和load区别"><span class="toc-text">15、get和load区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#16、merge的含义："><span class="toc-text">16、merge的含义：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#17、persist和save的区别"><span class="toc-text">17、persist和save的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#18、主键生成-策略有哪些"><span class="toc-text">18、主键生成 策略有哪些</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#19、简述hibernate中getCurrentSession和openSession区别"><span class="toc-text">19、简述hibernate中getCurrentSession和openSession区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#20、Hibernate中的命名SQL查询指的是什么"><span class="toc-text">20、Hibernate中的命名SQL查询指的是什么?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#21、为什么在Hibernate的实体类中要提供一个无参数的构造器这一点非常重要？"><span class="toc-text">21、为什么在Hibernate的实体类中要提供一个无参数的构造器这一点非常重要？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#22、可不可以将Hibernate的实体类定义为final类"><span class="toc-text">22、可不可以将Hibernate的实体类定义为final类?</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#最后"><span class="toc-text">最后</span></a>
+    </div>
+  </section>
+
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+            
+              <section class='widget grid'>
+  
+<header class='pure'>
+  <div><i class="fas fa-map-signs fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;站内导航</div>
+  
+</header>
+
+  <div class='content pure'>
+    <ul class="grid navgation">
+      
+        <li><a class="flat-box" title="/" href="/"
+          
+          
+          id="home">
+          
+            <i class="fas fa-clock fa-fw" aria-hidden="true"></i>
+          
+          近期文章
+        </a></li>
+      
+        <li><a class="flat-box" title="/archives/" href="/archives/"
+          
+            rel="nofollow"
+          
+          
+          id="archives">
+          
+            <i class="fas fa-archive fa-fw" aria-hidden="true"></i>
+          
+          文章归档
+        </a></li>
+      
+        <li><a class="flat-box" title="/projects/" href="/projects/"
+          
+          
+          id="projects">
+          
+            <i class="fas fa-code-branch fa-fw" aria-hidden="true"></i>
+          
+          开源项目
+        </a></li>
+      
+        <li><a class="flat-box" title="/friends/" href="/friends/"
+          
+            rel="nofollow"
+          
+          
+          id="friends">
+          
+            <i class="fas fa-link fa-fw" aria-hidden="true"></i>
+          
+          我的友链
+        </a></li>
+      
+        <li><a class="flat-box" title="https://xaoxuu.com/wiki/material-x/" href="https://xaoxuu.com/wiki/material-x/"
+          
+            rel="nofollow"
+          
+          
+          id="https:xaoxuu.comwikimaterial-x">
+          
+            <i class="fas fa-book fa-fw" aria-hidden="true"></i>
+          
+          主题文档
+        </a></li>
+      
+        <li><a class="flat-box" title="/about/" href="/about/"
+          
+            rel="nofollow"
+          
+          
+          id="about">
+          
+            <i class="fas fa-info-circle fa-fw" aria-hidden="true"></i>
+          
+          关于小站
+        </a></li>
+      
+    </ul>
+  </div>
+</section>
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+            
+              
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+            
+              
+  <section class='widget tagcloud'>
+    
+<header class='pure'>
+  <div><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;Hot Tags</div>
+  
+    <a class="rightBtn"
+    
+      rel="nofollow"
+    
+    
+    href="/tags/"
+    title="tags/">
+    <i class="fas fa-expand-arrows-alt fa-fw"></i></a>
+  
+</header>
+
+    <div class='content pure'>
+      <a href="/tags/Hibernate/" style="font-size: 14px; color: #999">Hibernate</a> <a href="/tags/IT/" style="font-size: 24px; color: #555">IT</a> <a href="/tags/IT-%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-Job-zookeeper/" style="font-size: 14px; color: #999">IT - 技术笔记 - Job - zookeeper</a> <a href="/tags/Java/" style="font-size: 14px; color: #999">Java</a> <a href="/tags/Job/" style="font-size: 24px; color: #555">Job</a> <a href="/tags/Kafka/" style="font-size: 14px; color: #999">Kafka</a> <a href="/tags/Linux/" style="font-size: 14px; color: #999">Linux</a> <a href="/tags/Mybatis/" style="font-size: 14px; color: #999">Mybatis</a> <a href="/tags/Redis/" style="font-size: 14px; color: #999">Redis</a> <a href="/tags/Spring/" style="font-size: 14px; color: #999">Spring</a> <a href="/tags/mysql/" style="font-size: 14px; color: #999">mysql</a> <a href="/tags/zookeeper/" style="font-size: 14px; color: #999">zookeeper</a> <a href="/tags/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/" style="font-size: 24px; color: #555">技术笔记</a> <a href="/tags/%E6%8E%92%E5%BA%8F/" style="font-size: 14px; color: #999">排序</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 20.67px; color: #6c6c6c">数据库</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 14px; color: #999">数据结构</a> <a href="/tags/%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%BC%80%E5%8F%91/" style="font-size: 17.33px; color: #828282">服务端开发</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 14px; color: #999">算法</a> <a href="/tags/%E7%BD%91%E7%BB%9C/" style="font-size: 14px; color: #999">网络</a>
+    </div>
+  </section>
+
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+            
+              <section class='widget list'>
+  
+<header class='pure'>
+  <div><i class="fas fa-thumbs-up fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;强烈推荐</div>
+  
+</header>
+
+  <div class='content pure'>
+    <ul class="entry">
+      
+        <li><a class="flat-box" title="https://xaoxuu.com/wiki/hexo.sh/" href="https://xaoxuu.com/wiki/hexo.sh/"
+          
+          
+          >
+          <div class='name'>
+            
+              <i class=" fa-fw" aria-hidden="true"></i>
+            
+            &nbsp;&nbsp;Hexo脚本（Mac）
+          </div>
+          
+        </a></li>
+      
+        <li><a class="flat-box" title="https://xaoxuu.com/wiki/vim-cn.sh/" href="https://xaoxuu.com/wiki/vim-cn.sh/"
+          
+          
+          >
+          <div class='name'>
+            
+              <i class=" fa-fw" aria-hidden="true"></i>
+            
+            &nbsp;&nbsp;图床脚本（Mac）
+          </div>
+          
+        </a></li>
+      
+        <li><a class="flat-box" title="https://yasuotu.com" href="https://yasuotu.com"
+          
+          
+          >
+          <div class='name'>
+            
+              <i class=" fa-fw" aria-hidden="true"></i>
+            
+            &nbsp;&nbsp;图片在线压缩
+          </div>
+          
+        </a></li>
+      
+        <li><a class="flat-box" title="https://realfavicongenerator.net" href="https://realfavicongenerator.net"
+          
+          
+          >
+          <div class='name'>
+            
+              <i class=" fa-fw" aria-hidden="true"></i>
+            
+            &nbsp;&nbsp;生成Favicon
+          </div>
+          
+        </a></li>
+      
+        <li><a class="flat-box" title="https://mxclub.github.io/resume/" href="https://mxclub.github.io/resume/"
+          
+          
+          >
+          <div class='name'>
+            
+              <i class=" fa-fw" aria-hidden="true"></i>
+            
+            &nbsp;&nbsp;简历主题
+          </div>
+          
+        </a></li>
+      
+    </ul>
+  </div>
+</section>
+
+            
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+    
+
+  
+</aside>
+
+<footer id="footer" class="clearfix">
+  
+  
+    <div class="social-wrapper">
+      
+        
+          <a href="/atom.xml"
+            class="social fas fa-rss flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="mailto:dmlys@live.com"
+            class="social fas fa-envelope flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="https://github.com/ChanMango"
+            class="social fab fa-github flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="https://music.163.com/#/user/home?id=118376074"
+            class="social fas fa-headphones-alt flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+    </div>
+  
+  <br>
+  <div><p>Blog content follows the <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en">Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0) License</a></p>
+</div>
+  <div>
+    Use
+    <a href="https://xaoxuu.com/wiki/material-x/" target="_blank" class="codename">Material X</a>
+    as theme
+    
+      , 
+      total visits
+      <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+      times
+    
+    . 
+  </div>
+</footer>
+<script>setLoadingBarProgress(80);</script>
+
+
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+
+  <script>
+    var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+    var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+    var ALGOLIA_API_KEY = "";
+    var ALGOLIA_APP_ID = "";
+    var ALGOLIA_INDEX_NAME = "";
+    var AZURE_SERVICE_NAME = "";
+    var AZURE_INDEX_NAME = "";
+    var AZURE_QUERY_KEY = "";
+    var BAIDU_API_ID = "";
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/"||"/";
+    if(!ROOT.endsWith('/'))ROOT += '/';
+  </script>
+
+<script src="//instant.page/1.2.2" type="module" integrity="sha384-2xV8M5griQmzyiY3CDqh1dn4z3llDVqZDqzjzcY+jCBCk/a5fXJmuZ/40JJAPeoU"></script>
+
+
+  <script async src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.5/dist/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      const $reveal = $('.reveal');
+      if ($reveal.length === 0) return;
+      const sr = ScrollReveal({ distance: 0 });
+      sr.reveal('.reveal');
+    });
+  </script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+  
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>
+    <script type="text/javascript">
+      $(function(){
+        if ('.cover') {
+          $('.cover').backstretch(
+          ["https://img.vim-cn.com/29/91197b04c13f512f734a76d4ac422d89dbe229.jpg"],
+          {
+            duration: "6000",
+            fade: "2500"
+          });
+        } else {
+          $.backstretch(
+          ["https://img.vim-cn.com/29/91197b04c13f512f734a76d4ac422d89dbe229.jpg"],
+          {
+            duration: "6000",
+            fade: "2500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.9/js/app.js"></script>
+
+
+  <script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.9/js/search.js"></script>
+
+
+
+
+<!-- 复制 -->
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  let COPY_SUCCESS = "Copied";
+  let COPY_FAILURE = "Copy failed";
+  /*页面载入完成后，创建复制按钮*/
+  !function (e, t, a) {
+    /* code */
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '  <i class="fa fa-copy"></i><span>Copy</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+
+      clipboard.on('success', function(e) {
+        //您可以加入成功提示
+        console.info('Action:', e.action);
+        console.info('Text:', e.text);
+        console.info('Trigger:', e.trigger);
+        success_prompt(COPY_SUCCESS);
+        e.clearSelection();
+      });
+      clipboard.on('error', function(e) {
+        //您可以加入失败提示
+        console.error('Action:', e.action);
+        console.error('Trigger:', e.trigger);
+        fail_prompt(COPY_FAILURE);
+      });
+    }
+    initCopyCode();
+
+  }(window, document);
+
+  /**
+   * 弹出式提示框，默认1.5秒自动消失
+   * @param message 提示信息
+   * @param style 提示样式，有alert-success、alert-danger、alert-warning、alert-info
+   * @param time 消失时间
+   */
+  var prompt = function (message, style, time)
+  {
+      style = (style === undefined) ? 'alert-success' : style;
+      time = (time === undefined) ? 1500 : time*1000;
+      $('<div>')
+          .appendTo('body')
+          .addClass('alert ' + style)
+          .html(message)
+          .show()
+          .delay(time)
+          .fadeOut();
+  };
+
+  // 成功提示
+  var success_prompt = function(message, time)
+  {
+      prompt(message, 'alert-success', time);
+  };
+
+  // 失败提示
+  var fail_prompt = function(message, time)
+  {
+      prompt(message, 'alert-danger', time);
+  };
+
+  // 提醒
+  var warning_prompt = function(message, time)
+  {
+      prompt(message, 'alert-warning', time);
+  };
+
+  // 信息提示
+  var info_prompt = function(message, time)
+  {
+      prompt(message, 'alert-info', time);
+  };
+
+</script>
+
+
+<!-- fancybox -->
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  let LAZY_LOAD_IMAGE = "";
+  $(".article-entry").find("fancybox").find("img").each(function () {
+      var element = document.createElement("a");
+      $(element).attr("data-fancybox", "gallery");
+      $(element).attr("href", $(this).attr("src"));
+      /* 图片采用懒加载处理时,
+       * 一般图片标签内会有个属性名来存放图片的真实地址，比如 data-original,
+       * 那么此处将原本的属性名src替换为对应属性名data-original,
+       * 修改如下
+       */
+       if (LAZY_LOAD_IMAGE) {
+         $(element).attr("href", $(this).attr("data-original"));
+       }
+      $(this).wrap(element);
+  });
+</script>
+
+
+
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>

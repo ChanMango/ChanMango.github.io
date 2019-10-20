@@ -1,0 +1,1477 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  <title>算法笔记 | Hexo</title>
+  
+  
+
+  
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!-- meta -->
+  
+
+  <!-- link -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.10.1/css/all.min.css">
+  
+
+  
+
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.9.9/css/style.css">
+  
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+
+  
+  
+</head>
+
+<body>
+  
+  
+  <div class="cover-wrapper">
+    <cover class='cover post half'>
+      
+        
+  <h1 class='title'>Demo</h1>
+
+
+  <div class="m_search">
+    <form name="searchform" class="form u-search-form">
+      <input type="text" class="input u-search-input" placeholder="" />
+      <i class="icon fas fa-search fa-fw"></i>
+    </form>
+  </div>
+
+<div class='menu navgation'>
+  <ul class='h-list'>
+    
+      
+        <li>
+          <a class="nav home" href="/"
+            
+            
+            id="home">
+            <i class='fas fa-rss fa-fw'></i>&nbsp;博文
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/projects/"
+            
+            
+            id="projects">
+            <i class='fas fa-code-branch fa-fw'></i>&nbsp;项目
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/friends/"
+            
+              rel="nofollow"
+            
+            
+            id="friends">
+            <i class='fas fa-link fa-fw'></i>&nbsp;友链
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/about/"
+            
+              rel="nofollow"
+            
+            
+            id="about">
+            <i class='fas fa-info-circle fa-fw'></i>&nbsp;关于
+          </a>
+        </li>
+      
+    
+  </ul>
+</div>
+
+      
+    </cover>
+    <header class="l_header pure">
+  <div id="loading-bar-wrapper">
+    <div id="loading-bar" class="pure"></div>
+  </div>
+
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+      <a class="logo flat-box" href='/' >
+        
+          Hexo
+        
+      </a>
+			<div class='menu navgation'>
+				<ul class='h-list'>
+          
+  					
+  						<li>
+								<a class="nav flat-box" href="/"
+                  
+                  
+                  id="home">
+									<i class='fas fa-grin fa-fw'></i>&nbsp;示例
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/categories/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="categories">
+									<i class='fas fa-folder-open fa-fw'></i>&nbsp;分类
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/tags/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="tags">
+									<i class='fas fa-hashtag fa-fw'></i>&nbsp;标签
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/archives/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="archives">
+									<i class='fas fa-archive fa-fw'></i>&nbsp;归档
+								</a>
+							</li>
+      			
+      		
+				</ul>
+			</div>
+
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="Search" />
+						<i class="icon fas fa-search fa-fw"></i>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a class="fas fa-search fa-fw" href='javascript:void(0)'></a></li>
+				
+				<li class='s-menu'><a class="fas fa-bars fa-fw" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+
+		<div class='nav-sub container container--flex'>
+			<a class="logo flat-box"></a>
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a class="flat-btn fas fa-comments fa-fw" href='javascript:void(0)'></a></li>
+        
+          <li class='s-toc'><a class="flat-btn fas fa-list fa-fw" href='javascript:void(0)'></a></li>
+        
+			</ul>
+		</div>
+	</div>
+</header>
+	<aside class="menu-phone">
+    <header>
+		<nav class="menu navgation">
+      <ul>
+        
+          
+            <li>
+							<a class="nav flat-box" href="/"
+                
+                
+                id="home">
+								<i class='fas fa-clock fa-fw'></i>&nbsp;近期文章
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/archives/"
+                
+                  rel="nofollow"
+                
+                
+                id="archives">
+								<i class='fas fa-archive fa-fw'></i>&nbsp;文章归档
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/projects/"
+                
+                
+                id="projects">
+								<i class='fas fa-code-branch fa-fw'></i>&nbsp;开源项目
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/friends/"
+                
+                  rel="nofollow"
+                
+                
+                id="friends">
+								<i class='fas fa-link fa-fw'></i>&nbsp;我的友链
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="https://xaoxuu.com/wiki/material-x/"
+                
+                  rel="nofollow"
+                
+                
+                id="https:xaoxuu.comwikimaterial-x">
+								<i class='fas fa-book fa-fw'></i>&nbsp;主题文档
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/about/"
+                
+                  rel="nofollow"
+                
+                
+                id="about">
+								<i class='fas fa-info-circle fa-fw'></i>&nbsp;关于小站
+							</a>
+            </li>
+          
+       
+      </ul>
+		</nav>
+    </header>
+	</aside>
+<script>setLoadingBarProgress(40);</script>
+
+  </div>
+
+
+  <div class="l_body">
+    <div class='body-wrapper'>
+      <div class='l_main'>
+  
+
+  <article id="post" class="post white-box article-type-post" itemscope itemprop="blogPost">
+    
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  
+    <h1 class="title">
+      <a href="/2019/10/20/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/">
+        算法笔记
+      </a>
+    </h1>
+  
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    
+      <a href="/" rel="nofollow">
+        
+          <i class="fas fa-user" aria-hidden="true"></i>
+        
+        <p>蜗牛君</p>
+      </a>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2019-10-20</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+          
+            
+  
+    <div class="new-meta-item browse busuanzi">
+      <a class='notlink'>
+        <i class="fas fa-eye" aria-hidden="true"></i>
+        <p>
+          <span id="busuanzi_value_page_pv">
+            <i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i>
+          </span>
+        </p>
+      </a>
+    </div>
+  
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+    <section class="article typo">
+      <div class="article-entry" itemprop="articleBody">
+        <h2 id="数据"><a href="/2019/10/20/算法笔记/#数据" class="headerlink" title="数据"></a>数据</h2><h1 id="排序算法"><a href="/2019/10/20/算法笔记/#排序算法" class="headerlink" title="排序算法"></a>排序算法</h1><h2 id="插入排序"><a href="/2019/10/20/算法笔记/#插入排序" class="headerlink" title="插入排序"></a>插入排序</h2><h3 id="原理"><a href="/2019/10/20/算法笔记/#原理" class="headerlink" title="原理"></a>原理</h3><p>算法原理：从整个待排序列中选出一个元素插入到已经有序的子序列中去，得到一个有序的、元素加一的子序列，直到整个序列的待插入元素为<code>0</code>，则整个序列全部有序。</p>
+<p>具体的实现的时候，我们一般选择第一个元素作为有序的序列，将后面的元素插入到前面有序的序列直到整个序列有序。</p>
+<p>时间复杂度：插入排序在最好情况下，需要比较<code>n-1</code>次，无需交换元素，时间复杂度为<code>O(n)</code>;在最坏情况下，时间复杂度为<code>O(n^2)</code></p>
+<p><img src="/2019/10/20/算法笔记//1.png" alt="图解"></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> len=<span class="number">15</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a[len]=&#123;<span class="number">1</span>,<span class="number">87</span>,<span class="number">64</span>,<span class="number">19</span>,<span class="number">53</span>,<span class="number">14</span>,<span class="number">57</span>,<span class="number">62</span>,<span class="number">23</span>,<span class="number">37</span>,<span class="number">48</span>,<span class="number">9</span>,<span class="number">91</span>,<span class="number">45</span>,<span class="number">81</span>&#125;;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;len;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> j=i;</span><br><span class="line">        <span class="keyword">int</span> temp=a[i];</span><br><span class="line">        <span class="keyword">while</span>(j&gt;<span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(a[j<span class="number">-1</span>]&lt;a[i])<span class="comment">//找到第一个比它小的数的位置</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> k=i;k&gt;j;k--)<span class="comment">//比它大的数全部后移</span></span><br><span class="line">                    a[k]=a[k<span class="number">-1</span>];</span><br><span class="line">                a[j]=temp;<span class="comment">//将数值附到该位置上</span></span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            j--;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;len;i++)</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d "</span>,a[i]);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="选择排序"><a href="/2019/10/20/算法笔记/#选择排序" class="headerlink" title="选择排序"></a>选择排序</h2><h3 id="原理-1"><a href="/2019/10/20/算法笔记/#原理-1" class="headerlink" title="原理"></a>原理</h3><p>算法原理：为每一趟从待排序的数据元素中选择最小（或最大）的一个元素作为首元素，直到所有元素排完为止</p>
+<p>算法步骤：</p>
+<ul>
+<li>首先在未排序序列中找到最小（大）元素，存放到排序序列的起始位置</li>
+<li>再从剩余未排序元素中继续寻找最小（大）元素，然后放到已排序序列的末尾。</li>
+<li>重复第二步，直到所有元素均排序完毕。　　</li>
+</ul>
+<p>时间复杂度：无论数组原始排列如何，比较次数是不变的；对于交换操作，在最好情况下也就是数组完全有序的时候，无需任何交换移动，</p>
+<p>在最差情况下，也就是数组倒序的时候，交换次数为<code>n-1</code>次。综合下来，时间复杂度为<code>O(n^2)</code></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> len=<span class="number">15</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a[len]=&#123;<span class="number">1</span>,<span class="number">87</span>,<span class="number">64</span>,<span class="number">19</span>,<span class="number">53</span>,<span class="number">14</span>,<span class="number">57</span>,<span class="number">62</span>,<span class="number">23</span>,<span class="number">37</span>,<span class="number">48</span>,<span class="number">9</span>,<span class="number">91</span>,<span class="number">45</span>,<span class="number">81</span>&#125;;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;len<span class="number">-1</span>;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> temp=i;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=i+<span class="number">1</span>;j&lt;len;j++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(a[temp]&gt;a[j])</span><br><span class="line">                temp=j;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(temp!=i)</span><br><span class="line">            swap(a[temp],a[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;len;i++)</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d "</span>,a[i]);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="冒泡排序"><a href="/2019/10/20/算法笔记/#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h2><h3 id="原理-2"><a href="/2019/10/20/算法笔记/#原理-2" class="headerlink" title="原理"></a>原理</h3><p>算法原理：比较相邻的元素。如果第一个比第二个大，就交换他们两个</p>
+<p>对每一对相邻元素作同样的工作，从开始第一对到结尾的最后一对。这步做完后，最后的元素会是最大的数。</p>
+<p>针对所有的元素重复以上的步骤，除了最后一个。持续每次对越来越少的元素重复上面的步骤，直到没有任何一对数字需要比较。</p>
+<p>时间复杂度分析：最优时间<code>O(n）</code>，最差时间<code>O(n^2)</code>。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> len=<span class="number">15</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a[len]=&#123;<span class="number">1</span>,<span class="number">87</span>,<span class="number">64</span>,<span class="number">19</span>,<span class="number">53</span>,<span class="number">14</span>,<span class="number">57</span>,<span class="number">62</span>,<span class="number">23</span>,<span class="number">37</span>,<span class="number">48</span>,<span class="number">9</span>,<span class="number">91</span>,<span class="number">45</span>,<span class="number">81</span>&#125;;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;len<span class="number">-1</span>;i++)<span class="comment">//进行几轮比较，确定位置</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">bool</span> flag=<span class="literal">false</span>;<span class="comment">//设定一个标记，若为true，则表示此次循环没有进行交换，也就是待排序列已经有序，排序已然完成。</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;len<span class="number">-1</span>-i;j++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(a[j]&gt;a[j+<span class="number">1</span>])</span><br><span class="line">            &#123;</span><br><span class="line">                swap(a[j],a[j+<span class="number">1</span>]);</span><br><span class="line">                flag=<span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(flag==<span class="literal">false</span>)</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;len;i++)</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d "</span>,a[i]);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="归并排序"><a href="/2019/10/20/算法笔记/#归并排序" class="headerlink" title="归并排序"></a>归并排序</h2><h3 id="原理-3"><a href="/2019/10/20/算法笔记/#原理-3" class="headerlink" title="原理"></a>原理</h3><p>算法原理：是利用递归与分治的技术将数据序列划分为越来越小的半子表，再对半子表排序，最后再用递归方法将排好序的半子表合并成越来越大的有序序列。</p>
+<p>时间复杂度：<code>O(nlogn）</code></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> a[<span class="number">20</span>]=&#123;<span class="number">5</span>,<span class="number">6</span>,<span class="number">9</span>,<span class="number">15</span>,<span class="number">4</span>,<span class="number">-1</span>,<span class="number">-9</span>,<span class="number">5</span>,<span class="number">-6</span>,<span class="number">71</span>,<span class="number">5</span>,<span class="number">-36</span>,<span class="number">2</span>,<span class="number">15</span>,<span class="number">48</span>,<span class="number">-15</span>,<span class="number">14</span>,<span class="number">6</span>,<span class="number">9</span>,<span class="number">11</span>&#125;;</span><br><span class="line"><span class="keyword">int</span> l,r;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">mergee</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> m,<span class="keyword">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> T[<span class="number">20</span>];</span><br><span class="line">    <span class="keyword">int</span> i=l,j=m+<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> k=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(i&lt;=m&amp;&amp;j&lt;=r)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(a[i]&lt;=a[j])</span><br><span class="line">            T[k++]=a[i++];</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            T[k++]=a[j++];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(i&lt;=m)</span><br><span class="line">        T[k++]=a[i++];</span><br><span class="line">    <span class="keyword">while</span>(j&lt;=r)</span><br><span class="line">        T[k++]=a[j++];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;k;i++)</span><br><span class="line">        a[l+i]=T[i];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">mergr_sort</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(r-l&gt;<span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> mid=(l+r)/<span class="number">2</span>;</span><br><span class="line">        <span class="keyword">int</span> p=l,q=mid,i=l;</span><br><span class="line">        mergr_sort(l,mid);</span><br><span class="line">        mergr_sort(mid+<span class="number">1</span>,r);</span><br><span class="line">        mergee(l,mid,r);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d %d"</span>,&amp;l,&amp;r);</span><br><span class="line">    mergr_sort(l,r);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">20</span>;i++)</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d "</span>,a[i]);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="快速排序"><a href="/2019/10/20/算法笔记/#快速排序" class="headerlink" title="快速排序"></a>快速排序</h2><h3 id="原理-4"><a href="/2019/10/20/算法笔记/#原理-4" class="headerlink" title="原理"></a>原理</h3><p>通过一轮的排序将序列分割成独立的两部分，其中一部分序列的关键字（这里主要用值来表示）均比另一部分关键字小。继续递归的对长度较短的序列进行同样的分割，最后到达整体有序。为了实现一次划分，我们可以从数组（假定数据是存在数组中）的两端移动下标，必要时交换记录，直到数组两端的下标相遇为止。为此，我们附设两个指针（下角标）<code>i</code>和<code>j</code>， 通过<code>j</code> 从当前序列的有段向左扫描，越过不小于基准值的记录。当遇到小于基准值的记录时，扫描停止。通过<code>i</code>从当前序列的左端向右扫描，越过小于基准值的记录。当遇到不小于基准值的记录时，扫描停止。交换两个方向扫描停止的记录 <code>a[j]</code> 与 <code>a[i]</code>。 然后，继续扫描，直至 <code>i</code>与<code>j</code> 相遇为止。它的平均时间复杂度为<code>O(nlogn)</code>。</p>
+<p>当我们每次进行分区划分时，如果每次选择的基准元素都是当前序列中最大或最小的记录，这样每次分区的时候只得到了一个新分区，另一个分区为空，并且新分区只是比分区前少一个元素，这是快速排序的最坏情况，时间复杂度上升为<code>O(n^2)</code>。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> len=<span class="number">15</span>;</span><br><span class="line"><span class="keyword">int</span> a[len]=&#123;<span class="number">1</span>,<span class="number">87</span>,<span class="number">64</span>,<span class="number">19</span>,<span class="number">53</span>,<span class="number">14</span>,<span class="number">57</span>,<span class="number">62</span>,<span class="number">23</span>,<span class="number">37</span>,<span class="number">48</span>,<span class="number">9</span>,<span class="number">91</span>,<span class="number">45</span>,<span class="number">81</span>&#125;;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">quicksort</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(l&gt;r)</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">int</span> temp=a[l];</span><br><span class="line">    <span class="keyword">int</span> i=l;<span class="keyword">int</span> j=r;</span><br><span class="line">    <span class="keyword">while</span>(i!=j)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">while</span>(a[j]&gt;=temp&amp;&amp;i&lt;j)</span><br><span class="line">            j--;<span class="comment">/*为什么要从右边，因为我们选择的基数是从左边开始选择的，开始的方向必须是要从基数的对面开始，如果你要从左边开始找那么选择基数的时候就从右边的数作为基数*/</span></span><br><span class="line">        <span class="keyword">while</span>(a[i]&lt;=temp&amp;&amp;i&lt;j)</span><br><span class="line">            i++;</span><br><span class="line">        <span class="keyword">if</span>(i&lt;j)</span><br><span class="line">            swap(a[i],a[j]);</span><br><span class="line">    &#125;</span><br><span class="line">    a[l]=a[i];</span><br><span class="line">    a[i]=temp;</span><br><span class="line">    quicksort(l,i<span class="number">-1</span>);</span><br><span class="line">    quicksort(i+<span class="number">1</span>,r);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    quicksort(<span class="number">0</span>,<span class="number">14</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;len;i++)</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d "</span>,a[i]);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="堆排序"><a href="/2019/10/20/算法笔记/#堆排序" class="headerlink" title="堆排序"></a>堆排序</h2><h3 id="原理-5"><a href="/2019/10/20/算法笔记/#原理-5" class="headerlink" title="原理"></a>原理</h3><p>利用堆这种数据结构而设计的一种排序算法，堆排序是一种选择排序，它的最坏，最好，平均时间复杂度均为<code>O(nlogn)</code>，它也是不稳定排序。</p>
+<p><img src="/2019/10/20/算法笔记//2.png" alt></p>
+<p>该数组从逻辑上讲就是一个堆结构，我们用简单的公式来描述一下堆的定义就是：</p>
+<p>大顶堆：<code>arr[i] &gt;= arr[2i+1] &amp;&amp; arr[i] &gt;= arr[2i+2]</code></p>
+<p>小顶堆：<code>arr[i] &lt;= arr[2i+1] &amp;&amp; arr[i] &lt;= arr[2i+2]</code></p>
+<p>算法步骤：</p>
+<ul>
+<li>将无需序列构建成一个堆，根据升序降序需求选择大顶堆或小顶堆;</li>
+<li>将堆顶元素与末尾元素交换，将最大元素”沉”到数组末端;</li>
+<li>重新调整结构，使其满足堆定义，然后继续交换堆顶元素与当前末尾元素，反复执行调整+交换步骤，直到整个序列有序。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> sortdemo;</span><br><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HeapSort</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String []args)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> []arr = &#123;<span class="number">9</span>,<span class="number">8</span>,<span class="number">7</span>,<span class="number">6</span>,<span class="number">5</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>&#125;;</span><br><span class="line">        sort(arr);</span><br><span class="line">        System.out.println(Arrays.toString(arr));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">sort</span><span class="params">(<span class="keyword">int</span> []arr)</span></span>&#123;</span><br><span class="line">        <span class="comment">//1.构建大顶堆</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=arr.length/<span class="number">2</span>-<span class="number">1</span>;i&gt;=<span class="number">0</span>;i--)&#123;</span><br><span class="line">            <span class="comment">//从第一个非叶子结点从下至上，从右至左调整结构</span></span><br><span class="line">            adjustHeap(arr,i,arr.length);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//2.调整堆结构+交换堆顶元素与末尾元素</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=arr.length-<span class="number">1</span>;j&gt;<span class="number">0</span>;j--)&#123;</span><br><span class="line">            swap(arr,<span class="number">0</span>,j);<span class="comment">//将堆顶元素与末尾元素进行交换</span></span><br><span class="line">            adjustHeap(arr,<span class="number">0</span>,j);<span class="comment">//重新对堆进行调整</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 调整大顶堆（仅是调整过程，建立在大顶堆已构建的基础上）</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> arr</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> i</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> length</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">adjustHeap</span><span class="params">(<span class="keyword">int</span> []arr,<span class="keyword">int</span> i,<span class="keyword">int</span> length)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> temp = arr[i];<span class="comment">//先取出当前元素i</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> k=i*<span class="number">2</span>+<span class="number">1</span>;k&lt;length;k=k*<span class="number">2</span>+<span class="number">1</span>)&#123;<span class="comment">//从i结点的左子结点开始，也就是2i+1处开始</span></span><br><span class="line">            <span class="keyword">if</span>(k+<span class="number">1</span>&lt;length &amp;&amp; arr[k]&lt;arr[k+<span class="number">1</span>])&#123;<span class="comment">//如果左子结点小于右子结点，k指向右子结点</span></span><br><span class="line">                k++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(arr[k] &gt;temp)&#123;<span class="comment">//如果子节点大于父节点，将子节点值赋给父节点（不用进行交换）</span></span><br><span class="line">                arr[i] = arr[k];</span><br><span class="line">                i = k;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        arr[i] = temp;<span class="comment">//将temp值放到最终的位置</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 交换元素</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span> []arr,<span class="keyword">int</span> a ,<span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> temp=arr[a];</span><br><span class="line">        arr[a] = arr[b];</span><br><span class="line">        arr[b] = temp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="几种排序算法的比较示意图"><a href="/2019/10/20/算法笔记/#几种排序算法的比较示意图" class="headerlink" title="几种排序算法的比较示意图"></a>几种排序算法的比较示意图</h2><blockquote>
+<h4 id="排序稳定性的定义"><a href="/2019/10/20/算法笔记/#排序稳定性的定义" class="headerlink" title="排序稳定性的定义"></a>排序稳定性的定义</h4><p>通俗地讲就是能保证排序前两个相等的数其在序列的前后位置顺序和排序后它们两个的前后位置顺序相同。在简单形式化一下，如果Ai = Aj，Ai原来在位置前，排序后Ai还是要在Aj位置前</p>
+</blockquote>
+<p><img src="/2019/10/20/算法笔记//3.png" alt></p>
+<h2 id="二叉平衡树"><a href="/2019/10/20/算法笔记/#二叉平衡树" class="headerlink" title="二叉平衡树"></a>二叉平衡树</h2><blockquote>
+<p>左右子树的的高度差不超过<strong>1</strong>, 否则要进行树的调整</p>
+</blockquote>
+<h2 id="二叉查找树"><a href="/2019/10/20/算法笔记/#二叉查找树" class="headerlink" title="二叉查找树"></a>二叉查找树</h2><blockquote>
+<p>1， 左子树上所有的节点的值均小于或等于他的根节点的值</p>
+<p>2， 右子数上所有的节点的值均大于或等于他的根节点的值</p>
+<p>3， 左右子树也一定分别为二叉排序树</p>
+<p>传统的查找树的缺点: 如果树太高就会导致查找效率低下, 接近线性查找的时间复杂度</p>
+</blockquote>
+<h3 id="红黑树"><a href="/2019/10/20/算法笔记/#红黑树" class="headerlink" title="红黑树"></a>红黑树</h3><blockquote>
+<p>红黑树就是一种平衡的二叉查找树，说他平衡的意思是他不会变成“瘸子”，左腿特别长或者右腿特别长。除了符合二叉查找树的特性之外，还具体下列的特性：</p>
+<ul>
+<li>\1. 节点是红色或者黑色</li>
+<li>\2. 根节点是黑色</li>
+<li>\3. 每个叶子的节点都是黑色的空节点（NULL）</li>
+<li>\4. 每个红色节点的两个子节点都是黑色的。</li>
+<li>\5. 从任意节点到其每个叶子的所有路径都包含相同的黑色节点。</li>
+</ul>
+</blockquote>
+<h1 id="十大算法"><a href="/2019/10/20/算法笔记/#十大算法" class="headerlink" title="十大算法"></a>十大算法</h1><h3 id="递归算法"><a href="/2019/10/20/算法笔记/#递归算法" class="headerlink" title="递归算法"></a>递归算法</h3><p><strong>能够用递归解决的问题需要满足三个条件：</strong></p>
+<ul>
+<li>原问题可以转换为一个或多个子问题来求解，而这些子问题的求解方法和原问题完全相同，只是规模不同；</li>
+<li>递归调用次数必须是有限的；</li>
+<li>必须有结束递归的条件（递归出口）来终止递归。</li>
+</ul>
+<h4 id="设计递归算法模式"><a href="/2019/10/20/算法笔记/#设计递归算法模式" class="headerlink" title="设计递归算法模式"></a>设计递归算法模式</h4><ol>
+<li>先求解问题的递归模型。</li>
+<li>在设计递归算法的时候，如果纠结递归树的每一个阶段的话，就会极为复杂。因此，<strong>只考虑递归树中的第一层和第二层之间的关系即可，即“大问题” 和 “小问题” 的关系</strong>，其他关系类似。</li>
+<li><strong>求解问题的递归模型：</strong><ul>
+<li>对原问题 <code>f(n)</code> 进行分析，假设出合理的小问题 <code>f(n-1)</code>；</li>
+<li><strong>假设小问题 f(n-1) 是可解的，在此基础上确定大问题 f(n) 的解，即给出 f(n) 与 f(n-1) 之间的关系，也就是确定了递归体。</strong>（与数学归纳法中确定 <code>i=n-1</code> 时成立，再求证 <code>i=n</code> 时等式成立的过程相似）。<strong>还要明确需要返回什么信息给上一层递归调用。</strong></li>
+<li><strong>确定一个特定情况（如 f(0) 或 f(1)）的解，由此作为递归出口。</strong>（与数学归纳法中求证 <code>i=0</code> 或 <code>i=1</code>时等式成立相似）</li>
+</ul>
+</li>
+</ol>
+<h4 id="例子-求数组中最小值："><a href="/2019/10/20/算法笔记/#例子-求数组中最小值：" class="headerlink" title="例子:求数组中最小值："></a>例子:求数组中最小值：</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 递归求数组最大值</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> arr 目标数组</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> i   起始下标</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">getMax</span><span class="params">(<span class="keyword">int</span>[] arr, <span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (i == arr.length - <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> arr[i];<span class="comment">//只有一个元素的时候,它就是最大值（特定问题的解）</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">//假设解出了子问题i+1的最大值,</span></span><br><span class="line">        <span class="comment">//将i+1的最大值和当前i进行比较, 返回最大的</span></span><br><span class="line">        <span class="comment">//将最后一个元素与“假设存在的”最大值比较</span></span><br><span class="line">        <span class="keyword">int</span> max = Math.max(arr[i], getMax(arr, i + <span class="number">1</span>));</span><br><span class="line">        <span class="keyword">return</span> max;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="分治算法"><a href="/2019/10/20/算法笔记/#分治算法" class="headerlink" title="分治算法"></a>分治算法</h3><blockquote>
+<p>分治法是一种很重要的<a href="http://lib.csdn.net/base/31">算法</a>。字面上的解释是“分而治之”，就是把一个复杂的问题分成两个或更多的相同或相似的子问题，再把子问题分成更小的子问题……直到最后子问题可以简单的直接求解，原问题的解即子问题的解的合并。</p>
+</blockquote>
+<h4 id="分治法适用的情况"><a href="/2019/10/20/算法笔记/#分治法适用的情况" class="headerlink" title="分治法适用的情况"></a>分治法适用的情况</h4><p><strong>分治算法所能解决的问题一般具有以下几个特征:</strong></p>
+<ul>
+<li><p>1) 该问题的规模缩小到一定的程度就可以容易地解决</p>
+</li>
+<li><p>2) 该问题可以分解为若干个规模较小的相同问题，即该问题具有最优子结构性质。</p>
+</li>
+<li><p>3) 利用该问题分解出的<strong>子问题的解可以合并为该问题的解</strong>；</p>
+<p>如果不具备这一条特征, 那么可以考虑使用<strong><a href>贪心算法</a></strong>或者<strong>动态规划算法</strong></p>
+</li>
+<li><p>4) 该问题所分解出的各个子问题是相互独立的，即子问题之间不包含公共的子子问题。</p>
+<p>如果各子问题是不独立的则分治法要做许多不必要的工作，重复地解公共的子问题，此时虽然可用分治法，但<strong>一般用动态规划法较好</strong>。</p>
+</li>
+</ul>
+<h4 id="分治法的基本步骤"><a href="/2019/10/20/算法笔记/#分治法的基本步骤" class="headerlink" title="分治法的基本步骤"></a>分治法的基本步骤</h4><p>分治法在每一层递归上都有三个步骤：</p>
+<ul>
+<li>（1）分解，将要解决的问题划分成若干规模较小的同类问题；</li>
+<li>（2）求解，当子问题划分得足够小时，用较简单的方法解决；</li>
+<li>（3）合并，按原问题的要求，将子问题的解逐层合并构成原问题的解。</li>
+</ul>
+<h4 id="分治算法的设计模式"><a href="/2019/10/20/算法笔记/#分治算法的设计模式" class="headerlink" title="分治算法的设计模式:"></a>分治算法的设计模式:</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Divide_and_Conquer(P)&#123;</span><br><span class="line">    <span class="keyword">if</span>(xxx) <span class="comment">//递归出口：如果规模足够小，克制直接求解，则开始“治”</span></span><br><span class="line">        <span class="keyword">return</span> ADHOC(P); <span class="comment">//ADHOC是治理可直接求解子问题的子过程</span></span><br><span class="line">     </span><br><span class="line">    &lt;divide P into smaller subinstances P1,P2,...Pk&gt;; <span class="comment">//将P“分”解为k个子问题</span></span><br><span class="line">     </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; k; ++i)</span><br><span class="line">        yi = Divide_and_Conquer(Pi); <span class="comment">//递归求解各个子问题</span></span><br><span class="line">     </span><br><span class="line">    <span class="keyword">return</span> merge(y1, y2, ..., yk); <span class="comment">//将各个子问题的解“合”并为原问题的解</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="案例"><a href="/2019/10/20/算法笔记/#案例" class="headerlink" title="案例:"></a>案例:</h4><ol>
+<li><h5 id="求数组的和"><a href="/2019/10/20/算法笔记/#求数组的和" class="headerlink" title="求数组的和"></a>求数组的和</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">getSum</span><span class="params">(<span class="keyword">int</span>[] arr, <span class="keyword">int</span> low, <span class="keyword">int</span> high)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">if</span> (low &gt;= high) <span class="keyword">return</span> arr[high];<span class="comment">// “治” 直接求解</span></span><br><span class="line">       <span class="keyword">int</span> mid = (low + high) / <span class="number">2</span>;<span class="comment">// “分” 分解成两个子问题</span></span><br><span class="line">       <span class="comment">// “合” 自底向上求子数组l和r的和</span></span><br><span class="line">       <span class="keyword">return</span> getSum(arr, low, mid) + getSum(arr, mid + <span class="number">1</span>, high);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p><img src="/2019/10/20/算法笔记//1458608-20190320191746611-1141903326.png" alt="img"></p>
+<ol start="2">
+<li><h5 id="分治-求逆序对数目"><a href="/2019/10/20/算法笔记/#分治-求逆序对数目" class="headerlink" title="分治 - 求逆序对数目"></a>分治 - 求逆序对数目</h5><p>如，<code>{3, 1, 2, 4}</code> 中逆序对有 <code>&lt;3,1&gt; &lt;3,2&gt;</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">getReverseCount</span><span class="params">(<span class="keyword">int</span>[] arr, <span class="keyword">int</span> low, <span class="keyword">int</span> high)</span> </span>&#123;</span><br><span class="line">      <span class="comment">//治</span></span><br><span class="line">      <span class="keyword">if</span> (low &gt;= high) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">      <span class="comment">//分 成子问题,子问题解有三个</span></span><br><span class="line">      <span class="comment">//1. 左边部分的解</span></span><br><span class="line">      <span class="comment">//2. 右边部分的解</span></span><br><span class="line">      <span class="comment">//3. 左右两部分合起来的解</span></span><br><span class="line">      <span class="keyword">int</span> mid = (low + high) / <span class="number">2</span>;</span><br><span class="line">      <span class="keyword">int</span> lC = getReverseCount(arr, low, mid);</span><br><span class="line">      <span class="keyword">int</span> rC = getReverseCount(arr, mid + <span class="number">1</span>, high);</span><br><span class="line">      <span class="keyword">int</span> mergeC = merge(arr, low, mid, high);</span><br><span class="line">      <span class="comment">//合并子问题的解(3个)</span></span><br><span class="line">      <span class="keyword">return</span> lC + rC + mergeC;</span><br><span class="line">  &#125;</span><br><span class="line">   </span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">merge</span><span class="params">(<span class="keyword">int</span>[] arr, <span class="keyword">int</span> low, <span class="keyword">int</span> mid, <span class="keyword">int</span> high)</span> </span>&#123;</span><br><span class="line">      <span class="comment">//将左右两部分的限定区间内的值拿出来(这样不会影响整体)求左右两部分合起来的解-&gt; 把中间部分拿出来排好序在放回去</span></span><br><span class="line">      <span class="keyword">int</span>[] tmp = Arrays.copyOfRange(arr, low, high + <span class="number">1</span>);</span><br><span class="line">      <span class="keyword">int</span> nMid = mid - low;</span><br><span class="line">      <span class="keyword">int</span> nHigh = tmp.length - <span class="number">1</span>;</span><br><span class="line">      <span class="keyword">int</span> num = <span class="number">0</span>;<span class="comment">//逆序数</span></span><br><span class="line">      <span class="comment">//开始求两部分合起来的解(仅仅!! 把中间那部分拿出来进行排序后,放回到原数组arr中)</span></span><br><span class="line">      <span class="keyword">int</span> index = low;</span><br><span class="line">      <span class="keyword">int</span> p1 = <span class="number">0</span>;</span><br><span class="line">      <span class="keyword">int</span> p2 = nMid + <span class="number">1</span>;</span><br><span class="line">      <span class="keyword">while</span> (p1 &lt;= nMid &amp;&amp; p2 &lt;= nHigh) &#123;</span><br><span class="line">          <span class="comment">// 比较左右两部分的元素，哪个小，把那个元素填入原数组index位置中</span></span><br><span class="line">          <span class="keyword">if</span> (tmp[p1] &gt; tmp[p2]) &#123;</span><br><span class="line">              num++;</span><br><span class="line">              System.out.println(tmp[p1] + <span class="string">" "</span> + tmp[p2]);</span><br><span class="line">              arr[index++] = tmp[p2++];</span><br><span class="line">          &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">              arr[index++] = tmp[p1++];</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="comment">//把剩余的元素填入arr相应位置</span></span><br><span class="line">      <span class="keyword">while</span> (p1 &lt;= nMid) arr[index++] = tmp[p1++];</span><br><span class="line">      <span class="keyword">while</span> (p2 &lt;= nHigh) arr[index++] = tmp[p2++];</span><br><span class="line">      <span class="keyword">return</span> num;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li><h4 id="大整数乘法"><a href="/2019/10/20/算法笔记/#大整数乘法" class="headerlink" title="大整数乘法"></a>大整数乘法</h4></li>
+</ol>
+</li>
+</ol>
+<h3 id="动态规划"><a href="/2019/10/20/算法笔记/#动态规划" class="headerlink" title="动态规划"></a>动态规划</h3><blockquote>
+<p> 动态规划过程是：每次决策<strong>依赖于当前状态</strong>，又<strong>随即引起状态的转移</strong>。是一种分阶段求解决策问题的数学思想。总结起来就是一句话，大事化小，小事化了。</p>
+<p>基本思想与分治法类似，也是将待求解的问题分解为若干个子问题（阶段），按顺序求解子阶段，前一子问题的解，为后一子问题的求解提供了有用的信息。在求解任一子问题时，列出各种可能的局部解，通过决策保留那些有可能达到最优的局部解，丢弃其他局部解。依次解决各子问题，最后一个子问题就是初始问题的解。</p>
+</blockquote>
+<h4 id="通用递推式"><a href="/2019/10/20/算法笔记/#通用递推式" class="headerlink" title="通用递推式:"></a>通用递推式:</h4><p>$$<br>       f(n,m)=max{f(n-1,m), f(n-1,m-w[n])+P(n,m)}<br>$$</p>
+<h4 id="优化"><a href="/2019/10/20/算法笔记/#优化" class="headerlink" title="优化:"></a>优化:</h4><p> <u>由于动态规划解决的问题多数有重叠子问题这个特点，为减少重复计算，对每一个子问题只解一次，将其<strong>不同阶段的不同状态保存在一个二维数组中</strong>。</u></p>
+<h4 id="分治法最大的差别"><a href="/2019/10/20/算法笔记/#分治法最大的差别" class="headerlink" title="分治法最大的差别:"></a>分治法最大的差别:</h4><p>适合于用动态规划法求解的问题，经分解后得到的<strong>子问题</strong>往往<strong>不</strong>是<strong>互相独立</strong>的（即<strong>下一个子阶段的求解是建立在上一个子阶段的解</strong>的基础上，进行进一步的求解）。</p>
+<h4 id="适用的情况"><a href="/2019/10/20/算法笔记/#适用的情况" class="headerlink" title="适用的情况"></a>适用的情况</h4><p>能采用动态规划求解的问题的一般要具有3个性质：</p>
+<ul>
+<li>最优化原理：如果问题的<strong>最优解</strong>所包含的<strong>子问题</strong>的解<strong>也是最优</strong>的，就称该问题具有最优子结构，即满足最优化原理。</li>
+<li>无后效性：即某阶段状态一旦确定，就不受这个状态以后决策的影响。也就是说，<strong>某状态以后</strong>的过程不会影响以前的状态，<strong>只与当前状态有关</strong>。</li>
+<li>有重叠子问题：即<strong>子问题之间是不独立</strong>的，一个子问题在下一阶段决策中可能被多次使用到。（该性质并不是动态规划适用的必要条件，但是如果没有这条性质，动态规划算法同其他算法相比就不具备优势）</li>
+</ul>
+<h4 id="求解的基本步骤"><a href="/2019/10/20/算法笔记/#求解的基本步骤" class="headerlink" title="求解的基本步骤"></a>求解的基本步骤</h4><p>​    初始状态→│决策１│→│决策２│→…→│决策ｎ│→结束状态</p>
+<ol>
+<li><strong>划分阶段</strong>：按照问题的时间或空间特征，把问题分为若干个阶段。在划分阶段时，注意<strong>划分后的阶段</strong>一定要是<strong>有序</strong>的或者是<strong>可排序</strong>的，否则问题就无法求解。</li>
+<li><strong>确定状态和状态变量-&gt;(递归的定义最优解。)</strong>：将问题发展到各个阶段时所处于的各种客观情况用不同的状态表示出来。当然，状态的选择要满足无后效性。</li>
+<li><strong>确定决策并写出状态转移方程</strong>：因为决策和状态转移有着天然的联系，状态转移就是根据上一阶段的状态和决策来导出本阶段的状态。所以如果确定了决策，状态转移方程也就可写出。但事实上常常是反过来做，根据相邻两个阶段的状态之间的关系来确定决策方法和状态转移方程。</li>
+<li><strong>寻找边界条件</strong>：给出的状态转移方程是一个递推式，需要一个递推的终止条件或边界条件。</li>
+</ol>
+<h4 id="动态规划案例"><a href="/2019/10/20/算法笔记/#动态规划案例" class="headerlink" title="动态规划案例"></a>动态规划案例</h4><p><strong>0, 1背包问题</strong></p>
+<p>两种情况来分析, <u>要拿的东西能不能装进背包,能装进去的话,要不要那它(看价值)</u></p>
+<ol>
+<li>如果第k件物品的重量w[k]比此时的背包的剩余重量c大了，那我肯定是拿不动了，即<code>w[k]&gt;c</code>。所以此时包中物品的价值就是我拿的前一个物品之后包中的价值，即 <code>b(k,c)=b(k-1,c).</code>包中剩余空间不变，还是c。</li>
+<li>那么第二种情况，如果我拿得动第k件物品，即第k件物品的重量<code>w[k]&lt;c</code>，面对k号物品，无外乎两种选择，拿或者不拿，这时我就要根据拿走之后产生的效益进行决策了：<ul>
+<li>不拿k号物品，那么此时包中物品的总价值<code>b(k,c)=b(k-1,c)</code>，和第一种拿不动k号物品的一样。</li>
+<li>拿走k号物品，那么此时包中物品的总价值<code>b(k,c)=b(k-1,c-w[k])+v[k]</code>拿了第k件物品后，那我的包中的价值肯定就是原先的价值再加上第k件物品的价值，而且拿了之后包中的剩余容量就为<code>c-w[k]</code>了。  总结一下，就是如下的公式了：<code>b(k,c)=max{b(k-1,c),b(k-1,c-w[k])+v[k]}</code></li>
+</ul>
+</li>
+</ol>
+<p><img src="/2019/10/20/算法笔记//5666077-75fdbf8a205171f7.png" alt="img"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] w = &#123; <span class="number">0</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">9</span> &#125;;</span><br><span class="line">        <span class="keyword">int</span>[] v = &#123; <span class="number">0</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">8</span>, <span class="number">10</span> &#125;;</span><br><span class="line">        <span class="keyword">int</span> N = <span class="number">6</span>, W = <span class="number">21</span>;</span><br><span class="line">        <span class="keyword">int</span>[][] b = <span class="keyword">new</span> <span class="keyword">int</span>[N][W];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">1</span>; k &lt; N; k++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> c = <span class="number">1</span>; c &lt; W; c++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (w[k] &gt; c) &#123;</span><br><span class="line">                    b[k][c] = b[k - <span class="number">1</span>][c];</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="keyword">int</span> value1 = b[k - <span class="number">1</span>][c - w[k]] + v[k]; <span class="comment">// 拿第k件物品</span></span><br><span class="line">                    <span class="keyword">int</span> value2 = b[k - <span class="number">1</span>][c]; <span class="comment">// 不拿第k件物品</span></span><br><span class="line">                    b[k][c] = Math.max(value1, value2);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(b[<span class="number">5</span>][<span class="number">20</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//递归方式</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> w        重量数组</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> v        物品价值数组</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> capacity 背包容量</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> i        物品i开始</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">getValue</span><span class="params">(<span class="keyword">int</span>[] w, <span class="keyword">int</span>[] v, <span class="keyword">int</span> capacity, <span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (i == w.length - <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="comment">//最后一件物品</span></span><br><span class="line">            <span class="keyword">return</span> w[i] &lt;= capacity ? v[i] : <span class="number">0</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (capacity &lt; w[i]) &#123;</span><br><span class="line">                <span class="comment">//背包装不了不了的情况</span></span><br><span class="line">                <span class="keyword">return</span> getValue(w, v, capacity, i + <span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//能装下, 但是考虑拿不拿</span></span><br><span class="line">            <span class="comment">//拿</span></span><br><span class="line">            <span class="keyword">int</span> v1 = getValue(w, v, capacity - w[i], i + <span class="number">1</span>) + v[i];</span><br><span class="line">            <span class="comment">//不拿</span></span><br><span class="line">            <span class="keyword">int</span> v2 = getValue(w, v, capacity, i + <span class="number">1</span>);</span><br><span class="line">            <span class="keyword">return</span> Math.max(v1, v2);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="贪心算法"><a href="/2019/10/20/算法笔记/#贪心算法" class="headerlink" title="贪心算法"></a>贪心算法</h3><blockquote>
+<p> 所谓贪心算法是指，在对问题求解时，总是做出在当前看来是最好的选择。也就是说，不从整体最优上加以考虑，他所做出的仅是在某种意义上的局部最优解。</p>
+<p><strong>必须注意</strong>的是，贪心算法不是对所有问题都能得到整体最优解，采用的贪心策略一定要仔细分析其是否满足无后效性。即某个状态以后的过程不会影响以前的状态</p>
+</blockquote>
+<h4 id="贪心算法的基本思路："><a href="/2019/10/20/算法笔记/#贪心算法的基本思路：" class="headerlink" title="贪心算法的基本思路："></a>贪心算法的基本思路：</h4><p>​    1.建立数学模型来描述问题。</p>
+<p>​    2.把求解的问题分成若干个子问题。</p>
+<p>​    3.对每一子问题求解，得到子问题的局部最优解。</p>
+<p>​    4.把子问题的解局部最优解合成原来解问题的一个解。</p>
+<h4 id="贪心算法适用的问题"><a href="/2019/10/20/算法笔记/#贪心算法适用的问题" class="headerlink" title="贪心算法适用的问题"></a>贪心算法适用的问题</h4><p><strong>贪心策略适用的前提是：局部最优策略能导致产生全局最优解。</strong></p>
+<p>实际上，贪心算法适用的情况很少。一般，对一个问题分析是否适用于贪心算法，可以先选择该问题下的几个实际数据进行分析，就可做出判断。</p>
+<h4 id="贪心算法的实现框架"><a href="/2019/10/20/算法笔记/#贪心算法的实现框架" class="headerlink" title="贪心算法的实现框架"></a>贪心算法的实现框架</h4><ul>
+<li>从问题的某一初始解出发；</li>
+<li>​    while （能朝给定总目标前进一步）</li>
+<li>​    { </li>
+<li>​          利用可行的决策，求出可行解的一个解元素；</li>
+<li>​    }</li>
+<li>​    由所有解元素组合成问题的一个可行解；</li>
+</ul>
+<h4 id="案例-1"><a href="/2019/10/20/算法笔记/#案例-1" class="headerlink" title="案例"></a>案例</h4><h5 id="物品装载问题"><a href="/2019/10/20/算法笔记/#物品装载问题" class="headerlink" title="物品装载问题:"></a>物品装载问题:</h5><p>最优装载问题，给出n个物体，第i个物体重量为wi。选择尽量多的物体，使得总重量不超过C。经过前面的学习很容易想到贪心策略，那就是每次选重量最轻的物体，那么物体数就最多。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@param</span> n 物品数</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@param</span> w 物品对象的重量数组</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@param</span> c 限重值</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">f</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span>[] w, <span class="keyword">int</span> c)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">      <span class="keyword">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">          sum += w[i];</span><br><span class="line">          <span class="comment">//优先选择重量最轻的物体, 则最终的物体数就会最多,且不超过限重</span></span><br><span class="line">          <span class="keyword">if</span> (sum &lt;= c) &#123;</span><br><span class="line">              cnt++;</span><br><span class="line">          &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">              <span class="keyword">break</span>;</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> cnt;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="回溯算法"><a href="/2019/10/20/算法笔记/#回溯算法" class="headerlink" title="回溯算法"></a>回溯算法</h3><blockquote>
+<p>回溯法是一种选优搜索法，按选优条件向前搜索，以达到目标。但当探索到某一步时，发现原先选择并不优或达不到目标，就退回一步重新选择，这种走不通就退回再走的技术为回溯法，而满足回溯条件的某个状态的点称为“回溯点”。</p>
+<p>许多复杂的，规模较大的问题都可以使用回溯法，有“通用解题方法”的美称。</p>
+</blockquote>
+<h4 id="回溯算法设计模式"><a href="/2019/10/20/算法笔记/#回溯算法设计模式" class="headerlink" title="回溯算法设计模式:"></a>回溯算法设计模式:</h4><ul>
+<li><p>（1）针对所给问题，确定问题的解空间：</p>
+<p>首先应明确定义问题的解空间，问题的解空间应至少包含问题的一个（最优）解。</p>
+</li>
+<li><p>​    （2）确定结点的扩展搜索规则</p>
+</li>
+<li><p>​    （3）以<strong>深度优先方式</strong>搜索解空间，并在搜索<strong>过程中用剪枝函数避免无效搜索</strong>。</p>
+</li>
+</ul>
+<h4 id="案例-2"><a href="/2019/10/20/算法笔记/#案例-2" class="headerlink" title="案例"></a>案例</h4><ol>
+<li><p>八皇后问题</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">back_tracking</span><span class="params">(<span class="keyword">int</span> row=<span class="number">0</span>)</span>    <span class="comment">//算法函数，从第0行开始遍历</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (row==n)</span><br><span class="line">        t ++;               <span class="comment">//判断若遍历完成，就进行计数     </span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> col=<span class="number">0</span>;col&lt;n;col++)     <span class="comment">//遍历棋盘每一列</span></span><br><span class="line">        &#123;</span><br><span class="line">            queen[row] = col;           <span class="comment">//将皇后的位置记录在数组</span></span><br><span class="line">            <span class="keyword">if</span> (is_ok(row))             <span class="comment">//判断皇后的位置是否有冲突</span></span><br><span class="line">                back_tracking(row+<span class="number">1</span>);   <span class="comment">//递归，计算下一个皇后的位置</span></span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">is_ok</span><span class="params">(<span class="keyword">int</span> row)</span></span>&#123;            <span class="comment">//判断设置的皇后是否在同一行，同一列，或者同一斜线上</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;row;j++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (queen[row]==queen[j]||row-queen[row]==j-queen[j]||row+queen[row]==j+queen[j])</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;       </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<ol start="2">
+<li><p>01背包问题</p>
+<p>用回溯法解问题时，应明确定义问题的解空间。问题的解空间至少包含问题的一个(最优)解。对于 n=3 时的 0/1 背包问题，可用一棵完全二叉树表示解空间</p>
+</li>
+</ol>
+<img src="/2019/10/20/算法笔记//15646173-e78825cb1debbd92.png" alt="img" style="zoom: 50%;">
+
+<h4 id="求解步骤"><a href="/2019/10/20/算法笔记/#求解步骤" class="headerlink" title="求解步骤"></a>求解步骤</h4><p>1)针对所给问题，定义问题的解空间；</p>
+<p>2)确定易于搜索的解空间结构；</p>
+<p>3)以深度优先方式搜索解空间，并在搜索过程中用剪枝函数避免无效搜索。</p>
+<p><strong>常用的剪枝函数：</strong>用约束函数在扩展结点处剪去不满足约束的子树；用限界函数剪去得不到最优解的子树。</p>
+<p>回溯法对解空间做深度优先搜索时，有递归回溯和迭代回溯（非递归）两种方法，但一般情况下用递归方法实现回溯法。</p>
+<h4 id="算法描述"><a href="/2019/10/20/算法笔记/#算法描述" class="headerlink" title="算法描述"></a>算法描述</h4><p>解 0/1 背包问题的回溯法在搜索解空间树时，只要其左儿子结点是一个可行结点，搜索就进入其左子树。当右子树中有可能包含最优解时才进入右子树搜索。否则将右子树剪去。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> i,<span class="keyword">int</span> cv,<span class="keyword">int</span> cw)</span></span></span><br><span class="line"><span class="function"></span>&#123;  <span class="comment">//cw当前包内物品重量，cv当前包内物品价值</span></span><br><span class="line">    <span class="keyword">if</span>(i&gt;n)   </span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(cv&gt;bestval)             <span class="comment">//是否超过了最大价值</span></span><br><span class="line">        &#123;</span><br><span class="line">            bestval=cv;            <span class="comment">//得到最大价值</span></span><br><span class="line">            <span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=n;i++)      </span><br><span class="line">                bestx[i]=x[i];      <span class="comment">//得到选中的物品</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;=<span class="number">1</span>;j++)    <span class="comment">//枚举物体i所有可能的路径，</span></span><br><span class="line">        &#123;</span><br><span class="line">            x[i]=j;      </span><br><span class="line">            <span class="keyword">if</span>(cw+x[i]*w[i]&lt;=TotCap)  <span class="comment">//满足约束,继续向子节点探索</span></span><br><span class="line">            &#123;</span><br><span class="line">                cw+=w[i]*x[i];</span><br><span class="line">                cv+=val[i]*x[i];</span><br><span class="line">                dfs(i+<span class="number">1</span>,cv,cw);</span><br><span class="line">                cw-=w[i]*x[i];    <span class="comment">//回溯上一层物体的选择情况</span></span><br><span class="line">                cv-=val[i]*x[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>主函数部分</p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line">    bestval=<span class="number">0</span>; </span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"请输入背包最大容量:"</span>&lt;&lt;<span class="built_in">endl</span>;;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;TotCap;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"请输入物品个数:"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;n;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"请依次输入物品的重量:"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=n;i++) </span><br><span class="line">        <span class="built_in">cin</span>&gt;&gt;w[i];</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"请依次输入物品的价值:"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=n;i++) </span><br><span class="line">        <span class="built_in">cin</span>&gt;&gt;val[i];</span><br><span class="line">    dfs(<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>);</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"最大价值为:"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;bestval&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"被选中的物品的标号依次是:"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">        <span class="keyword">if</span>(bestx[i]==<span class="number">1</span>) </span><br><span class="line">            <span class="built_in">cout</span>&lt;&lt;i&lt;&lt;<span class="string">" "</span>;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id><a href="/2019/10/20/算法笔记/#" class="headerlink" title></a></h4><h3 id="分支限界法"><a href="/2019/10/20/算法笔记/#分支限界法" class="headerlink" title="分支限界法"></a>分支限界法</h3><blockquote>
+<p> 类似于回溯法，也是一种在问题的解空间树T上搜索问题解的算法。但在一般情况下，分支限界法与回溯法的求解目标不同。<strong>回溯法的求解目标是找出T中满足约束条件的所有解</strong>，而<strong>分支限界法</strong>的求解目标则是找出<strong>满足约束条件的一个解</strong>，或是在满足约束条件的解中找出使某一目标函数值达到<strong>极大或极小的解</strong>，即在某种意义下的<strong>最优解</strong>。</p>
+</blockquote>
+<p>所谓“分支”就是采用广度优先的策略，依次搜索E-结点的所有分支，也就是所有相邻结点，抛弃不满足约束条件的结点，其余结点加入活结点表。然后从表中选择一个结点作为下一个E-结点，继续搜索。</p>
+<p>​     选择下一个E-结点的方式不同，则会有几种不同的分支搜索方式。</p>
+<p>   1）FIFO搜索</p>
+<p>   2）LIFO搜索</p>
+<p>   3）优先队列式搜索</p>
+<h3 id="回溯法和分支限界法的一些区别"><a href="/2019/10/20/算法笔记/#回溯法和分支限界法的一些区别" class="headerlink" title="回溯法和分支限界法的一些区别"></a>回溯法和分支限界法的一些区别</h3><ul>
+<li><p>方法对解空间树的搜索方式      </p>
+</li>
+<li><p><a href="http://www.storworld.com/">存储</a>结点的常用数据结构      </p>
+</li>
+<li><p>结点<a href="http://www.storworld.com/">存储</a>特性常用应用</p>
+<p>回溯法<strong>深度优先</strong>搜索堆栈活结点的<strong>所有可行子结点</strong>被遍历后<strong>才</strong>被从栈中弹出<strong>找出满足</strong>约束<strong>条件的所有解</strong></p>
+<p>分支限界法<strong>广度优先</strong>或最小消耗优<strong>先搜索队列、优先队列</strong>每个结点只有一次成为活结点的机会找出满足约束条件的<strong>一个解或特定意义下的最优解</strong></p>
+</li>
+</ul>
+
+      </div>
+      
+        <br>
+        
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-10-20T13:58:18+08:00">
+  <a class='notlink'>
+    <i class="fas fa-clock" aria-hidden="true"></i>
+    <p>updated at Oct 20, 2019</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/IT/" rel="nofollow"><i class="fas fa-tag" aria-hidden="true"></i><p>IT</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/" rel="nofollow"><i class="fas fa-tag" aria-hidden="true"></i><p>技术笔记</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Job/" rel="nofollow"><i class="fas fa-tag" aria-hidden="true"></i><p>Job</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E7%AE%97%E6%B3%95/" rel="nofollow"><i class="fas fa-tag" aria-hidden="true"></i><p>算法</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E6%8E%92%E5%BA%8F/" rel="nofollow"><i class="fas fa-tag" aria-hidden="true"></i><p>排序</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="nofollow"><i class="fas fa-tag" aria-hidden="true"></i><p>数据结构</p></a></div>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="QQ好友" rel="external nofollow noopener noreferrer"
+          
+          href="http://connect.qq.com/widget/shareqq/index.html?url=/2019/10/20/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/&title=算法笔记 | Hexo&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="QQ空间" rel="external nofollow noopener noreferrer"
+          
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=/2019/10/20/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/&title=算法笔记 | Hexo&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="微博" rel="external nofollow noopener noreferrer"
+          
+          href="http://service.weibo.com/share/share.php?url=/2019/10/20/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/&title=算法笔记 | Hexo&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+      
+      
+          <div class="prev-next">
+              
+                  <section class="prev">
+                      <span class="art-item-left">
+                          <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;Previous</h6>
+                          <h4>
+                              <a href="/2019/10/20/Mybatis%E9%9D%A2%E8%AF%95/" rel="prev" title="Mybatis面试">
+                                
+                                    Mybatis面试
+                                
+                              </a>
+                          </h4>
+                          
+                              
+                              <h6 class="tags">
+                                  <a class="tag" href="/tags/IT/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> IT</a> <a class="tag" href="/tags/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> 技术笔记</a> <a class="tag" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> 数据库</a> <a class="tag" href="/tags/Job/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> Job</a> <a class="tag" href="/tags/Mybatis/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> Mybatis</a>
+                              </h6>
+                          
+                      </span>
+                  </section>
+              
+              
+                  <section class="next">
+                      <span class="art-item-right" aria-hidden="true">
+                          <h6>Next&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
+                          <h4>
+                              <a href="/2019/10/20/Spring%E9%9D%A2%E8%AF%95/" rel="prev" title="Spring面试">
+                                  
+                                      Spring面试
+                                  
+                              </a>
+                          </h4>
+                          
+                              
+                              <h6 class="tags">
+                                  <a class="tag" href="/tags/IT/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> IT</a> <a class="tag" href="/tags/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> 技术笔记</a> <a class="tag" href="/tags/Job/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> Job</a> <a class="tag" href="/tags/%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%BC%80%E5%8F%91/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> 服务端开发</a> <a class="tag" href="/tags/Spring/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> Spring</a>
+                              </h6>
+                          
+                      </span>
+                  </section>
+              
+          </div>
+      
+    </section>
+  </article>
+
+
+
+  <!-- 显示推荐文章和评论 -->
+
+
+
+  
+
+
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: '算法笔记',
+      tools: true
+    }
+  </script>
+
+
+</div>
+<aside class='l_side'>
+  
+    
+    
+      
+      
+        
+          
+          
+            
+              <section class='widget author'>
+  <div class='content pure'>
+    
+      <div class='avatar'>
+        <img class='avatar' src='https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/avatar/avatar.png'/>
+      </div>
+    
+    
+    
+      <div class="social-wrapper">
+        
+          
+            <a href="/atom.xml"
+              class="social fas fa-rss flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="mailto:dmlys@live.com"
+              class="social fas fa-envelope flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="https://github.com/ChanMango"
+              class="social fab fa-github flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="https://music.163.com/#/user/home?id=118376074"
+              class="social fas fa-headphones-alt flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+      </div>
+    
+  </div>
+</section>
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+            
+              
+  <section class='widget toc-wrapper'>
+    
+<header class='pure'>
+  <div><i class="fas fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;TOC</div>
+  
+    <!-- <div class='wrapper'><a class="s-toc rightBtn" rel="external nofollow noopener noreferrer" href="javascript:void(0)"><i class="fas fa-thumbtack fa-fw"></i></a></div> -->
+  
+</header>
+
+    <div class='content pure'>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#数据"><span class="toc-text">数据</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#排序算法"><span class="toc-text">排序算法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#插入排序"><span class="toc-text">插入排序</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#原理"><span class="toc-text">原理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#选择排序"><span class="toc-text">选择排序</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#原理-1"><span class="toc-text">原理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#冒泡排序"><span class="toc-text">冒泡排序</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#原理-2"><span class="toc-text">原理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#归并排序"><span class="toc-text">归并排序</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#原理-3"><span class="toc-text">原理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#快速排序"><span class="toc-text">快速排序</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#原理-4"><span class="toc-text">原理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#堆排序"><span class="toc-text">堆排序</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#原理-5"><span class="toc-text">原理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#几种排序算法的比较示意图"><span class="toc-text">几种排序算法的比较示意图</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#排序稳定性的定义"><span class="toc-text">排序稳定性的定义</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二叉平衡树"><span class="toc-text">二叉平衡树</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二叉查找树"><span class="toc-text">二叉查找树</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#红黑树"><span class="toc-text">红黑树</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#十大算法"><span class="toc-text">十大算法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#递归算法"><span class="toc-text">递归算法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#设计递归算法模式"><span class="toc-text">设计递归算法模式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#例子-求数组中最小值："><span class="toc-text">例子:求数组中最小值：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分治算法"><span class="toc-text">分治算法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#分治法适用的情况"><span class="toc-text">分治法适用的情况</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#分治法的基本步骤"><span class="toc-text">分治法的基本步骤</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#分治算法的设计模式"><span class="toc-text">分治算法的设计模式:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#案例"><span class="toc-text">案例:</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#求数组的和"><span class="toc-text">求数组的和</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#分治-求逆序对数目"><span class="toc-text">分治 - 求逆序对数目</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#大整数乘法"><span class="toc-text">大整数乘法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#动态规划"><span class="toc-text">动态规划</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#通用递推式"><span class="toc-text">通用递推式:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#优化"><span class="toc-text">优化:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#分治法最大的差别"><span class="toc-text">分治法最大的差别:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#适用的情况"><span class="toc-text">适用的情况</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#求解的基本步骤"><span class="toc-text">求解的基本步骤</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#动态规划案例"><span class="toc-text">动态规划案例</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#贪心算法"><span class="toc-text">贪心算法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#贪心算法的基本思路："><span class="toc-text">贪心算法的基本思路：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#贪心算法适用的问题"><span class="toc-text">贪心算法适用的问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#贪心算法的实现框架"><span class="toc-text">贪心算法的实现框架</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#案例-1"><span class="toc-text">案例</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#物品装载问题"><span class="toc-text">物品装载问题:</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#回溯算法"><span class="toc-text">回溯算法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#回溯算法设计模式"><span class="toc-text">回溯算法设计模式:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#案例-2"><span class="toc-text">案例</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#求解步骤"><span class="toc-text">求解步骤</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#算法描述"><span class="toc-text">算法描述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#null"><span class="toc-text"></span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分支限界法"><span class="toc-text">分支限界法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#回溯法和分支限界法的一些区别"><span class="toc-text">回溯法和分支限界法的一些区别</span></a></li></ol></li></ol>
+    </div>
+  </section>
+
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+            
+              <section class='widget grid'>
+  
+<header class='pure'>
+  <div><i class="fas fa-map-signs fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;站内导航</div>
+  
+</header>
+
+  <div class='content pure'>
+    <ul class="grid navgation">
+      
+        <li><a class="flat-box" title="/" href="/"
+          
+          
+          id="home">
+          
+            <i class="fas fa-clock fa-fw" aria-hidden="true"></i>
+          
+          近期文章
+        </a></li>
+      
+        <li><a class="flat-box" title="/archives/" href="/archives/"
+          
+            rel="nofollow"
+          
+          
+          id="archives">
+          
+            <i class="fas fa-archive fa-fw" aria-hidden="true"></i>
+          
+          文章归档
+        </a></li>
+      
+        <li><a class="flat-box" title="/projects/" href="/projects/"
+          
+          
+          id="projects">
+          
+            <i class="fas fa-code-branch fa-fw" aria-hidden="true"></i>
+          
+          开源项目
+        </a></li>
+      
+        <li><a class="flat-box" title="/friends/" href="/friends/"
+          
+            rel="nofollow"
+          
+          
+          id="friends">
+          
+            <i class="fas fa-link fa-fw" aria-hidden="true"></i>
+          
+          我的友链
+        </a></li>
+      
+        <li><a class="flat-box" title="https://xaoxuu.com/wiki/material-x/" href="https://xaoxuu.com/wiki/material-x/"
+          
+            rel="nofollow"
+          
+          
+          id="https:xaoxuu.comwikimaterial-x">
+          
+            <i class="fas fa-book fa-fw" aria-hidden="true"></i>
+          
+          主题文档
+        </a></li>
+      
+        <li><a class="flat-box" title="/about/" href="/about/"
+          
+            rel="nofollow"
+          
+          
+          id="about">
+          
+            <i class="fas fa-info-circle fa-fw" aria-hidden="true"></i>
+          
+          关于小站
+        </a></li>
+      
+    </ul>
+  </div>
+</section>
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+            
+              
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+            
+              
+  <section class='widget tagcloud'>
+    
+<header class='pure'>
+  <div><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;Hot Tags</div>
+  
+    <a class="rightBtn"
+    
+      rel="nofollow"
+    
+    
+    href="/tags/"
+    title="tags/">
+    <i class="fas fa-expand-arrows-alt fa-fw"></i></a>
+  
+</header>
+
+    <div class='content pure'>
+      <a href="/tags/Hibernate/" style="font-size: 14px; color: #999">Hibernate</a> <a href="/tags/IT/" style="font-size: 24px; color: #555">IT</a> <a href="/tags/IT-%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-Job-zookeeper/" style="font-size: 14px; color: #999">IT - 技术笔记 - Job - zookeeper</a> <a href="/tags/Java/" style="font-size: 14px; color: #999">Java</a> <a href="/tags/Job/" style="font-size: 24px; color: #555">Job</a> <a href="/tags/Kafka/" style="font-size: 14px; color: #999">Kafka</a> <a href="/tags/Linux/" style="font-size: 14px; color: #999">Linux</a> <a href="/tags/Mybatis/" style="font-size: 14px; color: #999">Mybatis</a> <a href="/tags/Redis/" style="font-size: 14px; color: #999">Redis</a> <a href="/tags/Spring/" style="font-size: 14px; color: #999">Spring</a> <a href="/tags/mysql/" style="font-size: 14px; color: #999">mysql</a> <a href="/tags/zookeeper/" style="font-size: 14px; color: #999">zookeeper</a> <a href="/tags/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/" style="font-size: 24px; color: #555">技术笔记</a> <a href="/tags/%E6%8E%92%E5%BA%8F/" style="font-size: 14px; color: #999">排序</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 20.67px; color: #6c6c6c">数据库</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 14px; color: #999">数据结构</a> <a href="/tags/%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%BC%80%E5%8F%91/" style="font-size: 17.33px; color: #828282">服务端开发</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 14px; color: #999">算法</a> <a href="/tags/%E7%BD%91%E7%BB%9C/" style="font-size: 14px; color: #999">网络</a>
+    </div>
+  </section>
+
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+            
+              <section class='widget list'>
+  
+<header class='pure'>
+  <div><i class="fas fa-thumbs-up fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;强烈推荐</div>
+  
+</header>
+
+  <div class='content pure'>
+    <ul class="entry">
+      
+        <li><a class="flat-box" title="https://xaoxuu.com/wiki/hexo.sh/" href="https://xaoxuu.com/wiki/hexo.sh/"
+          
+          
+          >
+          <div class='name'>
+            
+              <i class=" fa-fw" aria-hidden="true"></i>
+            
+            &nbsp;&nbsp;Hexo脚本（Mac）
+          </div>
+          
+        </a></li>
+      
+        <li><a class="flat-box" title="https://xaoxuu.com/wiki/vim-cn.sh/" href="https://xaoxuu.com/wiki/vim-cn.sh/"
+          
+          
+          >
+          <div class='name'>
+            
+              <i class=" fa-fw" aria-hidden="true"></i>
+            
+            &nbsp;&nbsp;图床脚本（Mac）
+          </div>
+          
+        </a></li>
+      
+        <li><a class="flat-box" title="https://yasuotu.com" href="https://yasuotu.com"
+          
+          
+          >
+          <div class='name'>
+            
+              <i class=" fa-fw" aria-hidden="true"></i>
+            
+            &nbsp;&nbsp;图片在线压缩
+          </div>
+          
+        </a></li>
+      
+        <li><a class="flat-box" title="https://realfavicongenerator.net" href="https://realfavicongenerator.net"
+          
+          
+          >
+          <div class='name'>
+            
+              <i class=" fa-fw" aria-hidden="true"></i>
+            
+            &nbsp;&nbsp;生成Favicon
+          </div>
+          
+        </a></li>
+      
+        <li><a class="flat-box" title="https://mxclub.github.io/resume/" href="https://mxclub.github.io/resume/"
+          
+          
+          >
+          <div class='name'>
+            
+              <i class=" fa-fw" aria-hidden="true"></i>
+            
+            &nbsp;&nbsp;简历主题
+          </div>
+          
+        </a></li>
+      
+    </ul>
+  </div>
+</section>
+
+            
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+    
+
+  
+</aside>
+
+<footer id="footer" class="clearfix">
+  
+  
+    <div class="social-wrapper">
+      
+        
+          <a href="/atom.xml"
+            class="social fas fa-rss flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="mailto:dmlys@live.com"
+            class="social fas fa-envelope flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="https://github.com/ChanMango"
+            class="social fab fa-github flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="https://music.163.com/#/user/home?id=118376074"
+            class="social fas fa-headphones-alt flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+    </div>
+  
+  <br>
+  <div><p>Blog content follows the <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en">Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0) License</a></p>
+</div>
+  <div>
+    Use
+    <a href="https://xaoxuu.com/wiki/material-x/" target="_blank" class="codename">Material X</a>
+    as theme
+    
+      , 
+      total visits
+      <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+      times
+    
+    . 
+  </div>
+</footer>
+<script>setLoadingBarProgress(80);</script>
+
+
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+
+  <script>
+    var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+    var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+    var ALGOLIA_API_KEY = "";
+    var ALGOLIA_APP_ID = "";
+    var ALGOLIA_INDEX_NAME = "";
+    var AZURE_SERVICE_NAME = "";
+    var AZURE_INDEX_NAME = "";
+    var AZURE_QUERY_KEY = "";
+    var BAIDU_API_ID = "";
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/"||"/";
+    if(!ROOT.endsWith('/'))ROOT += '/';
+  </script>
+
+<script src="//instant.page/1.2.2" type="module" integrity="sha384-2xV8M5griQmzyiY3CDqh1dn4z3llDVqZDqzjzcY+jCBCk/a5fXJmuZ/40JJAPeoU"></script>
+
+
+  <script async src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.5/dist/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      const $reveal = $('.reveal');
+      if ($reveal.length === 0) return;
+      const sr = ScrollReveal({ distance: 0 });
+      sr.reveal('.reveal');
+    });
+  </script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+  
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>
+    <script type="text/javascript">
+      $(function(){
+        if ('.cover') {
+          $('.cover').backstretch(
+          ["https://img.vim-cn.com/29/91197b04c13f512f734a76d4ac422d89dbe229.jpg"],
+          {
+            duration: "6000",
+            fade: "2500"
+          });
+        } else {
+          $.backstretch(
+          ["https://img.vim-cn.com/29/91197b04c13f512f734a76d4ac422d89dbe229.jpg"],
+          {
+            duration: "6000",
+            fade: "2500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.9/js/app.js"></script>
+
+
+  <script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.9/js/search.js"></script>
+
+
+
+
+<!-- 复制 -->
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  let COPY_SUCCESS = "Copied";
+  let COPY_FAILURE = "Copy failed";
+  /*页面载入完成后，创建复制按钮*/
+  !function (e, t, a) {
+    /* code */
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '  <i class="fa fa-copy"></i><span>Copy</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+
+      clipboard.on('success', function(e) {
+        //您可以加入成功提示
+        console.info('Action:', e.action);
+        console.info('Text:', e.text);
+        console.info('Trigger:', e.trigger);
+        success_prompt(COPY_SUCCESS);
+        e.clearSelection();
+      });
+      clipboard.on('error', function(e) {
+        //您可以加入失败提示
+        console.error('Action:', e.action);
+        console.error('Trigger:', e.trigger);
+        fail_prompt(COPY_FAILURE);
+      });
+    }
+    initCopyCode();
+
+  }(window, document);
+
+  /**
+   * 弹出式提示框，默认1.5秒自动消失
+   * @param message 提示信息
+   * @param style 提示样式，有alert-success、alert-danger、alert-warning、alert-info
+   * @param time 消失时间
+   */
+  var prompt = function (message, style, time)
+  {
+      style = (style === undefined) ? 'alert-success' : style;
+      time = (time === undefined) ? 1500 : time*1000;
+      $('<div>')
+          .appendTo('body')
+          .addClass('alert ' + style)
+          .html(message)
+          .show()
+          .delay(time)
+          .fadeOut();
+  };
+
+  // 成功提示
+  var success_prompt = function(message, time)
+  {
+      prompt(message, 'alert-success', time);
+  };
+
+  // 失败提示
+  var fail_prompt = function(message, time)
+  {
+      prompt(message, 'alert-danger', time);
+  };
+
+  // 提醒
+  var warning_prompt = function(message, time)
+  {
+      prompt(message, 'alert-warning', time);
+  };
+
+  // 信息提示
+  var info_prompt = function(message, time)
+  {
+      prompt(message, 'alert-info', time);
+  };
+
+</script>
+
+
+<!-- fancybox -->
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  let LAZY_LOAD_IMAGE = "";
+  $(".article-entry").find("fancybox").find("img").each(function () {
+      var element = document.createElement("a");
+      $(element).attr("data-fancybox", "gallery");
+      $(element).attr("href", $(this).attr("src"));
+      /* 图片采用懒加载处理时,
+       * 一般图片标签内会有个属性名来存放图片的真实地址，比如 data-original,
+       * 那么此处将原本的属性名src替换为对应属性名data-original,
+       * 修改如下
+       */
+       if (LAZY_LOAD_IMAGE) {
+         $(element).attr("href", $(this).attr("data-original"));
+       }
+      $(this).wrap(element);
+  });
+</script>
+
+
+
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>

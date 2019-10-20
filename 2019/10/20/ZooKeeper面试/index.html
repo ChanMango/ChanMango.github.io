@@ -1,0 +1,1380 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  <title>ZooKeeper面试 | Hexo</title>
+  
+  
+
+  
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!-- meta -->
+  
+
+  <!-- link -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.10.1/css/all.min.css">
+  
+
+  
+
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.9.9/css/style.css">
+  
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+
+  
+  
+</head>
+
+<body>
+  
+  
+  <div class="cover-wrapper">
+    <cover class='cover post half'>
+      
+        
+  <h1 class='title'>Demo</h1>
+
+
+  <div class="m_search">
+    <form name="searchform" class="form u-search-form">
+      <input type="text" class="input u-search-input" placeholder="" />
+      <i class="icon fas fa-search fa-fw"></i>
+    </form>
+  </div>
+
+<div class='menu navgation'>
+  <ul class='h-list'>
+    
+      
+        <li>
+          <a class="nav home" href="/"
+            
+            
+            id="home">
+            <i class='fas fa-rss fa-fw'></i>&nbsp;博文
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/projects/"
+            
+            
+            id="projects">
+            <i class='fas fa-code-branch fa-fw'></i>&nbsp;项目
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/friends/"
+            
+              rel="nofollow"
+            
+            
+            id="friends">
+            <i class='fas fa-link fa-fw'></i>&nbsp;友链
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/about/"
+            
+              rel="nofollow"
+            
+            
+            id="about">
+            <i class='fas fa-info-circle fa-fw'></i>&nbsp;关于
+          </a>
+        </li>
+      
+    
+  </ul>
+</div>
+
+      
+    </cover>
+    <header class="l_header pure">
+  <div id="loading-bar-wrapper">
+    <div id="loading-bar" class="pure"></div>
+  </div>
+
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+      <a class="logo flat-box" href='/' >
+        
+          Hexo
+        
+      </a>
+			<div class='menu navgation'>
+				<ul class='h-list'>
+          
+  					
+  						<li>
+								<a class="nav flat-box" href="/"
+                  
+                  
+                  id="home">
+									<i class='fas fa-grin fa-fw'></i>&nbsp;示例
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/categories/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="categories">
+									<i class='fas fa-folder-open fa-fw'></i>&nbsp;分类
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/tags/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="tags">
+									<i class='fas fa-hashtag fa-fw'></i>&nbsp;标签
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/archives/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="archives">
+									<i class='fas fa-archive fa-fw'></i>&nbsp;归档
+								</a>
+							</li>
+      			
+      		
+				</ul>
+			</div>
+
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="Search" />
+						<i class="icon fas fa-search fa-fw"></i>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a class="fas fa-search fa-fw" href='javascript:void(0)'></a></li>
+				
+				<li class='s-menu'><a class="fas fa-bars fa-fw" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+
+		<div class='nav-sub container container--flex'>
+			<a class="logo flat-box"></a>
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a class="flat-btn fas fa-comments fa-fw" href='javascript:void(0)'></a></li>
+        
+          <li class='s-toc'><a class="flat-btn fas fa-list fa-fw" href='javascript:void(0)'></a></li>
+        
+			</ul>
+		</div>
+	</div>
+</header>
+	<aside class="menu-phone">
+    <header>
+		<nav class="menu navgation">
+      <ul>
+        
+          
+            <li>
+							<a class="nav flat-box" href="/"
+                
+                
+                id="home">
+								<i class='fas fa-clock fa-fw'></i>&nbsp;近期文章
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/archives/"
+                
+                  rel="nofollow"
+                
+                
+                id="archives">
+								<i class='fas fa-archive fa-fw'></i>&nbsp;文章归档
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/projects/"
+                
+                
+                id="projects">
+								<i class='fas fa-code-branch fa-fw'></i>&nbsp;开源项目
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/friends/"
+                
+                  rel="nofollow"
+                
+                
+                id="friends">
+								<i class='fas fa-link fa-fw'></i>&nbsp;我的友链
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="https://xaoxuu.com/wiki/material-x/"
+                
+                  rel="nofollow"
+                
+                
+                id="https:xaoxuu.comwikimaterial-x">
+								<i class='fas fa-book fa-fw'></i>&nbsp;主题文档
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/about/"
+                
+                  rel="nofollow"
+                
+                
+                id="about">
+								<i class='fas fa-info-circle fa-fw'></i>&nbsp;关于小站
+							</a>
+            </li>
+          
+       
+      </ul>
+		</nav>
+    </header>
+	</aside>
+<script>setLoadingBarProgress(40);</script>
+
+  </div>
+
+
+  <div class="l_body">
+    <div class='body-wrapper'>
+      <div class='l_main'>
+  
+
+  <article id="post" class="post white-box article-type-post" itemscope itemprop="blogPost">
+    
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  
+    <h1 class="title">
+      <a href="/2019/10/20/ZooKeeper%E9%9D%A2%E8%AF%95/">
+        ZooKeeper面试
+      </a>
+    </h1>
+  
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    
+      <a href="/" rel="nofollow">
+        
+          <i class="fas fa-user" aria-hidden="true"></i>
+        
+        <p>蜗牛君</p>
+      </a>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2019-10-20</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+          
+            
+  
+    <div class="new-meta-item browse busuanzi">
+      <a class='notlink'>
+        <i class="fas fa-eye" aria-hidden="true"></i>
+        <p>
+          <span id="busuanzi_value_page_pv">
+            <i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i>
+          </span>
+        </p>
+      </a>
+    </div>
+  
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+    <section class="article typo">
+      <div class="article-entry" itemprop="articleBody">
+        <h2 id="ZooKeeper面试"><a href="/2019/10/20/ZooKeeper面试/#ZooKeeper面试" class="headerlink" title="ZooKeeper面试"></a>ZooKeeper面试</h2><h3 id="1-什么是dubbo"><a href="/2019/10/20/ZooKeeper面试/#1-什么是dubbo" class="headerlink" title="1. 什么是dubbo?"></a>1. 什么是dubbo?</h3><p><strong>Dubbo</strong>是阿里巴巴SOA服务化治理方案的核心框架，是一个分布式服务框架，致力于提供高性能和透明化的RPC远程服务调用方案，以及<strong>SOA</strong>服务治理方案。</p>
+<h4 id="Dubbo提供三个关键功能"><a href="/2019/10/20/ZooKeeper面试/#Dubbo提供三个关键功能" class="headerlink" title="Dubbo提供三个关键功能"></a>Dubbo提供三个关键功能</h4><ul>
+<li>包括基于接口的远程调用</li>
+<li>容错和负载平衡</li>
+<li>自动服务注册和发现。</li>
+</ul>
+<img src="/2019/10/20/ZooKeeper面试//architecture.png" alt="img" style="zoom: 50%;">
+
+<h3 id="2-测试和生产公用一套zookeeper，怎么保证消费不冲突"><a href="/2019/10/20/ZooKeeper面试/#2-测试和生产公用一套zookeeper，怎么保证消费不冲突" class="headerlink" title="2. 测试和生产公用一套zookeeper，怎么保证消费不冲突?"></a>2. 测试和生产公用一套zookeeper，怎么保证消费不冲突?</h3><ul>
+<li><p>dubbo白名单(Filter过滤器)    </p>
+</li>
+<li><p>服务分组</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--服务--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dubbo:service</span> <span class="attr">group</span>=<span class="string">"feedback"</span> <span class="attr">interface</span>=<span class="string">"com.xxx.IndexService"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dubbo:service</span> <span class="attr">group</span>=<span class="string">"member"</span> <span class="attr">interface</span>=<span class="string">"com.xxx.IndexService"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!--引用--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dubbo:reference</span> <span class="attr">id</span>=<span class="string">"feedbackIndexService"</span> <span class="attr">group</span>=<span class="string">"feedback"</span> <span class="attr">interface</span>=<span class="string">"com.xxx.IndexService"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dubbo:reference</span> <span class="attr">id</span>=<span class="string">"memberIndexService"</span> <span class="attr">group</span>=<span class="string">"member"</span> <span class="attr">interface</span>=<span class="string">"com.xxx.IndexService"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>多版本</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dubbo:service</span> <span class="attr">interface</span>=<span class="string">"com.foo.BarService"</span> <span class="attr">version</span>=<span class="string">"1.0.0"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>第一种方案：<br>实现com.alibaba.dubbo.rpc.Filter接口：</p>
+<p>public class AuthorityFilter implements Filter {  </p>
+<pre><code>private static final Logger LOGGER = LoggerFactory.getLogger(AuthorityFilter.class);  
+
+private IpWhiteList ipWhiteList;  
+
+//dubbo通过setter方式自动注入  
+public void setIpWhiteList(IpWhiteList ipWhiteList) {  
+    this.ipWhiteList = ipWhiteList;  
+}  
+
+@Override  
+public Result invoke(Invoker&lt;?&gt; invoker, Invocation invocation) throws RpcException {  
+    if (!ipWhiteList.isEnabled()) {  
+        LOGGER.debug(&quot;白名单禁用&quot;);  
+        return invoker.invoke(invocation);  
+    }  
+
+    String clientIp = RpcContext.getContext().getRemoteHost();  
+    LOGGER.debug(&quot;访问ip为{}&quot;, clientIp);  
+    List&lt;String&gt; allowedIps = ipWhiteList.getAllowedIps();  
+    if (allowedIps.contains(clientIp)) {  
+        return invoker.invoke(invocation);  
+    } else {  
+        return new RpcResult();  
+    }  
+}  
+注意：只能通过setter方式来注入其他的bean，且不要标注注解！dubbo自己会对这些bean进行注入，不需要再标注@Resource让Spring注入</code></pre><p>在resources目录下添加纯文本文件META-INF/dubbo/com.alibaba.dubbo.rpc.Filter，内容如下： xxxFilter=com.xxx.AuthorityFilter<br>修改dubbo的provider配置文件，在dubbo:provider中添加配置的filter， 内容如下：</p>
+<pre><code>&lt;dubbo:provider filter=&quot;xxxFilter&quot; /&gt;  </code></pre><p>这样就可以实现dubbo接口的IP白名单功能了。 </p>
+<h6 id="出自https-www-cnblogs-com-wangzhongqiu-archive-2017-09-22-7575759-html"><a href="/2019/10/20/ZooKeeper面试/#出自https-www-cnblogs-com-wangzhongqiu-archive-2017-09-22-7575759-html" class="headerlink" title="出自https://www.cnblogs.com/wangzhongqiu/archive/2017/09/22/7575759.html"></a>出自<a href="https://www.cnblogs.com/wangzhongqiu/archive/2017/09/22/7575759.html">https://www.cnblogs.com/wangzhongqiu/archive/2017/09/22/7575759.html</a></h6></li>
+</ul>
+<h3 id="3-ZooKeeper是什么？"><a href="/2019/10/20/ZooKeeper面试/#3-ZooKeeper是什么？" class="headerlink" title="3. ZooKeeper是什么？"></a>3. ZooKeeper是什么？</h3><blockquote>
+<p>Zookeeper是一个<strong>分布式</strong>的，开放源码的分布式<strong>应用程序协调服务</strong>，是Google的Chubby一个开源的实现，它是集群的管理者，监视着集群中各个节点的状态根据节点提交的反馈进行下一步合理操作。最终，将简单易用的接口和性能高效、功能稳定的系统提供给用户。</p>
+</blockquote>
+<p>客户端的<strong>读请求</strong>可以被集群中的<strong>任意一台机器处理</strong>，如果读请求在节点上注册了监听器，这个监听器也是由所连接的zookeeper机器来处理。对于<strong>写请求</strong>，这些请求会同<strong>时发给其他zookeeper机器并且达成一致后，请求才会返回成功</strong>。因此，随着<strong>zookeeper的集群机器增多，读请求的吞吐会提高但是写请求的吞吐会下降</strong>。<br>有序性是zookeeper中非常重要的一个特性，所有的<strong>更新都是全局有序的</strong>，每个更新都有一个<strong>唯一的时间戳</strong>，这个时间戳称为<strong>zxid（==Zookeeper Transaction Id==）</strong>。而<strong>读请求只会相对于更新有序</strong>，也就是读请求的返回结果中会带有这个<strong>zookeeper最新的zxid</strong>。</p>
+<h4 id="应用场景"><a href="/2019/10/20/ZooKeeper面试/#应用场景" class="headerlink" title="应用场景"></a>应用场景</h4><p>Zookeeper的功能很强大，应用场景很多，结合我实际工作中使用Dubbo框架的情况，Zookeeper主要是做注册中心用。基于Dubbo框架开发的提供者、消费者都向Zookeeper注册自己的URL，消费者还能拿到并订阅提供者的注册URL，以便在后续程序的执行中去调用提供者。而提供者发生了变动，也会通过Zookeeper向订阅的消费者发送通知。</p>
+<h3 id="5-zookeeper是如何保证事务的顺序一致性的"><a href="/2019/10/20/ZooKeeper面试/#5-zookeeper是如何保证事务的顺序一致性的" class="headerlink" title="5. zookeeper是如何保证事务的顺序一致性的"></a>5. zookeeper是如何保证事务的顺序一致性的</h3><p>zookeeper采用了<strong>递增的事务Id</strong>(zxid)来标识，所有的proposal都在被提出的时候加上了zxid，zxid实际上是一个64位的数字，<strong>高32位是epoch</strong>用来标识leader是否发生改变，如果有新的leader产生出来，epoch会自增，<strong>低32位用来递增计数</strong>。当新产生proposal的时候，会依据数据库的两阶段过程，首先会向其他的server发出事务执行请求，如果超过半数的机器都能执行并且能够成功，那么就会开始执行 </p>
+<h3 id="5-ZooKeeper提供了什么？"><a href="/2019/10/20/ZooKeeper面试/#5-ZooKeeper提供了什么？" class="headerlink" title="5. ZooKeeper提供了什么？"></a>5. ZooKeeper提供了什么？</h3><ul>
+<li><h4 id="5-1-文件系统"><a href="/2019/10/20/ZooKeeper面试/#5-1-文件系统" class="headerlink" title="5.1 文件系统"></a>5.1 文件系统</h4><p>Zookeeper提供一个多层级的节点命名空间（像树一样, 节点称为znode）。与文件系统不同的是，这些节点<strong>都可以设置关联的数据</strong>，而文件系统中只有文件节点可以存放数据而目录节点不行。Zookeeper为了保证高吞吐和低延迟，在内存中维护了这个树状的目录结构，这种特性使得Zookeeper<strong>不能用于存放大量的数据</strong>，每个节点的存放数据上限为<strong>1M</strong>。</p>
+<hr>
+<h6 id="四种类型的znode"><a href="/2019/10/20/ZooKeeper面试/#四种类型的znode" class="headerlink" title="四种类型的znode"></a>四种类型的znode</h6><p>1、<strong>PERSISTENT-持久化目录节点</strong><br>创建之后一直存在，除非有删除操作，创建节点的客户端会话失效也不影响此节点。<br>2、<strong>PERSISTENT_SEQUENTIAL-持久化顺序编号目录节点</strong><br>跟持久一样，就是父节点在创建下一级子节点的时候，记录每个子节点创建的先后顺序，会给每个子节点名加上一个数字后缀。<br>3、<strong>EPHEMERAL-临时目录节点</strong>       <code>ephemeral短暂的,临时的</code><br>创建客户端会话失效（注意是会话失效，不是连接断了），节点也就没了。不能建子节点。<br>4、<strong>EPHEMERAL_SEQUENTIAL-临时顺序编号目录节点</strong><br>客户端与zookeeper断开连接后，该节点被删除，只是Zookeeper给该节点名称进行顺序编号</p>
+<h6 id="创建的临时节点什么时候会被删除，是连接一断就删除吗？延时是多少？"><a href="/2019/10/20/ZooKeeper面试/#创建的临时节点什么时候会被删除，是连接一断就删除吗？延时是多少？" class="headerlink" title="创建的临时节点什么时候会被删除，是连接一断就删除吗？延时是多少？"></a>创建的临时节点什么时候会被删除，是连接一断就删除吗？延时是多少？</h6><p>连接断了之后，ZK不会马上移除临时数据，只有当SESSIONEXPIRED之后，才会把这个会话建立的临时数据移除。因此，用户需要谨慎设置Session_TimeOut </p>
+<h6 id="是否可以拒绝单个IP对ZK的访问操作"><a href="/2019/10/20/ZooKeeper面试/#是否可以拒绝单个IP对ZK的访问操作" class="headerlink" title="是否可以拒绝单个IP对ZK的访问操作 ?"></a>是否可以拒绝单个IP对ZK的访问操作 ?</h6><p>ZK本身不提供这样的功能，它仅仅提供了对单个IP的连接数的限制。你可以通过修改iptables来实现对单个ip的限制；当然，你也可以通过这样的方式来解决。</p>
+</li>
+</ul>
+  <img src="/2019/10/20/ZooKeeper面试//2428275037-5ad8ae48c46ec_articlex.png" alt="clipboard.png" style="zoom:67%;">
+
+<ul>
+<li><h4 id="5-2-通知机制"><a href="/2019/10/20/ZooKeeper面试/#5-2-通知机制" class="headerlink" title="5.2 通知机制"></a>5.2 通知机制</h4><p>client端会对某个znode建立一个<strong>watcher事件</strong>，当该<strong>znode发生变化</strong>时，这些client会收到zookeeper的通知，然后client可以根据znode变化来做出业务上的改变等。</p>
+</li>
+</ul>
+<h3 id="6-Zookeeper做了什么？"><a href="/2019/10/20/ZooKeeper面试/#6-Zookeeper做了什么？" class="headerlink" title="6. Zookeeper做了什么？"></a>6. Zookeeper做了什么？</h3><ol>
+<li><h4 id="命名服务（文件系统）"><a href="/2019/10/20/ZooKeeper面试/#命名服务（文件系统）" class="headerlink" title="命名服务（文件系统）"></a>命名服务（文件系统）</h4><p>命名服务是指通过指定的名字来<strong>获取资源</strong>或者<strong>服务的地址</strong>，利用zk创建一个全局的路径，即是<strong>唯一</strong>的路径，这个路径就可以作为一个名字，指向集群中的集群，提供的服务的地址，或者一个远程的对象等等。</p>
+</li>
+<li><h4 id="zk的配置管理（文件系统、通知机制）"><a href="/2019/10/20/ZooKeeper面试/#zk的配置管理（文件系统、通知机制）" class="headerlink" title="zk的配置管理（文件系统、通知机制）"></a>zk的配置管理（文件系统、通知机制）</h4><p>程序分布式的部署在不同的机器上，将程序的配置信息放在zk的<strong>znode</strong>下，当有配置发生改变时，也就是znode发生变化时，可以通过改变zk中某个目录节点的内容，利用<strong>watcher</strong>通知给各个客户端，从而更改配置。</p>
+</li>
+<li><h4 id="Zookeeper集群管理（文件系统、通知机制）"><a href="/2019/10/20/ZooKeeper面试/#Zookeeper集群管理（文件系统、通知机制）" class="headerlink" title="Zookeeper集群管理（文件系统、通知机制）"></a>Zookeeper集群管理（文件系统、通知机制）</h4><p>所谓集群管理无在乎两点： <strong>1. 是否有机器退出和加入  2. 选举leader</strong>。 </p>
+<ul>
+<li>对于第一点，所有机器约定在<strong>父目录下创建临时目录节点</strong>，然后监听父目录节点的子节点变化消息。一旦<strong>有机器挂掉</strong>，该机器<strong>与 zookeeper的连接断开</strong>，其所<strong>创建的临时目录节点被删除</strong>，<strong>所有其他机器都收到通知：某个兄弟目录被删除</strong>，于是，所有人都知道：它上船了。<br>新机器加入也是类似，<strong>所有机器收到通知：新兄弟目录加入</strong>，highcount又有了.</li>
+<li>对于第二点，我们稍微改变一下，<strong>所有机器创建临时顺序编号目录节点，每次选取编号最小的机器作为master就好</strong>。</li>
+</ul>
+</li>
+<li><h4 id="Zookeeper分布式锁（文件系统、通知机制）"><a href="/2019/10/20/ZooKeeper面试/#Zookeeper分布式锁（文件系统、通知机制）" class="headerlink" title="Zookeeper分布式锁（文件系统、通知机制）"></a>Zookeeper分布式锁（文件系统、通知机制）</h4><p>有了zookeeper的一致性文件系统，锁的问题变得容易。锁服务可以分为两类，一个是<strong>保持独占</strong>，另一个是<strong>控制时序</strong>。 </p>
+<ol>
+<li><p>对于第一类，我们将zookeeper上的一个<strong>znode看作是一把锁</strong>，通过create znode的方式来实现。所有<strong>客户端都去创建 /distribute_lock 节点</strong>，最终<strong>成功创建的那个客户端也即拥有了这把锁</strong>。用完<strong>删除掉自己创建的distribute_lock 节点就释放出锁</strong>。 <code>(思想就是: 去创建一个lock节点, 谁创建成功谁就能拿到这把锁, 用完后,删除掉自己创建的这个节点)</code></p>
+</li>
+<li><p>对于第二类， /distribute_lock 已经预先存在，<strong>所有客户端</strong>在它下面<strong>创建临时顺序编号目录节点</strong>，和选master一样，<strong>编号最小的获得锁</strong>，<strong>用完删除</strong>，依次方便。</p>
+<p> <em>获取分布式锁的流程</em>:<img src="https://segmentfault.com/img/bV8WZ1?w=605&h=483" alt="clipboard.png"><br>在获取分布式锁的时候在locker节点下创建临时顺序节点，释放锁的时候删除该临时节点。客户端调用createNode方法在locker下创建临时顺序节点，然后调用getChildren(“locker”)来获取locker下面的所有子节点，注意此时不用设置任何Watcher。<strong><em>客户端获取到所有的子节点path之后，如果发现自己创建的节点在所有创建的子节点序号最小，那么就认为该客户端获取到了锁</em></strong>。如果发现自己创建的节点并非locker所有子节点中最小的，说明<strong>自己还没有获取到锁</strong>，==此时客户端需要找到比自己小的那个节点，然后对其调用<strong>exist()</strong>方法，同时对其注册事件监听器==。之后，让这个被关注的节点删除，则客户端的Watcher会收到相应通知，此时<strong>再次判断自己创建的节点是否是locker子节点中序号最小的</strong>，如果是则获取到了锁，如果不是则重复以上步骤继续获取到比自己小的一个节点并注册监听。当前这个过程中还需要许多的逻辑判断。<br><img src="/2019/10/20/ZooKeeper面试//4251944855-5ad89b097484c_articlex.png" alt="clipboard.png"></p>
+<p>代码的实现主要是基于互斥锁，获取分布式锁的重点逻辑在于<strong>BaseDistributedLock</strong>，实现了基于Zookeeper实现分布式锁的细节。</p>
+</li>
+</ol>
+</li>
+<li><h4 id="Zookeeper队列管理（文件系统、通知机制）"><a href="/2019/10/20/ZooKeeper面试/#Zookeeper队列管理（文件系统、通知机制）" class="headerlink" title="Zookeeper队列管理（文件系统、通知机制）"></a>Zookeeper队列管理（文件系统、通知机制）</h4><h5 id="两种类型的队列："><a href="/2019/10/20/ZooKeeper面试/#两种类型的队列：" class="headerlink" title="两种类型的队列："></a>两种类型的队列：</h5><ol>
+<li><p>同步队列，当一个队列的成员都聚齐时，这个队列才可用，否则一直等待所有成员到达。 </p>
+<p>在约定目录下创建临时目录节点，监听节点数目是否是我们要求的数目。 </p>
+</li>
+<li><p>队列按照 FIFO 方式进行入队和出队操作。 </p>
+<p>和分布式锁服务中的控制时序场景基本原理一致，入列有编号，出列按编号。在特定的目录下创建<strong>PERSISTENT_SEQUENTIAL</strong>节点，创建成功时<strong>Watcher</strong>通知等待的队列，队列删除<strong>序列号最小的节点</strong>用以消费。此场景下Zookeeper的znode用于消息存储，znode存储的数据就是消息队列中的消息内容，SEQUENTIAL序列号就是消息的编号，按序取出即可。由于创建的节点是持久化的，所以<strong>不必担心队列消息的丢失问题</strong>。</p>
+</li>
+</ol>
+</li>
+<li><h4 id="Zookeeper数据复制"><a href="/2019/10/20/ZooKeeper面试/#Zookeeper数据复制" class="headerlink" title="Zookeeper数据复制"></a>Zookeeper数据复制</h4><p>Zookeeper作为一个集群提供一致的数据服务，自然，它要在<strong>所有机器间</strong>做数据复制。数据复制的好处： </p>
+<ol>
+<li>容错：一个节点出错，不致于让整个系统停止工作，别的节点可以接管它的工作； </li>
+<li>提高系统的扩展能力 ：把负载分布到多个节点上，或者增加节点来提高系统的负载能力； </li>
+<li>提高性能：让<strong>客户端本地访问就近的节点，提高用户访问速度</strong>。</li>
+</ol>
+<p>从客户端读写访问的透明度来看，数据复制集群系统分下面两种： </p>
+<ul>
+<li><strong>写主</strong>(WriteMaster) ：对数据的<strong>修改提交给指定的节点</strong>。读无此限制，可以读取任何一个节点。这种情况下客户端需要对读与写进行区别，俗称<strong>读写分离</strong>； </li>
+<li><strong>写任意</strong>(Write Any)：对数据的<strong>修改可提交给任意的节点</strong>，跟读一样。这种情况下，客户端对集群节点的角色与变化透明。</li>
+</ul>
+<p>对zookeeper来说，它采用的方式是<strong>写任意</strong>。通过增加机器，它的==读吞吐能力和响应能力扩展性非常好==，而==写，随着机器的增多吞吐能力肯定下降==（这也是它建立observer的原因），而响应能力则取决于具体实现方式，是<strong>延迟复制保持最终一致性</strong>，还是<strong>立即复制快速响应</strong>。</p>
+</li>
+</ol>
+<h3 id="7-Zookeeper工作原理"><a href="/2019/10/20/ZooKeeper面试/#7-Zookeeper工作原理" class="headerlink" title="7. Zookeeper工作原理"></a>7. Zookeeper工作原理</h3><p>Zookeeper 的核心是<strong>原子广播</strong>，这个机制保证了<strong>各个Server之间的同步</strong>。实现这个机制的协议叫做<strong>Zab协议(Zookeeper原子广播)</strong>。</p>
+<p>Zab协议有两种模式:</p>
+<p>它们分别是<strong>恢复模式（选主）</strong>和<strong>广播模式（同步）</strong></p>
+<p>当服务启动或者在领导者崩溃后，Zab就进入了恢复模式，当<strong>领导者被选举出来</strong>，且大多数Server<strong>完成</strong>了和 leader的<strong>状态同步以</strong>后，<strong>恢复模式就结束</strong>了。状态同步保证了leader和Server具有相同的系统状态。</p>
+<h3 id="8-Zookeeper-下-Server工作状态"><a href="/2019/10/20/ZooKeeper面试/#8-Zookeeper-下-Server工作状态" class="headerlink" title="8. Zookeeper 下 Server工作状态"></a>8. Zookeeper 下 Server工作状态</h3><p>每个Server在工作过程中有三种状态：<br>LOOKING：当前Server<strong>不知道leader是谁</strong>，正在搜寻<br>LEADING：当前Server即为选举出来的leader<br>FOLLOWING: leader已经选举出来，当前Server与之同步</p>
+<h3 id="9-zookeeper是如何选取主leader的？"><a href="/2019/10/20/ZooKeeper面试/#9-zookeeper是如何选取主leader的？" class="headerlink" title="9. zookeeper是如何选取主leader的？"></a>9. zookeeper是如何选取主leader的？</h3><p>当leader崩溃或者leader失去大多数的follower，这时zk进入恢复模式，恢复模式需要重新选举出一个新的leader，让所有的Server都恢复到一个正确的状态。Zk的选举算法有两种：一种是基于basic paxos实现的，另外一种是基于fast paxos算法实现的。系统默认的选举算法为<strong>fast paxos</strong>。</p>
+<ol>
+<li><h4 id="Zookeeper选主流程-basic-paxos-每个节点都发送一zxid-选举线程推荐zxid最大的那个server作为leader"><a href="/2019/10/20/ZooKeeper面试/#Zookeeper选主流程-basic-paxos-每个节点都发送一zxid-选举线程推荐zxid最大的那个server作为leader" class="headerlink" title="Zookeeper选主流程(basic paxos)(每个节点都发送一zxid, 选举线程推荐zxid最大的那个server作为leader)"></a>Zookeeper选主流程(basic paxos)<code>(每个节点都发送一zxid, 选举线程推荐zxid最大的那个server作为leader)</code></h4><p>（1）选举线程由当前Server发起选举的线程担任，其主要功能是对投票结果进行统计，并选出推荐的Server；<br>（2）选举线程首先向所有Server发起一次询问(包括自己)；<br>（3）选举线程收到回复后，验证是否是自己发起的询问(验证zxid是否一致)，然后获取对方的id(myid)，并存储到当前询问对象列表中，最后获取对方提议的leader相关信息(id,zxid)，并将这些信息存储到当次选举的投票记录表中；<br>（4）<strong>选举线程收到所有Server回复</strong>以后，就<strong>计算出zxid最大</strong>的那个<strong>Server</strong>，并将这个Server相关信息设置成下一次要投票的Server；<br>（5）线程将当前zxid最大的Server设置为当前Server要推荐的Leader，如果此时获胜的Server获得<strong>n/2 + 1</strong>(大于一般的投票数)的Server票数，设置当前推荐的leader为获胜的Server，将根据获胜的Server相关信息设置自己的状态，否则，继续这个过程，直到leader被选举出来。 通过流程分析我们可以得出：<strong>要使Leader获得多数Server的支持，则Server总数必须是奇数2n+1，且存活的Server的数目不得少于n+1</strong>. 每个Server启动后都会重复以上流程。在恢复模式下，如果是刚从崩溃状态恢复的或者刚启动的server还会从磁盘快照中恢复数据和会话信息，zk会记录事务日志并定期进行快照，方便在恢复时进行状态恢复。<br><img src="/2019/10/20/ZooKeeper面试//1858685425-5ad8ae835bf24_articlex.png" alt="clipboard.png"></p>
+</li>
+<li><h4 id="Zookeeper选主流程-fast-paxos-有一个节点主动提出要成为leader-去问大家是否同意"><a href="/2019/10/20/ZooKeeper面试/#Zookeeper选主流程-fast-paxos-有一个节点主动提出要成为leader-去问大家是否同意" class="headerlink" title="Zookeeper选主流程(fast paxos)(有一个节点主动提出要成为leader,去问大家是否同意)"></a>Zookeeper选主流程(fast paxos)<strong><code>(有一个节点主动提出要成为leader,去问大家是否同意)</code></strong></h4><p>fast paxos流程是在选举过程中，某Server首先向所有Server提议自己要成为leader，当其它Server收到提议以后，解决epoch和 zxid的冲突，并接受对方的提议，然后向对方发送接受提议完成的消息，重复这个流程，最后一定能选举出Leader。<br><img src="https://segmentfault.com/img/bV8XeR?w=533&h=451" alt="clipboard.png"></p>
+</li>
+</ol>
+<h3 id="10-Zookeeper同步流程"><a href="/2019/10/20/ZooKeeper面试/#10-Zookeeper同步流程" class="headerlink" title="10. Zookeeper同步流程"></a>10. Zookeeper同步流程</h3><p>选完Leader以后，zk就进入状态同步过程。 </p>
+<ol>
+<li>Leader等待server连接； </li>
+<li>Follower连接leader，将最大的zxid发送给leader； </li>
+<li>Leader根据follower的zxid确定同步点； </li>
+<li>完成同步后通知follower 已经成为uptodate状态； </li>
+<li>Follower收到uptodate消息后，又可以重新接受client的请求进行服务了。<br><img src="https://segmentfault.com/img/bV8Xag?w=393&h=155" alt="clipboard.png"></li>
+</ol>
+<h3 id="11-分布式通知和协调"><a href="/2019/10/20/ZooKeeper面试/#11-分布式通知和协调" class="headerlink" title="11. 分布式通知和协调"></a>11. 分布式通知和协调</h3><p>对于系统调度来说：操作人员发送通知实际是通过控制台<strong>改变某个节点的状态</strong>，<strong>然后zk将这些变化发送给注册了这个节点的watcher的所有客户端</strong>。<br>对于执行情况汇报：每个工作进程都在某个目录下<strong>创建一个临时节点</strong>。<strong>并携带工作的进度数据</strong>，这样<strong>汇总的进程</strong>可以<strong>监控目录子节点的变化</strong>获得工作进度的<strong>实时的全局情况</strong>。</p>
+<h3 id="12-机器中为什么会有leader？"><a href="/2019/10/20/ZooKeeper面试/#12-机器中为什么会有leader？" class="headerlink" title="12. 机器中为什么会有leader？"></a>12. 机器中为什么会有leader？</h3><p>在分布式环境中，有些业务逻辑只需要集群中的某一台机器进行执行，<strong>其他的机器可以共享这个结果</strong>，这样可以大大<strong>减少重复计算</strong>，<strong>提高性能</strong>，于是就需要进行leader选举。</p>
+<h3 id="13-zk节点宕机如何处理？"><a href="/2019/10/20/ZooKeeper面试/#13-zk节点宕机如何处理？" class="headerlink" title="13. zk节点宕机如何处理？"></a>13. zk节点宕机如何处理？</h3><p>Zookeeper本身也是集群，推荐配置不少于3个服务器。Zookeeper自身也要保证当一个节点宕机时，其他节点会继续提供服务。<br>如果是一个Follower宕机，还有2台服务器提供访问，因为Zookeeper上的数据是有多个副本的，数据并不会丢失；<br>如果是一个Leader宕机，Zookeeper会选举出新的Leader。<br>ZK集群的机制是只要超过半数的节点正常，集群就能正常提供服务。只有在ZK节点挂得太多，只剩一半或不到一半节点能工作，集群才失效。<br>所以<br>3个节点的cluster可以挂掉1个节点(leader可以得到2票&gt;1.5)<br><strong>2个节点的cluster就不能挂掉任何1个节点了(leader可以得到1票&lt;=1)</strong></p>
+<h3 id="14-zookeeper负载均衡和nginx负载均衡区别"><a href="/2019/10/20/ZooKeeper面试/#14-zookeeper负载均衡和nginx负载均衡区别" class="headerlink" title="14. zookeeper负载均衡和nginx负载均衡区别"></a>14. zookeeper负载均衡和nginx负载均衡区别</h3><p><strong>zk的负载均衡是可以调控，nginx只是能调权重</strong>，其他需要可控的都需要自己写插件；但是<strong>nginx的吞吐量比zk大</strong>很多，应该说按业务选择用哪种方式。</p>
+<h3 id="15-zookeeper-watch机制"><a href="/2019/10/20/ZooKeeper面试/#15-zookeeper-watch机制" class="headerlink" title="15. zookeeper watch机制"></a>15. zookeeper watch机制</h3><p>Watch机制官方声明：一个Watch事件是一个一次性的触发器，当被设置了Watch的数据发生了改变的时候，则服务器将这个改变发送给设置了Watch的客户端，以便通知它们。</p>
+<p>为什么不是永久的，举个例子，如果服务端变动频繁，而监听的客户端很多情况下，每次变动都要通知到所有的客户端，这太消耗性能了。在实际应用中，很多情况下，我们的客户端不需要知道服务端的每一次变动，我只要最新的数据即可。</p>
+<p>Zookeeper机制的特点：</p>
+<ol>
+<li>一次性触发数据发生改变时，一个watcher event会被发送到client，但是client<strong>只会收到一次这样的信息</strong>。</li>
+<li>watcher event异步发送: watcher的通知事件从server发送到client是<strong>异步</strong>的，这就存在一个问题，不同的客户端和服务器之间通过socket进行通信，由于<strong>网络延迟或其他因素导致客户端在不同的时刻监听到事件</strong>，由于Zookeeper本身提供了<strong>ordering guarantee，即客户端监听事件后，才会感知它所监视znode发生了变化</strong>。所以我们使用Zookeeper不能期望能够监控到节点每次的变化。Zookeeper<strong>只能保证最终的一致性，而无法保证强一致性</strong>。</li>
+<li>数据监视Zookeeper有数据监视和子数据监视getdata() and exists()设置数据监视，getchildren()设置了子节点监视。</li>
+<li>注册watcher <strong>getData、exists、getChildren</strong></li>
+<li>触发watcher <strong>create、delete、setData</strong>( 修改操作通过删除,创建 实现)</li>
+<li><strong>setData()</strong>会触发znode上设置的data watch（如果set成功的话）。一个成功的<strong>create()</strong> 操作会触发被创建的znode上的数据watch，以及其父节点上的child watch。而一个成功的<strong>delete()</strong>操作将会同时触发一个znode的data watch和child watch（因为这样就没有子节点了），同时也会触发其父节点的child watch。</li>
+<li>当一个客户端<strong>连接到一个新的服务器上</strong>时，watch将会被以任意会话事件触发。当<strong>与一个服务器失去连接</strong>的时候，是无法接收到watch的。而当client<strong>重新连接</strong>时，如果需要的话，所有先前注册过的watch，都会被重新注册。通常这是完全透明的。只有在一个特殊情况下，<strong>watch可能会丢失</strong>：对于一个未创建的znode的exist watch，如果在客户端断开连接期间被创建了，并且随后在客户端连接上之前又删除了，这种情况下，这个watch事件可能会被丢失。</li>
+<li>Watch是轻量级的，其实就是本地JVM的<strong>Callback</strong>，服务器端只是存了是否有设置了Watcher的布尔类型</li>
+</ol>
+<h3 id="集群支持动态添加机器吗？"><a href="/2019/10/20/ZooKeeper面试/#集群支持动态添加机器吗？" class="headerlink" title="集群支持动态添加机器吗？"></a>集群支持动态添加机器吗？</h3><p>其实就是水平扩容了，Zookeeper在这方面不太好。两种方式：<br>全部重启：关闭所有Zookeeper服务，修改配置之后启动。不影响之前客户端的会话。<br>逐个重启：顾名思义。这是比较常用的方式。</p>
+
+      </div>
+      
+        <br>
+        
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-10-20T14:06:22+08:00">
+  <a class='notlink'>
+    <i class="fas fa-clock" aria-hidden="true"></i>
+    <p>updated at Oct 20, 2019</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/IT-%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-Job-zookeeper/" rel="nofollow"><i class="fas fa-tag" aria-hidden="true"></i><p>IT - 技术笔记 - Job - zookeeper</p></a></div>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="QQ好友" rel="external nofollow noopener noreferrer"
+          
+          href="http://connect.qq.com/widget/shareqq/index.html?url=/2019/10/20/ZooKeeper%E9%9D%A2%E8%AF%95/&title=ZooKeeper面试 | Hexo&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="QQ空间" rel="external nofollow noopener noreferrer"
+          
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=/2019/10/20/ZooKeeper%E9%9D%A2%E8%AF%95/&title=ZooKeeper面试 | Hexo&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="微博" rel="external nofollow noopener noreferrer"
+          
+          href="http://service.weibo.com/share/share.php?url=/2019/10/20/ZooKeeper%E9%9D%A2%E8%AF%95/&title=ZooKeeper面试 | Hexo&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+      
+      
+          <div class="prev-next">
+              
+                  <section class="prev">
+                      <span class="art-item-left">
+                          <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;Previous</h6>
+                          <h4>
+                              <a href="/2019/10/20/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="prev" title="数据库">
+                                
+                                    数据库
+                                
+                              </a>
+                          </h4>
+                          
+                              
+                              <h6 class="tags">
+                                  <a class="tag" href="/tags/IT/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> IT</a> <a class="tag" href="/tags/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> 技术笔记</a> <a class="tag" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> 数据库</a> <a class="tag" href="/tags/Job/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> Job</a> <a class="tag" href="/tags/mysql/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> mysql</a>
+                              </h6>
+                          
+                      </span>
+                  </section>
+              
+              
+                  <section class="next">
+                      <span class="art-item-right" aria-hidden="true">
+                          <h6>Next&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
+                          <h4>
+                              <a href="/2019/10/20/Hibernate/" rel="prev" title="Hibernate面试题">
+                                  
+                                      Hibernate面试题
+                                  
+                              </a>
+                          </h4>
+                          
+                              
+                              <h6 class="tags">
+                                  <a class="tag" href="/tags/IT/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> IT</a> <a class="tag" href="/tags/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> 技术笔记</a> <a class="tag" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> 数据库</a> <a class="tag" href="/tags/Hibernate/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> Hibernate</a> <a class="tag" href="/tags/Job/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> Job</a>
+                              </h6>
+                          
+                      </span>
+                  </section>
+              
+          </div>
+      
+    </section>
+  </article>
+
+
+
+  <!-- 显示推荐文章和评论 -->
+
+
+
+  
+
+
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: 'ZooKeeper面试',
+      tools: true
+    }
+  </script>
+
+
+</div>
+<aside class='l_side'>
+  
+    
+    
+      
+      
+        
+          
+          
+            
+              <section class='widget author'>
+  <div class='content pure'>
+    
+      <div class='avatar'>
+        <img class='avatar' src='https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/avatar/avatar.png'/>
+      </div>
+    
+    
+    
+      <div class="social-wrapper">
+        
+          
+            <a href="/atom.xml"
+              class="social fas fa-rss flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="mailto:dmlys@live.com"
+              class="social fas fa-envelope flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="https://github.com/ChanMango"
+              class="social fab fa-github flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="https://music.163.com/#/user/home?id=118376074"
+              class="social fas fa-headphones-alt flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+      </div>
+    
+  </div>
+</section>
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+            
+              
+  <section class='widget toc-wrapper'>
+    
+<header class='pure'>
+  <div><i class="fas fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;TOC</div>
+  
+    <!-- <div class='wrapper'><a class="s-toc rightBtn" rel="external nofollow noopener noreferrer" href="javascript:void(0)"><i class="fas fa-thumbtack fa-fw"></i></a></div> -->
+  
+</header>
+
+    <div class='content pure'>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#ZooKeeper面试"><span class="toc-text">ZooKeeper面试</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-什么是dubbo"><span class="toc-text">1. 什么是dubbo?</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Dubbo提供三个关键功能"><span class="toc-text">Dubbo提供三个关键功能</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-测试和生产公用一套zookeeper，怎么保证消费不冲突"><span class="toc-text">2. 测试和生产公用一套zookeeper，怎么保证消费不冲突?</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#出自https-www-cnblogs-com-wangzhongqiu-archive-2017-09-22-7575759-html"><span class="toc-text">出自https://www.cnblogs.com/wangzhongqiu/archive/2017/09/22/7575759.html</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-ZooKeeper是什么？"><span class="toc-text">3. ZooKeeper是什么？</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#应用场景"><span class="toc-text">应用场景</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-zookeeper是如何保证事务的顺序一致性的"><span class="toc-text">5. zookeeper是如何保证事务的顺序一致性的</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-ZooKeeper提供了什么？"><span class="toc-text">5. ZooKeeper提供了什么？</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#5-1-文件系统"><span class="toc-text">5.1 文件系统</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#四种类型的znode"><span class="toc-text">四种类型的znode</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#创建的临时节点什么时候会被删除，是连接一断就删除吗？延时是多少？"><span class="toc-text">创建的临时节点什么时候会被删除，是连接一断就删除吗？延时是多少？</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#是否可以拒绝单个IP对ZK的访问操作"><span class="toc-text">是否可以拒绝单个IP对ZK的访问操作 ?</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-2-通知机制"><span class="toc-text">5.2 通知机制</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-Zookeeper做了什么？"><span class="toc-text">6. Zookeeper做了什么？</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#命名服务（文件系统）"><span class="toc-text">命名服务（文件系统）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#zk的配置管理（文件系统、通知机制）"><span class="toc-text">zk的配置管理（文件系统、通知机制）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Zookeeper集群管理（文件系统、通知机制）"><span class="toc-text">Zookeeper集群管理（文件系统、通知机制）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Zookeeper分布式锁（文件系统、通知机制）"><span class="toc-text">Zookeeper分布式锁（文件系统、通知机制）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Zookeeper队列管理（文件系统、通知机制）"><span class="toc-text">Zookeeper队列管理（文件系统、通知机制）</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#两种类型的队列："><span class="toc-text">两种类型的队列：</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Zookeeper数据复制"><span class="toc-text">Zookeeper数据复制</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-Zookeeper工作原理"><span class="toc-text">7. Zookeeper工作原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-Zookeeper-下-Server工作状态"><span class="toc-text">8. Zookeeper 下 Server工作状态</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-zookeeper是如何选取主leader的？"><span class="toc-text">9. zookeeper是如何选取主leader的？</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Zookeeper选主流程-basic-paxos-每个节点都发送一zxid-选举线程推荐zxid最大的那个server作为leader"><span class="toc-text">Zookeeper选主流程(basic paxos)(每个节点都发送一zxid, 选举线程推荐zxid最大的那个server作为leader)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Zookeeper选主流程-fast-paxos-有一个节点主动提出要成为leader-去问大家是否同意"><span class="toc-text">Zookeeper选主流程(fast paxos)(有一个节点主动提出要成为leader,去问大家是否同意)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-Zookeeper同步流程"><span class="toc-text">10. Zookeeper同步流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-分布式通知和协调"><span class="toc-text">11. 分布式通知和协调</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-机器中为什么会有leader？"><span class="toc-text">12. 机器中为什么会有leader？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-zk节点宕机如何处理？"><span class="toc-text">13. zk节点宕机如何处理？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#14-zookeeper负载均衡和nginx负载均衡区别"><span class="toc-text">14. zookeeper负载均衡和nginx负载均衡区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#15-zookeeper-watch机制"><span class="toc-text">15. zookeeper watch机制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#集群支持动态添加机器吗？"><span class="toc-text">集群支持动态添加机器吗？</span></a></li></ol></li></ol>
+    </div>
+  </section>
+
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+            
+              <section class='widget grid'>
+  
+<header class='pure'>
+  <div><i class="fas fa-map-signs fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;站内导航</div>
+  
+</header>
+
+  <div class='content pure'>
+    <ul class="grid navgation">
+      
+        <li><a class="flat-box" title="/" href="/"
+          
+          
+          id="home">
+          
+            <i class="fas fa-clock fa-fw" aria-hidden="true"></i>
+          
+          近期文章
+        </a></li>
+      
+        <li><a class="flat-box" title="/archives/" href="/archives/"
+          
+            rel="nofollow"
+          
+          
+          id="archives">
+          
+            <i class="fas fa-archive fa-fw" aria-hidden="true"></i>
+          
+          文章归档
+        </a></li>
+      
+        <li><a class="flat-box" title="/projects/" href="/projects/"
+          
+          
+          id="projects">
+          
+            <i class="fas fa-code-branch fa-fw" aria-hidden="true"></i>
+          
+          开源项目
+        </a></li>
+      
+        <li><a class="flat-box" title="/friends/" href="/friends/"
+          
+            rel="nofollow"
+          
+          
+          id="friends">
+          
+            <i class="fas fa-link fa-fw" aria-hidden="true"></i>
+          
+          我的友链
+        </a></li>
+      
+        <li><a class="flat-box" title="https://xaoxuu.com/wiki/material-x/" href="https://xaoxuu.com/wiki/material-x/"
+          
+            rel="nofollow"
+          
+          
+          id="https:xaoxuu.comwikimaterial-x">
+          
+            <i class="fas fa-book fa-fw" aria-hidden="true"></i>
+          
+          主题文档
+        </a></li>
+      
+        <li><a class="flat-box" title="/about/" href="/about/"
+          
+            rel="nofollow"
+          
+          
+          id="about">
+          
+            <i class="fas fa-info-circle fa-fw" aria-hidden="true"></i>
+          
+          关于小站
+        </a></li>
+      
+    </ul>
+  </div>
+</section>
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+            
+              
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+            
+              
+  <section class='widget tagcloud'>
+    
+<header class='pure'>
+  <div><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;Hot Tags</div>
+  
+    <a class="rightBtn"
+    
+      rel="nofollow"
+    
+    
+    href="/tags/"
+    title="tags/">
+    <i class="fas fa-expand-arrows-alt fa-fw"></i></a>
+  
+</header>
+
+    <div class='content pure'>
+      <a href="/tags/Hibernate/" style="font-size: 14px; color: #999">Hibernate</a> <a href="/tags/IT/" style="font-size: 24px; color: #555">IT</a> <a href="/tags/IT-%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-Job-zookeeper/" style="font-size: 14px; color: #999">IT - 技术笔记 - Job - zookeeper</a> <a href="/tags/Java/" style="font-size: 14px; color: #999">Java</a> <a href="/tags/Job/" style="font-size: 24px; color: #555">Job</a> <a href="/tags/Kafka/" style="font-size: 14px; color: #999">Kafka</a> <a href="/tags/Linux/" style="font-size: 14px; color: #999">Linux</a> <a href="/tags/Mybatis/" style="font-size: 14px; color: #999">Mybatis</a> <a href="/tags/Redis/" style="font-size: 14px; color: #999">Redis</a> <a href="/tags/Spring/" style="font-size: 14px; color: #999">Spring</a> <a href="/tags/mysql/" style="font-size: 14px; color: #999">mysql</a> <a href="/tags/zookeeper/" style="font-size: 14px; color: #999">zookeeper</a> <a href="/tags/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/" style="font-size: 24px; color: #555">技术笔记</a> <a href="/tags/%E6%8E%92%E5%BA%8F/" style="font-size: 14px; color: #999">排序</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 20.67px; color: #6c6c6c">数据库</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 14px; color: #999">数据结构</a> <a href="/tags/%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%BC%80%E5%8F%91/" style="font-size: 17.33px; color: #828282">服务端开发</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 14px; color: #999">算法</a> <a href="/tags/%E7%BD%91%E7%BB%9C/" style="font-size: 14px; color: #999">网络</a>
+    </div>
+  </section>
+
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+            
+              <section class='widget list'>
+  
+<header class='pure'>
+  <div><i class="fas fa-thumbs-up fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;强烈推荐</div>
+  
+</header>
+
+  <div class='content pure'>
+    <ul class="entry">
+      
+        <li><a class="flat-box" title="https://xaoxuu.com/wiki/hexo.sh/" href="https://xaoxuu.com/wiki/hexo.sh/"
+          
+          
+          >
+          <div class='name'>
+            
+              <i class=" fa-fw" aria-hidden="true"></i>
+            
+            &nbsp;&nbsp;Hexo脚本（Mac）
+          </div>
+          
+        </a></li>
+      
+        <li><a class="flat-box" title="https://xaoxuu.com/wiki/vim-cn.sh/" href="https://xaoxuu.com/wiki/vim-cn.sh/"
+          
+          
+          >
+          <div class='name'>
+            
+              <i class=" fa-fw" aria-hidden="true"></i>
+            
+            &nbsp;&nbsp;图床脚本（Mac）
+          </div>
+          
+        </a></li>
+      
+        <li><a class="flat-box" title="https://yasuotu.com" href="https://yasuotu.com"
+          
+          
+          >
+          <div class='name'>
+            
+              <i class=" fa-fw" aria-hidden="true"></i>
+            
+            &nbsp;&nbsp;图片在线压缩
+          </div>
+          
+        </a></li>
+      
+        <li><a class="flat-box" title="https://realfavicongenerator.net" href="https://realfavicongenerator.net"
+          
+          
+          >
+          <div class='name'>
+            
+              <i class=" fa-fw" aria-hidden="true"></i>
+            
+            &nbsp;&nbsp;生成Favicon
+          </div>
+          
+        </a></li>
+      
+        <li><a class="flat-box" title="https://mxclub.github.io/resume/" href="https://mxclub.github.io/resume/"
+          
+          
+          >
+          <div class='name'>
+            
+              <i class=" fa-fw" aria-hidden="true"></i>
+            
+            &nbsp;&nbsp;简历主题
+          </div>
+          
+        </a></li>
+      
+    </ul>
+  </div>
+</section>
+
+            
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+    
+
+  
+</aside>
+
+<footer id="footer" class="clearfix">
+  
+  
+    <div class="social-wrapper">
+      
+        
+          <a href="/atom.xml"
+            class="social fas fa-rss flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="mailto:dmlys@live.com"
+            class="social fas fa-envelope flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="https://github.com/ChanMango"
+            class="social fab fa-github flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="https://music.163.com/#/user/home?id=118376074"
+            class="social fas fa-headphones-alt flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+    </div>
+  
+  <br>
+  <div><p>Blog content follows the <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en">Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0) License</a></p>
+</div>
+  <div>
+    Use
+    <a href="https://xaoxuu.com/wiki/material-x/" target="_blank" class="codename">Material X</a>
+    as theme
+    
+      , 
+      total visits
+      <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+      times
+    
+    . 
+  </div>
+</footer>
+<script>setLoadingBarProgress(80);</script>
+
+
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+
+  <script>
+    var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+    var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+    var ALGOLIA_API_KEY = "";
+    var ALGOLIA_APP_ID = "";
+    var ALGOLIA_INDEX_NAME = "";
+    var AZURE_SERVICE_NAME = "";
+    var AZURE_INDEX_NAME = "";
+    var AZURE_QUERY_KEY = "";
+    var BAIDU_API_ID = "";
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/"||"/";
+    if(!ROOT.endsWith('/'))ROOT += '/';
+  </script>
+
+<script src="//instant.page/1.2.2" type="module" integrity="sha384-2xV8M5griQmzyiY3CDqh1dn4z3llDVqZDqzjzcY+jCBCk/a5fXJmuZ/40JJAPeoU"></script>
+
+
+  <script async src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.5/dist/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      const $reveal = $('.reveal');
+      if ($reveal.length === 0) return;
+      const sr = ScrollReveal({ distance: 0 });
+      sr.reveal('.reveal');
+    });
+  </script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+  
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>
+    <script type="text/javascript">
+      $(function(){
+        if ('.cover') {
+          $('.cover').backstretch(
+          ["https://img.vim-cn.com/29/91197b04c13f512f734a76d4ac422d89dbe229.jpg"],
+          {
+            duration: "6000",
+            fade: "2500"
+          });
+        } else {
+          $.backstretch(
+          ["https://img.vim-cn.com/29/91197b04c13f512f734a76d4ac422d89dbe229.jpg"],
+          {
+            duration: "6000",
+            fade: "2500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.9/js/app.js"></script>
+
+
+  <script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.9/js/search.js"></script>
+
+
+
+
+<!-- 复制 -->
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  let COPY_SUCCESS = "Copied";
+  let COPY_FAILURE = "Copy failed";
+  /*页面载入完成后，创建复制按钮*/
+  !function (e, t, a) {
+    /* code */
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '  <i class="fa fa-copy"></i><span>Copy</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+
+      clipboard.on('success', function(e) {
+        //您可以加入成功提示
+        console.info('Action:', e.action);
+        console.info('Text:', e.text);
+        console.info('Trigger:', e.trigger);
+        success_prompt(COPY_SUCCESS);
+        e.clearSelection();
+      });
+      clipboard.on('error', function(e) {
+        //您可以加入失败提示
+        console.error('Action:', e.action);
+        console.error('Trigger:', e.trigger);
+        fail_prompt(COPY_FAILURE);
+      });
+    }
+    initCopyCode();
+
+  }(window, document);
+
+  /**
+   * 弹出式提示框，默认1.5秒自动消失
+   * @param message 提示信息
+   * @param style 提示样式，有alert-success、alert-danger、alert-warning、alert-info
+   * @param time 消失时间
+   */
+  var prompt = function (message, style, time)
+  {
+      style = (style === undefined) ? 'alert-success' : style;
+      time = (time === undefined) ? 1500 : time*1000;
+      $('<div>')
+          .appendTo('body')
+          .addClass('alert ' + style)
+          .html(message)
+          .show()
+          .delay(time)
+          .fadeOut();
+  };
+
+  // 成功提示
+  var success_prompt = function(message, time)
+  {
+      prompt(message, 'alert-success', time);
+  };
+
+  // 失败提示
+  var fail_prompt = function(message, time)
+  {
+      prompt(message, 'alert-danger', time);
+  };
+
+  // 提醒
+  var warning_prompt = function(message, time)
+  {
+      prompt(message, 'alert-warning', time);
+  };
+
+  // 信息提示
+  var info_prompt = function(message, time)
+  {
+      prompt(message, 'alert-info', time);
+  };
+
+</script>
+
+
+<!-- fancybox -->
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  let LAZY_LOAD_IMAGE = "";
+  $(".article-entry").find("fancybox").find("img").each(function () {
+      var element = document.createElement("a");
+      $(element).attr("data-fancybox", "gallery");
+      $(element).attr("href", $(this).attr("src"));
+      /* 图片采用懒加载处理时,
+       * 一般图片标签内会有个属性名来存放图片的真实地址，比如 data-original,
+       * 那么此处将原本的属性名src替换为对应属性名data-original,
+       * 修改如下
+       */
+       if (LAZY_LOAD_IMAGE) {
+         $(element).attr("href", $(this).attr("data-original"));
+       }
+      $(this).wrap(element);
+  });
+</script>
+
+
+
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>

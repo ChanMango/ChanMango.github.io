@@ -1,0 +1,1414 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  <title>Kafka面试 | Hexo</title>
+  
+  
+  <meta name="description" content="这是一篇关于kafka的技术文档">
+  
+
+  
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!-- meta -->
+  
+
+  <!-- link -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.10.1/css/all.min.css">
+  
+
+  
+
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.9.9/css/style.css">
+  
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+
+  
+  
+</head>
+
+<body>
+  
+  
+  <div class="cover-wrapper">
+    <cover class='cover post half'>
+      
+        
+  <h1 class='title'>Demo</h1>
+
+
+  <div class="m_search">
+    <form name="searchform" class="form u-search-form">
+      <input type="text" class="input u-search-input" placeholder="" />
+      <i class="icon fas fa-search fa-fw"></i>
+    </form>
+  </div>
+
+<div class='menu navgation'>
+  <ul class='h-list'>
+    
+      
+        <li>
+          <a class="nav home" href="/"
+            
+            
+            id="home">
+            <i class='fas fa-rss fa-fw'></i>&nbsp;博文
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/projects/"
+            
+            
+            id="projects">
+            <i class='fas fa-code-branch fa-fw'></i>&nbsp;项目
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/friends/"
+            
+              rel="nofollow"
+            
+            
+            id="friends">
+            <i class='fas fa-link fa-fw'></i>&nbsp;友链
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/about/"
+            
+              rel="nofollow"
+            
+            
+            id="about">
+            <i class='fas fa-info-circle fa-fw'></i>&nbsp;关于
+          </a>
+        </li>
+      
+    
+  </ul>
+</div>
+
+      
+    </cover>
+    <header class="l_header pure">
+  <div id="loading-bar-wrapper">
+    <div id="loading-bar" class="pure"></div>
+  </div>
+
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+      <a class="logo flat-box" href='/' >
+        
+          Hexo
+        
+      </a>
+			<div class='menu navgation'>
+				<ul class='h-list'>
+          
+  					
+  						<li>
+								<a class="nav flat-box" href="/"
+                  
+                  
+                  id="home">
+									<i class='fas fa-grin fa-fw'></i>&nbsp;示例
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/categories/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="categories">
+									<i class='fas fa-folder-open fa-fw'></i>&nbsp;分类
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/tags/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="tags">
+									<i class='fas fa-hashtag fa-fw'></i>&nbsp;标签
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/archives/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="archives">
+									<i class='fas fa-archive fa-fw'></i>&nbsp;归档
+								</a>
+							</li>
+      			
+      		
+				</ul>
+			</div>
+
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="Search" />
+						<i class="icon fas fa-search fa-fw"></i>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a class="fas fa-search fa-fw" href='javascript:void(0)'></a></li>
+				
+				<li class='s-menu'><a class="fas fa-bars fa-fw" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+
+		<div class='nav-sub container container--flex'>
+			<a class="logo flat-box"></a>
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a class="flat-btn fas fa-comments fa-fw" href='javascript:void(0)'></a></li>
+        
+          <li class='s-toc'><a class="flat-btn fas fa-list fa-fw" href='javascript:void(0)'></a></li>
+        
+			</ul>
+		</div>
+	</div>
+</header>
+	<aside class="menu-phone">
+    <header>
+		<nav class="menu navgation">
+      <ul>
+        
+          
+            <li>
+							<a class="nav flat-box" href="/"
+                
+                
+                id="home">
+								<i class='fas fa-clock fa-fw'></i>&nbsp;近期文章
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/archives/"
+                
+                  rel="nofollow"
+                
+                
+                id="archives">
+								<i class='fas fa-archive fa-fw'></i>&nbsp;文章归档
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/projects/"
+                
+                
+                id="projects">
+								<i class='fas fa-code-branch fa-fw'></i>&nbsp;开源项目
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/friends/"
+                
+                  rel="nofollow"
+                
+                
+                id="friends">
+								<i class='fas fa-link fa-fw'></i>&nbsp;我的友链
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="https://xaoxuu.com/wiki/material-x/"
+                
+                  rel="nofollow"
+                
+                
+                id="https:xaoxuu.comwikimaterial-x">
+								<i class='fas fa-book fa-fw'></i>&nbsp;主题文档
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/about/"
+                
+                  rel="nofollow"
+                
+                
+                id="about">
+								<i class='fas fa-info-circle fa-fw'></i>&nbsp;关于小站
+							</a>
+            </li>
+          
+       
+      </ul>
+		</nav>
+    </header>
+	</aside>
+<script>setLoadingBarProgress(40);</script>
+
+  </div>
+
+
+  <div class="l_body">
+    <div class='body-wrapper'>
+      <div class='l_main'>
+  
+
+  <article id="post" class="post white-box article-type-post" itemscope itemprop="blogPost">
+    
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  
+    <h1 class="title">
+      <a href="/2019/10/20/Kafka%E9%9D%A2%E8%AF%95/">
+        Kafka面试
+      </a>
+    </h1>
+  
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    
+      <a href="/" rel="nofollow">
+        
+          <i class="fas fa-user" aria-hidden="true"></i>
+        
+        <p></p>
+      </a>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2019-10-20</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+          
+            
+  
+    <div class="new-meta-item browse busuanzi">
+      <a class='notlink'>
+        <i class="fas fa-eye" aria-hidden="true"></i>
+        <p>
+          <span id="busuanzi_value_page_pv">
+            <i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i>
+          </span>
+        </p>
+      </a>
+    </div>
+  
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+    <section class="article typo">
+      <div class="article-entry" itemprop="articleBody">
+        <h1 id="Kafka"><a href="/2019/10/20/Kafka面试/#Kafka" class="headerlink" title="Kafka"></a>Kafka</h1><h2 id="基本理论知识"><a href="/2019/10/20/Kafka面试/#基本理论知识" class="headerlink" title="基本理论知识"></a>基本理论知识</h2><h4 id="请说明什么是Apache-Kafka"><a href="/2019/10/20/Kafka面试/#请说明什么是Apache-Kafka" class="headerlink" title="请说明什么是Apache Kafka?"></a>请说明什么是Apache Kafka?</h4><p>Apache Kafka是由Apache开发的一种发布<strong>订阅消息系统</strong>，它是一个分布式的、分区的和重复的日志服务。</p>
+<h4 id="请说明什么是传统的消息传递方法"><a href="/2019/10/20/Kafka面试/#请说明什么是传统的消息传递方法" class="headerlink" title="请说明什么是传统的消息传递方法?"></a>请说明什么是传统的消息传递方法?</h4><p>传统的消息传递方法包括两种：</p>
+<ul>
+<li>排队：在队列中，一组用户可以从服务器中读取消息，每条消息都发送给其中一个人。</li>
+<li>发布-订阅：在这个模型中，消息被广播给所有的用户。</li>
+</ul>
+<h4 id="Kafka-与传统消息系统之间有三个关键区别"><a href="/2019/10/20/Kafka面试/#Kafka-与传统消息系统之间有三个关键区别" class="headerlink" title="Kafka 与传统消息系统之间有三个关键区别"></a>Kafka 与传统消息系统之间有三个关键区别</h4><ul>
+<li>Kafka <strong>持久化日志</strong>，这些日志可以被<strong>重复读取和无限期保留</strong></li>
+<li>Kafka 是一个<strong>分布式系统</strong>：它以集群的方式运行，可以灵活伸缩，在内部通过复制数据提升容错能力和高可用性</li>
+<li>Kafka 支持<strong>实时的流式处理</strong></li>
+</ul>
+<h4 id="列举kafka的应用场景"><a href="/2019/10/20/Kafka面试/#列举kafka的应用场景" class="headerlink" title="列举kafka的应用场景"></a>列举kafka的应用场景</h4><ul>
+<li><p>日志收集：一个公司可以用Kafka可以<u>收集各种服务的log</u>，通过kafka以统一接口服务的方式开放给各种consumer，例如Hadoop、Hbase、Solr等</p>
+</li>
+<li><p>消息系统：<u>解耦和生产者和消费者、缓存消息</u>等</p>
+</li>
+<li><p>用户活动跟踪：Kafka经常被用来<u>记录web用户或者app用户的各种活动</u>，如浏览网页、搜索、点击等活动，这些活动信息被各个服务器发布到kafka的topic中，然后订阅者通过订阅这些topic来做实时的监控分析，或者装载到Hadoop、数据仓库中做离线分析和挖掘</p>
+</li>
+<li><p>运营指标：<u>Kafka也经常用来记录运营监控数据</u>。包括收集各种分布式应用的数据，生产各种操作的集中反馈，比如报警和报告</p>
+</li>
+<li><p>流式处理：比如spark streaming和storm</p>
+</li>
+<li><p>事件源</p>
+<h3 id="ISR问题"><a href="/2019/10/20/Kafka面试/#ISR问题" class="headerlink" title="ISR问题"></a>ISR问题</h3></li>
+</ul>
+<blockquote>
+<h4 id="Kafka中的ISR、AR又代表什么？ISR的伸缩又指什么"><a href="/2019/10/20/Kafka面试/#Kafka中的ISR、AR又代表什么？ISR的伸缩又指什么" class="headerlink" title="Kafka中的ISR、AR又代表什么？ISR的伸缩又指什么"></a>Kafka中的ISR、AR又代表什么？ISR的伸缩又指什么</h4><ul>
+<li><p>ISR: In-Sync Replicas 副本同步队列</p>
+</li>
+<li><p>AR: Assigned Replicas 所有副本</p>
+</li>
+</ul>
+<p>ISR是由leader维护，follower从leader同步数据有一些延迟（包括延迟时间replica.lag.time.max.ms和延迟条数replica.lag.max.messages两个维度, 当前最新的版本0.10.x中只支持replica.lag.time.max.ms这个维度），任意一个超过阈值都会把follower剔除出ISR, 存入OSR（Outof-Sync Replicas）列表，<strong>新加入的follower也会先存放在OSR中</strong>。AR=ISR+OSR。</p>
+</blockquote>
+<h4 id="如果副本在ISR中停留了很长时间表明什么"><a href="/2019/10/20/Kafka面试/#如果副本在ISR中停留了很长时间表明什么" class="headerlink" title="如果副本在ISR中停留了很长时间表明什么?"></a>如果副本在ISR中停留了很长时间表明什么?</h4><p>如果一个副本在ISR中保留了很长一段时间，那么它就表明，跟踪器无法像在leader收集数据那样快速地获取数据。</p>
+<h4 id="请说明如果首选的副本不在ISR中会发生什么"><a href="/2019/10/20/Kafka面试/#请说明如果首选的副本不在ISR中会发生什么" class="headerlink" title="请说明如果首选的副本不在ISR中会发生什么?"></a>请说明如果首选的副本不在ISR中会发生什么?</h4><p>如果首选的副本不在ISR中，控制器将无法将leadership转移到首选的副本。</p>
+<h4 id="解释如何减少ISR中的扰动-broker什么时候离开ISR"><a href="/2019/10/20/Kafka面试/#解释如何减少ISR中的扰动-broker什么时候离开ISR" class="headerlink" title="解释如何减少ISR中的扰动? broker什么时候离开ISR?"></a>解释如何减少ISR中的扰动? broker什么时候离开ISR?</h4><p>ISR是一组与leaders完全同步的消息副本，也就是说ISR中包含了所有提交的消息。ISR应该总是包含所有的副本，直到出现真正的故障。如果一个副本从leader中脱离出来，将会从ISR中删除。</p>
+<h4 id="ISR集合是什么？谁维护着？如何维护？"><a href="/2019/10/20/Kafka面试/#ISR集合是什么？谁维护着？如何维护？" class="headerlink" title="ISR集合是什么？谁维护着？如何维护？"></a>ISR集合是什么？谁维护着？如何维护？</h4><p>ISR（In-Sync Replica）集合表示的是目前可用并且消息量与leader相差不多的副本集合，这是整个副本集合的一个子集, ISR集合的副本必须满足：</p>
+<ul>
+<li>副本所在节点必须维持着与zookeeper的连接；</li>
+<li>副本最后一条消息的offset与leader副本最后一条消息的offset之间的差值不能超出指定的阈值</li>
+</ul>
+<p>每个分区的leader副本都会维护此分区的ISR集合，写请求首先由leader副本处理，之后follower副本会从leader副本上拉取写入的消息，这个过程会有一定的延迟，<strong>导致follower副本中保存的消息略少于leader副本，只要未超出阈值都是可以容忍的</strong></p>
+<h4 id="请说明Kafka相对传统技术有什么优势"><a href="/2019/10/20/Kafka面试/#请说明Kafka相对传统技术有什么优势" class="headerlink" title="请说明Kafka相对传统技术有什么优势?"></a>请说明Kafka相对传统技术有什么优势?</h4><ul>
+<li><strong>快速</strong>：单一的Kafka代理可以处理成千上万的客户端，每秒处理数兆字节的读写操作。</li>
+<li><strong>可伸缩</strong>：在<strong>一组机器上对数据进行分区和简化</strong>，以支持更大的数据</li>
+<li><strong>持久</strong>(容错性高)：消息是持久性的，并在集群中进行复制，以防止数据丢失。</li>
+<li><strong>设计</strong>：它提供了容错保证和持久性</li>
+</ul>
+<h4 id="在Kafka中broker的意义是什么"><a href="/2019/10/20/Kafka面试/#在Kafka中broker的意义是什么" class="headerlink" title="在Kafka中broker的意义是什么?"></a>在Kafka中broker的意义是什么?</h4><p>接收Producer发过来的数据，并且将它持久化，同时提供给Consumer去订阅<br>组成Kafka集群节点，之间没有主从关系，依赖ZooKeeper来协调，broker负责消息的读取和存储，一个broker可以管理多个partition</p>
+<h4 id="什么是broker？作用是什么"><a href="/2019/10/20/Kafka面试/#什么是broker？作用是什么" class="headerlink" title="什么是broker？作用是什么?"></a>什么是broker？作用是什么?</h4><p> 一个单独的<strong>kafka server</strong>就<strong>是一个broker</strong>，broker主要工作就是接收生产者发过来的消息，分配offset，之后保存到磁盘中。同时，<strong>接收消费者、其他broker的请求</strong>，根据请求类型进行相应的处理并返回响应，在一般的生产环境中，<strong>一个broker独占一台物理服务器</strong></p>
+<h4 id="Kafka服务器能接收到的最大信息是多少"><a href="/2019/10/20/Kafka面试/#Kafka服务器能接收到的最大信息是多少" class="headerlink" title="Kafka服务器能接收到的最大信息是多少?"></a>Kafka服务器能接收到的最大信息是多少?</h4><p>Kafka服务器可以接收到的消息的最大大小是1000000字节。<strong>1MB</strong>=1000kb</p>
+<h4 id="解释Kafka的Zookeeper是什么-我们可以在没有Zookeeper的情况下使用Kafka吗"><a href="/2019/10/20/Kafka面试/#解释Kafka的Zookeeper是什么-我们可以在没有Zookeeper的情况下使用Kafka吗" class="headerlink" title="解释Kafka的Zookeeper是什么?我们可以在没有Zookeeper的情况下使用Kafka吗?"></a>解释Kafka的Zookeeper是什么?我们可以在没有Zookeeper的情况下使用Kafka吗?</h4><p><strong>Zookeeper是一个开放源码的、高性能的协调服务</strong>，它用于Kafka的分布式应用。<br>作用：协调Kafka Broker，存储原数据：==<strong>consumer的offset+broker信息+topic信息+partition个数信息</strong>==。<br>不，<strong>不可能越过Zookeeper</strong>，直接<strong>联系Kafka broker</strong>。一旦Zookeeper停止工作，它就不能服务客户端请求。</p>
+<p>Zookeeper主要用于在集群中不同节点之间进行通信</p>
+<p>在Kafka中，它被用于提交偏移量，因此如果节点在任何情况下都失败了，它都可以从之前提交的偏移量中获取</p>
+<p>除此之外，它还执行其他活动，如: ==leader检测、分布式同步、配置管理、识别新节点何时离开或连接、集群、节点实时状态等等。==</p>
+<h4 id="解释Kafka的用户如何消费信息"><a href="/2019/10/20/Kafka面试/#解释Kafka的用户如何消费信息" class="headerlink" title="解释Kafka的用户如何消费信息?"></a>解释Kafka的用户如何消费信息?</h4><p>在Kafka中传递消息是通过使用sendfile<code>【零拷贝】</code> API完成的。它支持<strong>将字节从套接口转移到磁盘</strong>，通过内核空间保存副本，并在内核用户之间调用内核。<br><strong>零拷贝：</strong>用户向内核去发送一个命令，我要操作那些数据，然后<strong>直接从磁盘转成Socket Buffer</strong>，再从Socket Buffer到网卡Buffer，再传出去【少了两次的copy】</p>
+<h4 id="解释如何提高远程用户的吞吐量"><a href="/2019/10/20/Kafka面试/#解释如何提高远程用户的吞吐量" class="headerlink" title="解释如何提高远程用户的吞吐量?"></a>解释如何提高远程用户的吞吐量?</h4><p>如果用户位于与broker不同的数据中心，则可能需要<strong>调优套接口缓冲区大小</strong>，以对长网络延迟进行摊销。</p>
+<h4 id="解释一下，在数据制作过程中，你如何能从Kafka得到准确的信息"><a href="/2019/10/20/Kafka面试/#解释一下，在数据制作过程中，你如何能从Kafka得到准确的信息" class="headerlink" title="解释一下，在数据制作过程中，你如何能从Kafka得到准确的信息?"></a>解释一下，在数据制作过程中，你如何能从Kafka得到准确的信息?</h4><p>在数据中，为了精确地获得Kafka的消息，你必须遵循两件事: </p>
+<ul>
+<li>在数据<u>消耗期间</u><strong>避免重复</strong></li>
+<li>在数据<u>生产过程中</u>避免重复</li>
+</ul>
+<p>这里有两种方法，可以在数据生成时准确地获得一个语义</p>
+<p>每个分区使用一个单独的写入器，每当你<strong>发现一个网络错误</strong>，检查该分区中的<strong>最后一条消息</strong>，以查看您的最后一次写入<strong>是否成功</strong></p>
+<p>在消息中包含一个主键(UUID或其他)，并在用户中进行反复制</p>
+<h4 id="Kafka为什么需要复制"><a href="/2019/10/20/Kafka面试/#Kafka为什么需要复制" class="headerlink" title="Kafka为什么需要复制?"></a>Kafka为什么需要复制?</h4><p>==Kafka的数据复制确保了<strong>任何已发布的消息不会丢失</strong>，并且可以在机器错误、程序错误或更常见些的软件升级中使用。==</p>
+<h4 id="有可能在生产后发生消息偏移吗"><a href="/2019/10/20/Kafka面试/#有可能在生产后发生消息偏移吗" class="headerlink" title="有可能在生产后发生消息偏移吗?"></a>有可能在生产后发生消息偏移吗?</h4><p>在大多数队列系统中，作为生产者的类无法做到这一点，它的作用是触发并忘记消息。</p>
+<ul>
+<li><input checked disabled type="checkbox"> <strong>broker将完成剩下的工作，比如使用id进行适当的元数据处理、偏移量等。</strong><br>作为消息的用户，你可以从Kafka broker中获得补偿。如果你注视SimpleConsumer类，你会注意到它会获取包括偏移量作为列表的MultiFetchResponse对象。此外，当你对Kafka消息进行迭代时，你会拥有包括偏移量和消息发送的MessageAndOffset对象。</li>
+</ul>
+<h4 id="kafka主要特征"><a href="/2019/10/20/Kafka面试/#kafka主要特征" class="headerlink" title="kafka主要特征"></a>kafka主要特征</h4><ul>
+<li>kafka具有<strong>近乎实时性的消息处理能力</strong>，<strong>面对海量数据</strong>，<strong>高效的存储消息</strong>和<strong>查询消息</strong>。kafka将消息保存在磁盘中，以<strong>顺序读写</strong>的方式访问磁盘，从而<strong>避免了随机读写磁盘导致的性能瓶颈</strong></li>
+<li>kafka支持批量读写消息，并且对消息批量压缩，提高了网络利用率和压缩效率</li>
+<li>kafka支持消息分区，每个分区中的消息保证顺序传输，而分区之间可以并发操作，提高了kafka的并发能力</li>
+<li>kafka支持<strong>在线增加分区</strong>，支持在线水平扩展</li>
+<li>kafka支持为每个分区创建多个副本，其中<strong>只会有一个leader副本负责读写</strong>，其他副本只负责与leader副本同步，这种方式提高了数据的容灾能力，<u>kafka会将leader副本均匀的分布在集群中的服务器上</u>，实现性能最大化</li>
+</ul>
+<h4 id="kafka主题分区的作用"><a href="/2019/10/20/Kafka面试/#kafka主题分区的作用" class="headerlink" title="kafka主题分区的作用?"></a>kafka主题分区的作用?</h4><p>kafka的每个topic都可以分为多个partition，每个partition都有多个replica（副本），<strong>每个分区中的消息是不同的</strong>，提高了并发读写的能力，而同一分区的不同副本中保存的是相同的消息，副本之间是一主多从关系，其中leader副本处理读写请求，follower副本只与leader副本进行消息同步，当leader副本出现故障时，则从follower副本中重新选举leader副本对外提供服务。这样，通过提高分区的数量，就可以<strong>实现水平扩展，通过提高副本数量，就可以提高容灾能力</strong></p>
+<h4 id="consumer水平扩展如何实现"><a href="/2019/10/20/Kafka面试/#consumer水平扩展如何实现" class="headerlink" title="consumer水平扩展如何实现?"></a>consumer水平扩展如何实现?</h4><p>kafka支持<strong>consumer水平扩展</strong>，可以让多个consumer加入一个consumer group，<strong>在一个consumer group中，每个分区只能分配给一个consumer</strong>，当kafka服务端增加分区数量进行水平扩展后，可以向consumer group中增加新的consumer来提高整个consumer group的消费能力，当consumer group 中的一个consumer出现故障下线时，会通过rebalance操作下线的consumer，它负责处理的分区将分配给其他consumer</p>
+<h4 id="消息的顺序"><a href="/2019/10/20/Kafka面试/#消息的顺序" class="headerlink" title="消息的顺序"></a>消息的顺序</h4><p>kafka保证<strong>一个partition内消息是有序</strong>的，但是并<strong>不保证多个partition之间的数据有顺序</strong>，每个topic可以划分成多个分区，同一个topic下的不同分区包含的消息是不同的，每个<u>消息在被添加到分区时，都会被分配一个offset，它是此消息在分区中的唯一编号</u>，kafka通过offset保证消息在分区内的顺序，<strong>offset顺序不跨分区</strong>，即kafka只保证在同一个分区内的消息是有序的</p>
+<h4 id="为了避免磁盘被占满，kafka会周期性的删除陈旧的消息，删除策略是什么"><a href="/2019/10/20/Kafka面试/#为了避免磁盘被占满，kafka会周期性的删除陈旧的消息，删除策略是什么" class="headerlink" title="为了避免磁盘被占满，kafka会周期性的删除陈旧的消息，删除策略是什么?"></a>为了避免磁盘被占满，kafka会周期性的删除陈旧的消息，删除策略是什么?</h4><ul>
+<li>一种是根据消息<strong>保留的时间</strong></li>
+<li>一种是根据topic存储的<strong>数据大小</strong></li>
+</ul>
+<h4 id="什么是日志压缩"><a href="/2019/10/20/Kafka面试/#什么是日志压缩" class="headerlink" title="什么是日志压缩?"></a>什么是日志压缩?</h4><p>在很多场景中，消息的key与value之间的对应关系是不断变化的，消费者只关心key对应的最新value，此时，可以开启kafka的日志压缩功能，kafka会在后台启动一个线程，定期<u>将相同key的消息进行合并，只保留最新的value值</u></p>
+<h4 id="同一分区的多个副本包括的消息是否一致？"><a href="/2019/10/20/Kafka面试/#同一分区的多个副本包括的消息是否一致？" class="headerlink" title="同一分区的多个副本包括的消息是否一致？"></a>同一分区的多个副本包括的消息是否一致？</h4><p>每个副本中包含的消息是一样的，但是再<u>同一时刻，副本之间并不是完全一样的</u></p>
+<h4 id="Kafka的设计时什么样的呢？"><a href="/2019/10/20/Kafka面试/#Kafka的设计时什么样的呢？" class="headerlink" title="Kafka的设计时什么样的呢？"></a>Kafka的设计时什么样的呢？</h4><ul>
+<li>Kafka将消息以topic为单位进行归纳</li>
+<li>将向Kafka topic发布消息的程序成为producer</li>
+<li>将预订topics并消费消息的程序成为consumer</li>
+<li>Kafka以集群的方式运行，可以由一个或多个服务组成，每个服务叫做一个broker</li>
+<li>producers通过网络将消息发送到Kafka集群，集群向消费者提供消息</li>
+</ul>
+<h4 id="数据传输的事物定义有哪三种？"><a href="/2019/10/20/Kafka面试/#数据传输的事物定义有哪三种？" class="headerlink" title="数据传输的事物定义有哪三种？"></a>数据传输的事物定义有哪三种？</h4><p>数据传输的事务定义通常有以下三种级别：<br>（1）<em>最多一次</em>：消息不会被重复发送，最多被传输一次，但也有可能一次不传输<br>（2）<em>最少一次</em>：消息不会被漏发送，最少被传输一次，但也有可能被重复传输.<br>（3）<em>精确的一次</em>（Exactly once）：不会漏传输也不会重复传输,每个消息都传输被一次而且仅仅被传输一次，这是大家所期望的</p>
+<h4 id="Kafka判断一个节点是否还活着有那两个条件？心跳机制-延时限制"><a href="/2019/10/20/Kafka面试/#Kafka判断一个节点是否还活着有那两个条件？心跳机制-延时限制" class="headerlink" title="Kafka判断一个节点是否还活着有那两个条件？心跳机制,延时限制"></a>Kafka判断一个节点是否还活着有那两个条件？心跳机制,延时限制</h4><ul>
+<li>节点必须可以维护和ZooKeeper的连接，Zookeeper通过心跳机制检查每个节点的连接</li>
+<li>如果节点是个follower,他必须能及时的同步leader的写操作，延时不能太久</li>
+</ul>
+<h4 id="producer是否直接将数据发送到broker的leader-主节点-？可以"><a href="/2019/10/20/Kafka面试/#producer是否直接将数据发送到broker的leader-主节点-？可以" class="headerlink" title="producer是否直接将数据发送到broker的leader(主节点)？可以"></a>producer是否直接将数据发送到broker的leader(主节点)？可以</h4><p>producer直接将数据发送到broker的leader(主节点)，不需要在多个节点进行分发，为了帮助producer做到这点，所有的Kafka节点都可以及时的告知：<u>哪些节点是活动的，目标topic目标分区的leader在哪</u>。这样producer就<strong>可以直接将消息发送到目的地了</strong></p>
+<h4 id="Kafka-consumer是否可以消费指定分区消息？"><a href="/2019/10/20/Kafka面试/#Kafka-consumer是否可以消费指定分区消息？" class="headerlink" title="Kafka consumer是否可以消费指定分区消息？"></a>Kafka consumer是否可以消费指定分区消息？</h4><p>Kafka consumer消费消息时，向broker发出”fetch”请求去消费特定分区的消息，consumer指定消息在日志中的偏移量（offset），就可以消费从这个位置开始的消息，customer拥有了offset的控制权，可以向后回滚去重新消费之前的消息，这是很有意义的</p>
+<h4 id="Kafka消息是采用Pull模式，还是Push模式？kafka使用了pull模式-根据订阅者的消费能力进行拉取数据"><a href="/2019/10/20/Kafka面试/#Kafka消息是采用Pull模式，还是Push模式？kafka使用了pull模式-根据订阅者的消费能力进行拉取数据" class="headerlink" title="Kafka消息是采用Pull模式，还是Push模式？kafka使用了pull模式, 根据订阅者的消费能力进行拉取数据,"></a>Kafka消息是采用Pull模式，还是Push模式？kafka使用了pull模式, 根据订阅者的消费能力进行拉取数据,</h4><p>Kafka最初考虑的问题是，customer应该从brokers拉取消息还是brokers将消息推送到consumer，也就是pull还push。在这方面，Kafka遵循了一种大部分消息系统共同的传统的设计：producer将消息推送到broker，consumer从broker拉取消息<br>一些消息系统比如Scribe和Apache Flume采用了push模式，将消息推送到下游的consumer。这样做有好处也有坏处：由<strong>broker决定消息推送的速率</strong>，对于不同消费速率的consumer就不太好处理了。消息系统都致力于让consumer以最大的速率最快速的消费消息，但不幸的是，push模式下，当broker推送的速率远大于consumer消费的速率时，consumer恐怕就要崩溃了。最终Kafka还是选取了传统的pull模式<br><strong>Pull模式的另外一个好处是consumer可以自主决定是否批量的从broker拉取数据</strong>。Push模式必须在不知道下游consumer消费能力和消费策略的情况下决定是立即推送每条消息还是缓存之后批量推送。如果为了避免consumer崩溃而采用较低的推送速率，将可能导致一次只推送较少的消息而造成浪费。Pull模式下，consumer就可以根据自己的消费能力去决定这些策略<br>Pull有个缺点是，<strong>如果broker没有可供消费的消息，将导致consumer不断在循环中轮询</strong>，直到新消息到t达。为了避免这点，<strong>Kafka有个参数可以让consumer阻塞知道新消息到达(</strong>当然也可以阻塞知道消息的数量达到某个特定的量这样就可以批量发</p>
+<h4 id="Kafka存储在硬盘上的消息格式是什么？"><a href="/2019/10/20/Kafka面试/#Kafka存储在硬盘上的消息格式是什么？" class="headerlink" title="Kafka存储在硬盘上的消息格式是什么？"></a>Kafka存储在硬盘上的消息格式是什么？</h4><p>==版本号(1个字节)+校验码(4个字节)+消息(n个字节)==</p>
+<p>消息由一个固定长度的头部和可变长度的字节数组组成。头部包含了一个版本号和CRC32校验码。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">消息长度: 4 bytes (value: 1+4+n)</span><br><span class="line">版本号: 1 byte</span><br><span class="line">CRC32校验码: 4 bytes</span><br><span class="line">具体的消息: n bytes</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="Kafka高效文件存储设计特点："><a href="/2019/10/20/Kafka面试/#Kafka高效文件存储设计特点：" class="headerlink" title="Kafka高效文件存储设计特点："></a>Kafka高效文件存储设计特点：</h4><ul>
+<li><p>Kafka把topic中一个partition<strong>大文件分成多个小文件段</strong>，通过多个小文件段，就容易定期清除或删除已经消费完文件，减少磁盘占用。</p>
+</li>
+<li><p>通过索引信息可以快速定位message和确定response的最大大小。</p>
+</li>
+<li><p>通过index元数据全部映射到memory，可以避免segment file的IO磁盘操作。</p>
+</li>
+<li><p><strong>通过索引文件稀疏存储</strong>，可以大幅降低index文件元数据占用空间大小。</p>
+</li>
+</ul>
+<h4 id="Kafka创建Topic时如何将分区放置到不同的Broker中"><a href="/2019/10/20/Kafka面试/#Kafka创建Topic时如何将分区放置到不同的Broker中" class="headerlink" title="Kafka创建Topic时如何将分区放置到不同的Broker中"></a>Kafka创建Topic时如何将分区放置到不同的Broker中</h4><ul>
+<li>副本因子不能大于 Broker 的个数；</li>
+<li>第一个分区（编号为0）的第一个副本放置位置是随机从 brokerList 选择的；其他分区的第一个副本放置位置相对于第0个分区依次往后移。也就是如果我们有5个 Broker，5个分区，假设第一个分区放在第四个 Broker 上，那么第二个分区将会放在第五个 Broker 上；第三个分区将会放在第一个 Broker 上；第四个分区将会放在第二个 Broker 上，依次类推；</li>
+<li>剩余的副本相对于第一个副本放置位置其实是由 nextReplicaShift 决定的，而这个数也是随机产生的<br>Kafka新建的分区会在哪个目录下创建<br>在启动 Kafka 集群之前，我们需要配置好 log.dirs 参数，其值是 Kafka 数据的存放目录，这个参数可以配置多个目录，目录之间使用逗号分隔，通常这些目录是分布在不同的磁盘上用于提高读写性能。当然我们也可以配置 log.dir 参数，含义一样。只需要设置其中一个即可。如果 log.dirs 参数只配置了一个目录，那么分配到各个 Broker 上的分区肯定只能在这个目录下创建文件夹用于存放数据。<br>但是如果 log.dirs 参数配置了多个目录，那么 Kafka 会在哪个文件夹中创建分区目录呢？答案是：<strong>Kafka 会在含有分区目录最少的文件夹中创建新的分区目录</strong>，分区目录名为 Topic名+分区ID。注意，是分区文件夹总数最少的目录，而不是磁盘使用量最少的目录！也就是说，如果你给 log.dirs 参数新增了一个新的磁盘，新的分区目录肯定是先在这个新的磁盘上创建直到这个新的磁盘目录拥有的分区目录不是最少为止。</li>
+</ul>
+<h4 id="partition的数据如何保存到硬盘"><a href="/2019/10/20/Kafka面试/#partition的数据如何保存到硬盘" class="headerlink" title="partition的数据如何保存到硬盘?"></a>partition的数据如何保存到硬盘?</h4><ul>
+<li>topic中的<u>多个partition以文件夹的形式保存到broker</u>，每个分区序号从0递增，且消息有序</li>
+<li>Partition文件下有多个segment（xxx.index，xxx.log）,segment 文件里的 大小和配置文件大小一致可以根据要求修改 默认为1g, 如果大小大于1g时，会滚动一个新的segment并且以上一个segment最后一条消息的偏移量命名</li>
+</ul>
+<h4 id="kafka的ack机制生产阶段可能会丢数据-但是发不出去之后就不会丢"><a href="/2019/10/20/Kafka面试/#kafka的ack机制生产阶段可能会丢数据-但是发不出去之后就不会丢" class="headerlink" title="kafka的ack机制生产阶段可能会丢数据, 但是发不出去之后就不会丢"></a>kafka的ack机制生产阶段可能会丢数据, 但是发不出去之后就不会丢</h4><p>==生产阶段可能会丢数据, 但是发不出去之后就不会丢==(会备份)</p>
+<p>request.required.acks有三个值 0、1、-1：</p>
+<ul>
+<li>0 (<strong>生产者只负责生产不管其他的)</strong>：生产者不会等待broker的ack，这个延迟最低但是存储的保证最弱当server挂掉的时候就会丢数据</li>
+<li>1 (生产者等待leader的副本之, 还是可能丢数据)：服务端会等待ack值 leader副本确认接收到消息后发送ack但是如果leader挂掉后他不确保是否复制完成新leader也会导致数据丢失</li>
+<li>-1(所有人都响应了,才继续生产)：同样在1的基础上 服务端会等所有的follower的副本受到数据后才会受到leader发出的ack，这样数据不会丢失</li>
+</ul>
+<h4 id="Kafka的消费者如何消费数据"><a href="/2019/10/20/Kafka面试/#Kafka的消费者如何消费数据" class="headerlink" title="Kafka的消费者如何消费数据"></a>Kafka的消费者如何消费数据</h4><p>==记录偏移量, 下次接着消费==</p>
+<p>消费者每次消费数据的时候，<u>消费者都会记录消费的物理偏移量（offset）的位置, 等到下次消费时，他会接着上次位置</u>继续消费</p>
+<p>消费者负载均衡策略<br>一个消费者组中的<u>一个分片对应一个消费者成员</u>，他能保证每个消费者成员都能访问，如果组中成员太多会有空闲的成员</p>
+<h4 id="数据有序"><a href="/2019/10/20/Kafka面试/#数据有序" class="headerlink" title="数据有序"></a>数据有序</h4><ul>
+<li>一个消费者组里它的内部是有序的</li>
+<li>消费者组与消费者组之间是无序的</li>
+</ul>
+<h4 id="kafka生产数据时数据的分组策略"><a href="/2019/10/20/Kafka面试/#kafka生产数据时数据的分组策略" class="headerlink" title="kafka生产数据时数据的分组策略"></a>kafka生产数据时数据的分组策略</h4><ul>
+<li>生产者决定数据产生到集群的哪个partition中</li>
+<li>每一条消息都是以（key，value）格式, Key是由生产者发送数据传入, 所以<strong>生产者（key）决定了数据产生到集群的哪个partition</strong></li>
+</ul>
+<h2 id="面试题"><a href="/2019/10/20/Kafka面试/#面试题" class="headerlink" title="面试题"></a>面试题</h2><h4 id="1-Kafka中的HW、LEO、LSO、LW等分别代表什么？"><a href="/2019/10/20/Kafka面试/#1-Kafka中的HW、LEO、LSO、LW等分别代表什么？" class="headerlink" title="1. Kafka中的HW、LEO、LSO、LW等分别代表什么？"></a>1. Kafka中的HW、LEO、LSO、LW等分别代表什么？</h4><ul>
+<li>HW:High Watermark 高水位，取一个partition对应的ISR中最小的LEO作为HW，consumer最多只能消费到HW所在的位置上一条信息。</li>
+<li>LEO:LogEndOffset 当前日志文件中下一条待写信息的offset</li>
+<li>HW/LEO这两个都是指最后一条的下一条的位置而不是指最后一条的位置。</li>
+<li>LSO:Last Stable Offset 对未完成的事务而言，LSO 的值等于事务中第一条消息的位置(firstUnstableOffset)，对已完成的事务而言，它的值同 HW 相同</li>
+<li>LW:Low Watermark 低水位, 代表 AR 集合中最小的 logStartOffset 值</li>
+</ul>
+<h4 id="2-Kafka中的分区器、序列化器、拦截器是否了解？它们之间的处理顺序是什么？"><a href="/2019/10/20/Kafka面试/#2-Kafka中的分区器、序列化器、拦截器是否了解？它们之间的处理顺序是什么？" class="headerlink" title="2. Kafka中的分区器、序列化器、拦截器是否了解？它们之间的处理顺序是什么？"></a>2. Kafka中的分区器、序列化器、拦截器是否了解？它们之间的处理顺序是什么？</h4><p>拦截器-&gt;序列化器-&gt;分区器</p>
+<h4 id="3-Kafka生产者客户端中使用了几个线程来处理？分别是什么？"><a href="/2019/10/20/Kafka面试/#3-Kafka生产者客户端中使用了几个线程来处理？分别是什么？" class="headerlink" title="3. Kafka生产者客户端中使用了几个线程来处理？分别是什么？"></a>3. Kafka生产者客户端中使用了几个线程来处理？分别是什么？</h4><p>2个，主线程和Sender线程。主线程负责创建消息，然后通过分区器、序列化器、拦截器作用之后缓存到累加器RecordAccumulator中。Sender线程负责将RecordAccumulator中消息发送到kafka中.</p>
+<h4 id="4-“消费组中的消费者个数如果超过topic的分区，那么就会有消费者消费不到数据”这句话是否正确？如果不正确，那么有没有什么hack的手段？"><a href="/2019/10/20/Kafka面试/#4-“消费组中的消费者个数如果超过topic的分区，那么就会有消费者消费不到数据”这句话是否正确？如果不正确，那么有没有什么hack的手段？" class="headerlink" title="4. “消费组中的消费者个数如果超过topic的分区，那么就会有消费者消费不到数据”这句话是否正确？如果不正确，那么有没有什么hack的手段？"></a>4. “消费组中的消费者个数如果超过topic的分区，那么就会有消费者消费不到数据”这句话是否正确？如果不正确，那么有没有什么hack的手段？</h4><p>不正确，通过自定义分区分配策略，可以将一个consumer指定消费所有partition。</p>
+<h4 id="5-消费者提交消费位移时提交的是当前消费到的最新消息的offset还是offset-1"><a href="/2019/10/20/Kafka面试/#5-消费者提交消费位移时提交的是当前消费到的最新消息的offset还是offset-1" class="headerlink" title="5. 消费者提交消费位移时提交的是当前消费到的最新消息的offset还是offset+1?"></a>5. 消费者提交消费位移时提交的是当前消费到的最新消息的offset还是offset+1?</h4><p><strong>offset+1</strong></p>
+<h4 id="6-有哪些情形会造成重复消费？"><a href="/2019/10/20/Kafka面试/#6-有哪些情形会造成重复消费？" class="headerlink" title="6. 有哪些情形会造成重复消费？"></a>6. 有哪些情形会造成重复消费？</h4><p>消费者消费后没有commit offset(程序崩溃/强行kill/消费耗时/自动提交偏移情况下unscrible)</p>
+<h4 id="7-那些情景下会造成消息漏消费？"><a href="/2019/10/20/Kafka面试/#7-那些情景下会造成消息漏消费？" class="headerlink" title="7. 那些情景下会造成消息漏消费？"></a>7. 那些情景下会造成消息漏消费？</h4><p>==消费者没有处理完消息 提交offset(自动提交偏移 未处理情况下程序异常结束)==</p>
+<h4 id="8-Kafka-Consumer是非线程安全的，那么怎么样实现多线程消费？"><a href="/2019/10/20/Kafka面试/#8-Kafka-Consumer是非线程安全的，那么怎么样实现多线程消费？" class="headerlink" title="8. Kafka Consumer是非线程安全的，那么怎么样实现多线程消费？"></a>8. Kafka Consumer是非线程安全的，那么怎么样实现多线程消费？</h4><p>1.在每个线程中新建一个Kafka Consumer</p>
+<p>2.单线程创建Kafka Consumer，多个处理线程处理消息（难点在于是否要考虑消息顺序性，offset的提交方式）</p>
+<h4 id="9-当你使用kafka-topics-sh创建（删除）了一个topic之后，Kafka背后会执行什么逻辑？"><a href="/2019/10/20/Kafka面试/#9-当你使用kafka-topics-sh创建（删除）了一个topic之后，Kafka背后会执行什么逻辑？" class="headerlink" title="9. 当你使用kafka-topics.sh创建（删除）了一个topic之后，Kafka背后会执行什么逻辑？"></a>9. 当你使用kafka-topics.sh创建（删除）了一个topic之后，Kafka背后会执行什么逻辑？</h4><p>创建:在zk上/brokers/topics/下节点 kafkabroker会监听节点变化创建主题<br>删除:调用脚本删除topic会在zk上将topic设置待删除标志，kafka后台有定时的线程会扫描所有需要删除的topic进行删除</p>
+<h4 id="10-创建topic时如何选择合适的分区数？"><a href="/2019/10/20/Kafka面试/#10-创建topic时如何选择合适的分区数？" class="headerlink" title="10. 创建topic时如何选择合适的分区数？"></a>10. 创建topic时如何选择合适的分区数？</h4><p>根据集群的机器数量和需要的吞吐量来决定适合的分区数</p>
+<h4 id="11-Kafka目前有那些内部topic，它们都有什么特征？各自的作用又是什么？"><a href="/2019/10/20/Kafka面试/#11-Kafka目前有那些内部topic，它们都有什么特征？各自的作用又是什么？" class="headerlink" title="11. Kafka目前有那些内部topic，它们都有什么特征？各自的作用又是什么？"></a>11. Kafka目前有那些内部topic，它们都有什么特征？各自的作用又是什么？</h4><p>__consumer_offsets 以下划线开头，保存消费组的偏移</p>
+<h4 id="12-优先副本是什么？它有什么特殊的作用？"><a href="/2019/10/20/Kafka面试/#12-优先副本是什么？它有什么特殊的作用？" class="headerlink" title="12. 优先副本是什么？它有什么特殊的作用？"></a>12. 优先副本是什么？它有什么特殊的作用？</h4><p>优先副本 会是默认的leader副本 发生leader变化时重选举会优先选择优先副本作为leader</p>
+<h4 id="13-Kafka有哪几处地方有分区分配的概念？简述大致的过程及原理"><a href="/2019/10/20/Kafka面试/#13-Kafka有哪几处地方有分区分配的概念？简述大致的过程及原理" class="headerlink" title="13. Kafka有哪几处地方有分区分配的概念？简述大致的过程及原理"></a>13. Kafka有哪几处地方有分区分配的概念？简述大致的过程及原理</h4><p>创建主题时<br>如果不手动指定分配方式 有两种分配方式</p>
+<p>消费组内分配</p>
+<h4 id="14-简述Kafka的日志目录结构"><a href="/2019/10/20/Kafka面试/#14-简述Kafka的日志目录结构" class="headerlink" title="14. 简述Kafka的日志目录结构"></a>14. 简述Kafka的日志目录结构</h4><p>每个partition一个文件夹，包含四类文件.index .log .timeindex leader-epoch-checkpoint<br>.index .log .timeindex 三个文件成对出现 前缀为上一个segment的最后一个消息的偏移 log文件中保存了所有的消息 index文件中保存了稀疏的相对偏移的索引 timeindex保存的则是时间索引<br>leader-epoch-checkpoint中保存了每一任leader开始写入消息时的offset 会定时更新<br>follower被选为leader时会根据这个确定哪些消息可用</p>
+<h4 id="15-Kafka中有那些索引文件？"><a href="/2019/10/20/Kafka面试/#15-Kafka中有那些索引文件？" class="headerlink" title="15. Kafka中有那些索引文件？"></a>15. Kafka中有那些索引文件？</h4><p>如上</p>
+<h4 id="16-如果我指定了一个offset，Kafka怎么查找到对应的消息？"><a href="/2019/10/20/Kafka面试/#16-如果我指定了一个offset，Kafka怎么查找到对应的消息？" class="headerlink" title="16. 如果我指定了一个offset，Kafka怎么查找到对应的消息？"></a>16. 如果我指定了一个offset，Kafka怎么查找到对应的消息？</h4><p>1.通过文件名前缀数字x找到该绝对offset 对应消息所在文件</p>
+<p>2.offset-x为在文件中的相对偏移</p>
+<p>3.通过index文件中记录的索引找到最近的消息的位置</p>
+<p>4.从最近位置开始逐条寻找</p>
+<h4 id="17-如果我指定了一个timestamp，Kafka怎么查找到对应的消息？"><a href="/2019/10/20/Kafka面试/#17-如果我指定了一个timestamp，Kafka怎么查找到对应的消息？" class="headerlink" title="17. 如果我指定了一个timestamp，Kafka怎么查找到对应的消息？"></a>17. 如果我指定了一个timestamp，Kafka怎么查找到对应的消息？</h4><p>原理同上 但是时间的因为<strong>消息体中不带有时间戳 所以不精确</strong></p>
+<h4 id="18-聊一聊你对Kafka的Log-Retention的理解"><a href="/2019/10/20/Kafka面试/#18-聊一聊你对Kafka的Log-Retention的理解" class="headerlink" title="18. 聊一聊你对Kafka的Log Retention的理解"></a>18. 聊一聊你对Kafka的Log Retention的理解</h4><p>kafka留存策略包括 删除和压缩两种</p>
+<ul>
+<li>删除: 根据时间和大小两个方式进行删除 大小是整个partition日志文件的大小, 超过的会从老到新依次删除 时间指日志文件中的<strong>最大时间戳</strong>而<strong>非文件的最后修改时间</strong></li>
+<li>压缩: 相同key的value只保存一个 压缩过的是clean 未压缩的dirty 压缩之后的偏移量不连续 未压缩时连续</li>
+</ul>
+<h4 id="19-聊一聊你对Kafka底层存储的理解（页缓存、内核层、块层、设备层）"><a href="/2019/10/20/Kafka面试/#19-聊一聊你对Kafka底层存储的理解（页缓存、内核层、块层、设备层）" class="headerlink" title="19. 聊一聊你对Kafka底层存储的理解（页缓存、内核层、块层、设备层）"></a>19. 聊一聊你对Kafka底层存储的理解（页缓存、内核层、块层、设备层）</h4><h4 id="20-消费再均衡的原理是什么？（提示：消费者协调器和消费组协调器）"><a href="/2019/10/20/Kafka面试/#20-消费再均衡的原理是什么？（提示：消费者协调器和消费组协调器）" class="headerlink" title="20. 消费再均衡的原理是什么？（提示：消费者协调器和消费组协调器）"></a>20. 消费再均衡的原理是什么？（提示：消费者协调器和消费组协调器）</h4><h4 id="21-Kafka中的事务是怎么实现的（这题我去面试6家被问4次，照着答案念也要念十几分钟，面试官简直凑不要脸。实在记不住的话…只要简历上不写精通Kafka一般不会问到，我简历上写的是“熟悉Kafka，了解RabbitMQ…-”）"><a href="/2019/10/20/Kafka面试/#21-Kafka中的事务是怎么实现的（这题我去面试6家被问4次，照着答案念也要念十几分钟，面试官简直凑不要脸。实在记不住的话…只要简历上不写精通Kafka一般不会问到，我简历上写的是“熟悉Kafka，了解RabbitMQ…-”）" class="headerlink" title="21. Kafka中的事务是怎么实现的（这题我去面试6家被问4次，照着答案念也要念十几分钟，面试官简直凑不要脸。实在记不住的话…只要简历上不写精通Kafka一般不会问到，我简历上写的是“熟悉Kafka，了解RabbitMQ….”）"></a>21. Kafka中的事务是怎么实现的（这题我去面试6家被问4次，照着答案念也要念十几分钟，面试官简直凑不要脸。实在记不住的话…只要简历上不写精通Kafka一般不会问到，我简历上写的是“熟悉Kafka，了解RabbitMQ….”）</h4><h4 id="22-Kafka中有那些地方需要选举？这些地方的选举策略又有哪些？"><a href="/2019/10/20/Kafka面试/#22-Kafka中有那些地方需要选举？这些地方的选举策略又有哪些？" class="headerlink" title="22. Kafka中有那些地方需要选举？这些地方的选举策略又有哪些？"></a>22. Kafka中有那些地方需要选举？这些地方的选举策略又有哪些？</h4><h4 id="23-失效副本是指什么？有那些应对措施？"><a href="/2019/10/20/Kafka面试/#23-失效副本是指什么？有那些应对措施？" class="headerlink" title="23. 失效副本是指什么？有那些应对措施？"></a>23. 失效副本是指什么？有那些应对措施？</h4><h4 id="24-多副本下，各个副本中的HW和LEO的演变过程"><a href="/2019/10/20/Kafka面试/#24-多副本下，各个副本中的HW和LEO的演变过程" class="headerlink" title="24. 多副本下，各个副本中的HW和LEO的演变过程"></a>24. 多副本下，各个副本中的HW和LEO的演变过程</h4><h4 id="25-为什么Kafka不支持读写分离？"><a href="/2019/10/20/Kafka面试/#25-为什么Kafka不支持读写分离？" class="headerlink" title="25. 为什么Kafka不支持读写分离？"></a>25. 为什么Kafka不支持读写分离？</h4><h4 id="26-Kafka在可靠性方面做了哪些改进？（HW-LeaderEpoch）"><a href="/2019/10/20/Kafka面试/#26-Kafka在可靠性方面做了哪些改进？（HW-LeaderEpoch）" class="headerlink" title="26. Kafka在可靠性方面做了哪些改进？（HW, LeaderEpoch）"></a>26. Kafka在可靠性方面做了哪些改进？（HW, LeaderEpoch）</h4><h4 id="27-Kafka中怎么实现死信队列和重试队列？"><a href="/2019/10/20/Kafka面试/#27-Kafka中怎么实现死信队列和重试队列？" class="headerlink" title="27. Kafka中怎么实现死信队列和重试队列？"></a>27. Kafka中怎么实现死信队列和重试队列？</h4><h4 id="28-Kafka中的延迟队列怎么实现（这题被问的比事务那题还要多！！！听说你会Kafka，那你说说延迟队列怎么实现？）"><a href="/2019/10/20/Kafka面试/#28-Kafka中的延迟队列怎么实现（这题被问的比事务那题还要多！！！听说你会Kafka，那你说说延迟队列怎么实现？）" class="headerlink" title="28. Kafka中的延迟队列怎么实现（这题被问的比事务那题还要多！！！听说你会Kafka，那你说说延迟队列怎么实现？）"></a>28. Kafka中的延迟队列怎么实现（这题被问的比事务那题还要多！！！听说你会Kafka，那你说说延迟队列怎么实现？）</h4><h4 id="29-Kafka有哪些指标需要着重关注？"><a href="/2019/10/20/Kafka面试/#29-Kafka有哪些指标需要着重关注？" class="headerlink" title="29. Kafka有哪些指标需要着重关注？"></a>29. Kafka有哪些指标需要着重关注？</h4><p>生产者关注MessagesInPerSec、BytesOutPerSec、BytesInPerSec 消费者关注消费延迟Lag</p>
+<h4 id="30-怎么计算Lag？-注意read-uncommitted和read-committed状态下的不同"><a href="/2019/10/20/Kafka面试/#30-怎么计算Lag？-注意read-uncommitted和read-committed状态下的不同" class="headerlink" title="30. 怎么计算Lag？(注意read_uncommitted和read_committed状态下的不同)"></a>30. 怎么计算Lag？(注意read_uncommitted和read_committed状态下的不同)</h4><p>参考 <a href="http://trumandu.github.io/2019/04/13/如何监控kafka消费Lag情况/">如何监控kafka消费Lag情况</a></p>
+<h4 id="31-Kafka的那些设计让它有如此高的性能？"><a href="/2019/10/20/Kafka面试/#31-Kafka的那些设计让它有如此高的性能？" class="headerlink" title="31. Kafka的那些设计让它有如此高的性能？"></a>31. Kafka的那些设计让它有如此高的性能？</h4><p>零拷贝，页缓存，顺序写</p>
+<h4 id="32-Kafka有什么优缺点？"><a href="/2019/10/20/Kafka面试/#32-Kafka有什么优缺点？" class="headerlink" title="32. Kafka有什么优缺点？"></a>32. Kafka有什么优缺点？</h4><h4 id="33-为什么选择Kafka"><a href="/2019/10/20/Kafka面试/#33-为什么选择Kafka" class="headerlink" title="33. 为什么选择Kafka?"></a>33. 为什么选择Kafka?</h4><p>吞吐量高，大数据消息系统唯一选择。</p>
+<h4 id="34-怎么样才能确保Kafka极大程度上的可靠性？"><a href="/2019/10/20/Kafka面试/#34-怎么样才能确保Kafka极大程度上的可靠性？" class="headerlink" title="34. 怎么样才能确保Kafka极大程度上的可靠性？"></a>34. 怎么样才能确保Kafka极大程度上的可靠性？</h4>
+      </div>
+      
+        <br>
+        
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-10-20T16:52:31+08:00">
+  <a class='notlink'>
+    <i class="fas fa-clock" aria-hidden="true"></i>
+    <p>updated at Oct 20, 2019</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/IT/" rel="nofollow"><i class="fas fa-tag" aria-hidden="true"></i><p>IT</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/" rel="nofollow"><i class="fas fa-tag" aria-hidden="true"></i><p>技术笔记</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Job/" rel="nofollow"><i class="fas fa-tag" aria-hidden="true"></i><p>Job</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Kafka/" rel="nofollow"><i class="fas fa-tag" aria-hidden="true"></i><p>Kafka</p></a></div>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="QQ好友" rel="external nofollow noopener noreferrer"
+          
+          href="http://connect.qq.com/widget/shareqq/index.html?url=/2019/10/20/Kafka%E9%9D%A2%E8%AF%95/&title=Kafka面试 | Hexo&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="QQ空间" rel="external nofollow noopener noreferrer"
+          
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=/2019/10/20/Kafka%E9%9D%A2%E8%AF%95/&title=Kafka面试 | Hexo&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="微博" rel="external nofollow noopener noreferrer"
+          
+          href="http://service.weibo.com/share/share.php?url=/2019/10/20/Kafka%E9%9D%A2%E8%AF%95/&title=Kafka面试 | Hexo&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+      
+      
+          <div class="prev-next">
+              
+                  <section class="prev">
+                      <span class="art-item-left">
+                          <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;Previous</h6>
+                          <h4>
+                              <a href="/2019/10/20/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="prev" title="计算机网络">
+                                
+                                    计算机网络
+                                
+                              </a>
+                          </h4>
+                          
+                              
+                              <h6 class="tags">
+                                  <a class="tag" href="/tags/IT/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> IT</a> <a class="tag" href="/tags/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> 技术笔记</a> <a class="tag" href="/tags/Job/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> Job</a> <a class="tag" href="/tags/%E7%BD%91%E7%BB%9C/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> 网络</a>
+                              </h6>
+                          
+                      </span>
+                  </section>
+              
+              
+                  <section class="next">
+                      <span class="art-item-right" aria-hidden="true">
+                          <h6>Next&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
+                          <h4>
+                              <a href="/2019/10/20/Linux/" rel="prev" title="Linux">
+                                  
+                                      Linux
+                                  
+                              </a>
+                          </h4>
+                          
+                              
+                              <h6 class="tags">
+                                  <a class="tag" href="/tags/IT/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> IT</a> <a class="tag" href="/tags/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> 技术笔记</a> <a class="tag" href="/tags/Job/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> Job</a> <a class="tag" href="/tags/Linux/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> Linux</a>
+                              </h6>
+                          
+                      </span>
+                  </section>
+              
+          </div>
+      
+    </section>
+  </article>
+
+
+
+  <!-- 显示推荐文章和评论 -->
+
+
+
+  
+
+
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: 'Kafka面试',
+      tools: true
+    }
+  </script>
+
+
+</div>
+<aside class='l_side'>
+  
+    
+    
+      
+      
+        
+          
+          
+            
+              <section class='widget author'>
+  <div class='content pure'>
+    
+      <div class='avatar'>
+        <img class='avatar' src='https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/avatar/avatar.png'/>
+      </div>
+    
+    
+    
+      <div class="social-wrapper">
+        
+          
+            <a href="/atom.xml"
+              class="social fas fa-rss flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="mailto:dmlys@live.com"
+              class="social fas fa-envelope flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="https://github.com/ChanMango"
+              class="social fab fa-github flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="https://music.163.com/#/user/home?id=118376074"
+              class="social fas fa-headphones-alt flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+      </div>
+    
+  </div>
+</section>
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+            
+              
+  <section class='widget toc-wrapper'>
+    
+<header class='pure'>
+  <div><i class="fas fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;TOC</div>
+  
+    <!-- <div class='wrapper'><a class="s-toc rightBtn" rel="external nofollow noopener noreferrer" href="javascript:void(0)"><i class="fas fa-thumbtack fa-fw"></i></a></div> -->
+  
+</header>
+
+    <div class='content pure'>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Kafka"><span class="toc-text">Kafka</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#基本理论知识"><span class="toc-text">基本理论知识</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#请说明什么是Apache-Kafka"><span class="toc-text">请说明什么是Apache Kafka?</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#请说明什么是传统的消息传递方法"><span class="toc-text">请说明什么是传统的消息传递方法?</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Kafka-与传统消息系统之间有三个关键区别"><span class="toc-text">Kafka 与传统消息系统之间有三个关键区别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#列举kafka的应用场景"><span class="toc-text">列举kafka的应用场景</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ISR问题"><span class="toc-text">ISR问题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Kafka中的ISR、AR又代表什么？ISR的伸缩又指什么"><span class="toc-text">Kafka中的ISR、AR又代表什么？ISR的伸缩又指什么</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#如果副本在ISR中停留了很长时间表明什么"><span class="toc-text">如果副本在ISR中停留了很长时间表明什么?</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#请说明如果首选的副本不在ISR中会发生什么"><span class="toc-text">请说明如果首选的副本不在ISR中会发生什么?</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#解释如何减少ISR中的扰动-broker什么时候离开ISR"><span class="toc-text">解释如何减少ISR中的扰动? broker什么时候离开ISR?</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ISR集合是什么？谁维护着？如何维护？"><span class="toc-text">ISR集合是什么？谁维护着？如何维护？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#请说明Kafka相对传统技术有什么优势"><span class="toc-text">请说明Kafka相对传统技术有什么优势?</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#在Kafka中broker的意义是什么"><span class="toc-text">在Kafka中broker的意义是什么?</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#什么是broker？作用是什么"><span class="toc-text">什么是broker？作用是什么?</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Kafka服务器能接收到的最大信息是多少"><span class="toc-text">Kafka服务器能接收到的最大信息是多少?</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#解释Kafka的Zookeeper是什么-我们可以在没有Zookeeper的情况下使用Kafka吗"><span class="toc-text">解释Kafka的Zookeeper是什么?我们可以在没有Zookeeper的情况下使用Kafka吗?</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#解释Kafka的用户如何消费信息"><span class="toc-text">解释Kafka的用户如何消费信息?</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#解释如何提高远程用户的吞吐量"><span class="toc-text">解释如何提高远程用户的吞吐量?</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#解释一下，在数据制作过程中，你如何能从Kafka得到准确的信息"><span class="toc-text">解释一下，在数据制作过程中，你如何能从Kafka得到准确的信息?</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Kafka为什么需要复制"><span class="toc-text">Kafka为什么需要复制?</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#有可能在生产后发生消息偏移吗"><span class="toc-text">有可能在生产后发生消息偏移吗?</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#kafka主要特征"><span class="toc-text">kafka主要特征</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#kafka主题分区的作用"><span class="toc-text">kafka主题分区的作用?</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#consumer水平扩展如何实现"><span class="toc-text">consumer水平扩展如何实现?</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#消息的顺序"><span class="toc-text">消息的顺序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#为了避免磁盘被占满，kafka会周期性的删除陈旧的消息，删除策略是什么"><span class="toc-text">为了避免磁盘被占满，kafka会周期性的删除陈旧的消息，删除策略是什么?</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#什么是日志压缩"><span class="toc-text">什么是日志压缩?</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#同一分区的多个副本包括的消息是否一致？"><span class="toc-text">同一分区的多个副本包括的消息是否一致？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Kafka的设计时什么样的呢？"><span class="toc-text">Kafka的设计时什么样的呢？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#数据传输的事物定义有哪三种？"><span class="toc-text">数据传输的事物定义有哪三种？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Kafka判断一个节点是否还活着有那两个条件？心跳机制-延时限制"><span class="toc-text">Kafka判断一个节点是否还活着有那两个条件？心跳机制,延时限制</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#producer是否直接将数据发送到broker的leader-主节点-？可以"><span class="toc-text">producer是否直接将数据发送到broker的leader(主节点)？可以</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Kafka-consumer是否可以消费指定分区消息？"><span class="toc-text">Kafka consumer是否可以消费指定分区消息？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Kafka消息是采用Pull模式，还是Push模式？kafka使用了pull模式-根据订阅者的消费能力进行拉取数据"><span class="toc-text">Kafka消息是采用Pull模式，还是Push模式？kafka使用了pull模式, 根据订阅者的消费能力进行拉取数据,</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Kafka存储在硬盘上的消息格式是什么？"><span class="toc-text">Kafka存储在硬盘上的消息格式是什么？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Kafka高效文件存储设计特点："><span class="toc-text">Kafka高效文件存储设计特点：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Kafka创建Topic时如何将分区放置到不同的Broker中"><span class="toc-text">Kafka创建Topic时如何将分区放置到不同的Broker中</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#partition的数据如何保存到硬盘"><span class="toc-text">partition的数据如何保存到硬盘?</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#kafka的ack机制生产阶段可能会丢数据-但是发不出去之后就不会丢"><span class="toc-text">kafka的ack机制生产阶段可能会丢数据, 但是发不出去之后就不会丢</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Kafka的消费者如何消费数据"><span class="toc-text">Kafka的消费者如何消费数据</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#数据有序"><span class="toc-text">数据有序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#kafka生产数据时数据的分组策略"><span class="toc-text">kafka生产数据时数据的分组策略</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#面试题"><span class="toc-text">面试题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-Kafka中的HW、LEO、LSO、LW等分别代表什么？"><span class="toc-text">1. Kafka中的HW、LEO、LSO、LW等分别代表什么？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-Kafka中的分区器、序列化器、拦截器是否了解？它们之间的处理顺序是什么？"><span class="toc-text">2. Kafka中的分区器、序列化器、拦截器是否了解？它们之间的处理顺序是什么？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-Kafka生产者客户端中使用了几个线程来处理？分别是什么？"><span class="toc-text">3. Kafka生产者客户端中使用了几个线程来处理？分别是什么？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-“消费组中的消费者个数如果超过topic的分区，那么就会有消费者消费不到数据”这句话是否正确？如果不正确，那么有没有什么hack的手段？"><span class="toc-text">4. “消费组中的消费者个数如果超过topic的分区，那么就会有消费者消费不到数据”这句话是否正确？如果不正确，那么有没有什么hack的手段？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-消费者提交消费位移时提交的是当前消费到的最新消息的offset还是offset-1"><span class="toc-text">5. 消费者提交消费位移时提交的是当前消费到的最新消息的offset还是offset+1?</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-有哪些情形会造成重复消费？"><span class="toc-text">6. 有哪些情形会造成重复消费？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-那些情景下会造成消息漏消费？"><span class="toc-text">7. 那些情景下会造成消息漏消费？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-Kafka-Consumer是非线程安全的，那么怎么样实现多线程消费？"><span class="toc-text">8. Kafka Consumer是非线程安全的，那么怎么样实现多线程消费？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9-当你使用kafka-topics-sh创建（删除）了一个topic之后，Kafka背后会执行什么逻辑？"><span class="toc-text">9. 当你使用kafka-topics.sh创建（删除）了一个topic之后，Kafka背后会执行什么逻辑？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#10-创建topic时如何选择合适的分区数？"><span class="toc-text">10. 创建topic时如何选择合适的分区数？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#11-Kafka目前有那些内部topic，它们都有什么特征？各自的作用又是什么？"><span class="toc-text">11. Kafka目前有那些内部topic，它们都有什么特征？各自的作用又是什么？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#12-优先副本是什么？它有什么特殊的作用？"><span class="toc-text">12. 优先副本是什么？它有什么特殊的作用？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#13-Kafka有哪几处地方有分区分配的概念？简述大致的过程及原理"><span class="toc-text">13. Kafka有哪几处地方有分区分配的概念？简述大致的过程及原理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#14-简述Kafka的日志目录结构"><span class="toc-text">14. 简述Kafka的日志目录结构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#15-Kafka中有那些索引文件？"><span class="toc-text">15. Kafka中有那些索引文件？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#16-如果我指定了一个offset，Kafka怎么查找到对应的消息？"><span class="toc-text">16. 如果我指定了一个offset，Kafka怎么查找到对应的消息？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#17-如果我指定了一个timestamp，Kafka怎么查找到对应的消息？"><span class="toc-text">17. 如果我指定了一个timestamp，Kafka怎么查找到对应的消息？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#18-聊一聊你对Kafka的Log-Retention的理解"><span class="toc-text">18. 聊一聊你对Kafka的Log Retention的理解</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#19-聊一聊你对Kafka底层存储的理解（页缓存、内核层、块层、设备层）"><span class="toc-text">19. 聊一聊你对Kafka底层存储的理解（页缓存、内核层、块层、设备层）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#20-消费再均衡的原理是什么？（提示：消费者协调器和消费组协调器）"><span class="toc-text">20. 消费再均衡的原理是什么？（提示：消费者协调器和消费组协调器）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#21-Kafka中的事务是怎么实现的（这题我去面试6家被问4次，照着答案念也要念十几分钟，面试官简直凑不要脸。实在记不住的话…只要简历上不写精通Kafka一般不会问到，我简历上写的是“熟悉Kafka，了解RabbitMQ…-”）"><span class="toc-text">21. Kafka中的事务是怎么实现的（这题我去面试6家被问4次，照着答案念也要念十几分钟，面试官简直凑不要脸。实在记不住的话…只要简历上不写精通Kafka一般不会问到，我简历上写的是“熟悉Kafka，了解RabbitMQ….”）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#22-Kafka中有那些地方需要选举？这些地方的选举策略又有哪些？"><span class="toc-text">22. Kafka中有那些地方需要选举？这些地方的选举策略又有哪些？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#23-失效副本是指什么？有那些应对措施？"><span class="toc-text">23. 失效副本是指什么？有那些应对措施？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#24-多副本下，各个副本中的HW和LEO的演变过程"><span class="toc-text">24. 多副本下，各个副本中的HW和LEO的演变过程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#25-为什么Kafka不支持读写分离？"><span class="toc-text">25. 为什么Kafka不支持读写分离？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#26-Kafka在可靠性方面做了哪些改进？（HW-LeaderEpoch）"><span class="toc-text">26. Kafka在可靠性方面做了哪些改进？（HW, LeaderEpoch）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#27-Kafka中怎么实现死信队列和重试队列？"><span class="toc-text">27. Kafka中怎么实现死信队列和重试队列？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#28-Kafka中的延迟队列怎么实现（这题被问的比事务那题还要多！！！听说你会Kafka，那你说说延迟队列怎么实现？）"><span class="toc-text">28. Kafka中的延迟队列怎么实现（这题被问的比事务那题还要多！！！听说你会Kafka，那你说说延迟队列怎么实现？）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#29-Kafka有哪些指标需要着重关注？"><span class="toc-text">29. Kafka有哪些指标需要着重关注？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#30-怎么计算Lag？-注意read-uncommitted和read-committed状态下的不同"><span class="toc-text">30. 怎么计算Lag？(注意read_uncommitted和read_committed状态下的不同)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#31-Kafka的那些设计让它有如此高的性能？"><span class="toc-text">31. Kafka的那些设计让它有如此高的性能？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#32-Kafka有什么优缺点？"><span class="toc-text">32. Kafka有什么优缺点？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#33-为什么选择Kafka"><span class="toc-text">33. 为什么选择Kafka?</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#34-怎么样才能确保Kafka极大程度上的可靠性？"><span class="toc-text">34. 怎么样才能确保Kafka极大程度上的可靠性？</span></a></li></ol></li></ol></li></ol></li></ol>
+    </div>
+  </section>
+
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+            
+              <section class='widget grid'>
+  
+<header class='pure'>
+  <div><i class="fas fa-map-signs fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;站内导航</div>
+  
+</header>
+
+  <div class='content pure'>
+    <ul class="grid navgation">
+      
+        <li><a class="flat-box" title="/" href="/"
+          
+          
+          id="home">
+          
+            <i class="fas fa-clock fa-fw" aria-hidden="true"></i>
+          
+          近期文章
+        </a></li>
+      
+        <li><a class="flat-box" title="/archives/" href="/archives/"
+          
+            rel="nofollow"
+          
+          
+          id="archives">
+          
+            <i class="fas fa-archive fa-fw" aria-hidden="true"></i>
+          
+          文章归档
+        </a></li>
+      
+        <li><a class="flat-box" title="/projects/" href="/projects/"
+          
+          
+          id="projects">
+          
+            <i class="fas fa-code-branch fa-fw" aria-hidden="true"></i>
+          
+          开源项目
+        </a></li>
+      
+        <li><a class="flat-box" title="/friends/" href="/friends/"
+          
+            rel="nofollow"
+          
+          
+          id="friends">
+          
+            <i class="fas fa-link fa-fw" aria-hidden="true"></i>
+          
+          我的友链
+        </a></li>
+      
+        <li><a class="flat-box" title="https://xaoxuu.com/wiki/material-x/" href="https://xaoxuu.com/wiki/material-x/"
+          
+            rel="nofollow"
+          
+          
+          id="https:xaoxuu.comwikimaterial-x">
+          
+            <i class="fas fa-book fa-fw" aria-hidden="true"></i>
+          
+          主题文档
+        </a></li>
+      
+        <li><a class="flat-box" title="/about/" href="/about/"
+          
+            rel="nofollow"
+          
+          
+          id="about">
+          
+            <i class="fas fa-info-circle fa-fw" aria-hidden="true"></i>
+          
+          关于小站
+        </a></li>
+      
+    </ul>
+  </div>
+</section>
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+            
+              
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+            
+              
+  <section class='widget tagcloud'>
+    
+<header class='pure'>
+  <div><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;Hot Tags</div>
+  
+    <a class="rightBtn"
+    
+      rel="nofollow"
+    
+    
+    href="/tags/"
+    title="tags/">
+    <i class="fas fa-expand-arrows-alt fa-fw"></i></a>
+  
+</header>
+
+    <div class='content pure'>
+      <a href="/tags/Hibernate/" style="font-size: 14px; color: #999">Hibernate</a> <a href="/tags/IT/" style="font-size: 24px; color: #555">IT</a> <a href="/tags/IT-%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-Job-zookeeper/" style="font-size: 14px; color: #999">IT - 技术笔记 - Job - zookeeper</a> <a href="/tags/Java/" style="font-size: 14px; color: #999">Java</a> <a href="/tags/Job/" style="font-size: 24px; color: #555">Job</a> <a href="/tags/Kafka/" style="font-size: 14px; color: #999">Kafka</a> <a href="/tags/Linux/" style="font-size: 14px; color: #999">Linux</a> <a href="/tags/Mybatis/" style="font-size: 14px; color: #999">Mybatis</a> <a href="/tags/Redis/" style="font-size: 14px; color: #999">Redis</a> <a href="/tags/Spring/" style="font-size: 14px; color: #999">Spring</a> <a href="/tags/mysql/" style="font-size: 14px; color: #999">mysql</a> <a href="/tags/zookeeper/" style="font-size: 14px; color: #999">zookeeper</a> <a href="/tags/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/" style="font-size: 24px; color: #555">技术笔记</a> <a href="/tags/%E6%8E%92%E5%BA%8F/" style="font-size: 14px; color: #999">排序</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 20.67px; color: #6c6c6c">数据库</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 14px; color: #999">数据结构</a> <a href="/tags/%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%BC%80%E5%8F%91/" style="font-size: 17.33px; color: #828282">服务端开发</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 14px; color: #999">算法</a> <a href="/tags/%E7%BD%91%E7%BB%9C/" style="font-size: 14px; color: #999">网络</a>
+    </div>
+  </section>
+
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+            
+              <section class='widget list'>
+  
+<header class='pure'>
+  <div><i class="fas fa-thumbs-up fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;强烈推荐</div>
+  
+</header>
+
+  <div class='content pure'>
+    <ul class="entry">
+      
+        <li><a class="flat-box" title="https://xaoxuu.com/wiki/hexo.sh/" href="https://xaoxuu.com/wiki/hexo.sh/"
+          
+          
+          >
+          <div class='name'>
+            
+              <i class=" fa-fw" aria-hidden="true"></i>
+            
+            &nbsp;&nbsp;Hexo脚本（Mac）
+          </div>
+          
+        </a></li>
+      
+        <li><a class="flat-box" title="https://xaoxuu.com/wiki/vim-cn.sh/" href="https://xaoxuu.com/wiki/vim-cn.sh/"
+          
+          
+          >
+          <div class='name'>
+            
+              <i class=" fa-fw" aria-hidden="true"></i>
+            
+            &nbsp;&nbsp;图床脚本（Mac）
+          </div>
+          
+        </a></li>
+      
+        <li><a class="flat-box" title="https://yasuotu.com" href="https://yasuotu.com"
+          
+          
+          >
+          <div class='name'>
+            
+              <i class=" fa-fw" aria-hidden="true"></i>
+            
+            &nbsp;&nbsp;图片在线压缩
+          </div>
+          
+        </a></li>
+      
+        <li><a class="flat-box" title="https://realfavicongenerator.net" href="https://realfavicongenerator.net"
+          
+          
+          >
+          <div class='name'>
+            
+              <i class=" fa-fw" aria-hidden="true"></i>
+            
+            &nbsp;&nbsp;生成Favicon
+          </div>
+          
+        </a></li>
+      
+        <li><a class="flat-box" title="https://mxclub.github.io/resume/" href="https://mxclub.github.io/resume/"
+          
+          
+          >
+          <div class='name'>
+            
+              <i class=" fa-fw" aria-hidden="true"></i>
+            
+            &nbsp;&nbsp;简历主题
+          </div>
+          
+        </a></li>
+      
+    </ul>
+  </div>
+</section>
+
+            
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+    
+
+  
+</aside>
+
+<footer id="footer" class="clearfix">
+  
+  
+    <div class="social-wrapper">
+      
+        
+          <a href="/atom.xml"
+            class="social fas fa-rss flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="mailto:dmlys@live.com"
+            class="social fas fa-envelope flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="https://github.com/ChanMango"
+            class="social fab fa-github flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="https://music.163.com/#/user/home?id=118376074"
+            class="social fas fa-headphones-alt flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+    </div>
+  
+  <br>
+  <div><p>Blog content follows the <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en">Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0) License</a></p>
+</div>
+  <div>
+    Use
+    <a href="https://xaoxuu.com/wiki/material-x/" target="_blank" class="codename">Material X</a>
+    as theme
+    
+      , 
+      total visits
+      <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+      times
+    
+    . 
+  </div>
+</footer>
+<script>setLoadingBarProgress(80);</script>
+
+
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+
+  <script>
+    var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+    var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+    var ALGOLIA_API_KEY = "";
+    var ALGOLIA_APP_ID = "";
+    var ALGOLIA_INDEX_NAME = "";
+    var AZURE_SERVICE_NAME = "";
+    var AZURE_INDEX_NAME = "";
+    var AZURE_QUERY_KEY = "";
+    var BAIDU_API_ID = "";
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/"||"/";
+    if(!ROOT.endsWith('/'))ROOT += '/';
+  </script>
+
+<script src="//instant.page/1.2.2" type="module" integrity="sha384-2xV8M5griQmzyiY3CDqh1dn4z3llDVqZDqzjzcY+jCBCk/a5fXJmuZ/40JJAPeoU"></script>
+
+
+  <script async src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.5/dist/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      const $reveal = $('.reveal');
+      if ($reveal.length === 0) return;
+      const sr = ScrollReveal({ distance: 0 });
+      sr.reveal('.reveal');
+    });
+  </script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+  
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>
+    <script type="text/javascript">
+      $(function(){
+        if ('.cover') {
+          $('.cover').backstretch(
+          ["https://img.vim-cn.com/29/91197b04c13f512f734a76d4ac422d89dbe229.jpg"],
+          {
+            duration: "6000",
+            fade: "2500"
+          });
+        } else {
+          $.backstretch(
+          ["https://img.vim-cn.com/29/91197b04c13f512f734a76d4ac422d89dbe229.jpg"],
+          {
+            duration: "6000",
+            fade: "2500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.9/js/app.js"></script>
+
+
+  <script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.9/js/search.js"></script>
+
+
+
+
+<!-- 复制 -->
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  let COPY_SUCCESS = "Copied";
+  let COPY_FAILURE = "Copy failed";
+  /*页面载入完成后，创建复制按钮*/
+  !function (e, t, a) {
+    /* code */
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '  <i class="fa fa-copy"></i><span>Copy</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+
+      clipboard.on('success', function(e) {
+        //您可以加入成功提示
+        console.info('Action:', e.action);
+        console.info('Text:', e.text);
+        console.info('Trigger:', e.trigger);
+        success_prompt(COPY_SUCCESS);
+        e.clearSelection();
+      });
+      clipboard.on('error', function(e) {
+        //您可以加入失败提示
+        console.error('Action:', e.action);
+        console.error('Trigger:', e.trigger);
+        fail_prompt(COPY_FAILURE);
+      });
+    }
+    initCopyCode();
+
+  }(window, document);
+
+  /**
+   * 弹出式提示框，默认1.5秒自动消失
+   * @param message 提示信息
+   * @param style 提示样式，有alert-success、alert-danger、alert-warning、alert-info
+   * @param time 消失时间
+   */
+  var prompt = function (message, style, time)
+  {
+      style = (style === undefined) ? 'alert-success' : style;
+      time = (time === undefined) ? 1500 : time*1000;
+      $('<div>')
+          .appendTo('body')
+          .addClass('alert ' + style)
+          .html(message)
+          .show()
+          .delay(time)
+          .fadeOut();
+  };
+
+  // 成功提示
+  var success_prompt = function(message, time)
+  {
+      prompt(message, 'alert-success', time);
+  };
+
+  // 失败提示
+  var fail_prompt = function(message, time)
+  {
+      prompt(message, 'alert-danger', time);
+  };
+
+  // 提醒
+  var warning_prompt = function(message, time)
+  {
+      prompt(message, 'alert-warning', time);
+  };
+
+  // 信息提示
+  var info_prompt = function(message, time)
+  {
+      prompt(message, 'alert-info', time);
+  };
+
+</script>
+
+
+<!-- fancybox -->
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  let LAZY_LOAD_IMAGE = "";
+  $(".article-entry").find("fancybox").find("img").each(function () {
+      var element = document.createElement("a");
+      $(element).attr("data-fancybox", "gallery");
+      $(element).attr("href", $(this).attr("src"));
+      /* 图片采用懒加载处理时,
+       * 一般图片标签内会有个属性名来存放图片的真实地址，比如 data-original,
+       * 那么此处将原本的属性名src替换为对应属性名data-original,
+       * 修改如下
+       */
+       if (LAZY_LOAD_IMAGE) {
+         $(element).attr("href", $(this).attr("data-original"));
+       }
+      $(this).wrap(element);
+  });
+</script>
+
+
+
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>
