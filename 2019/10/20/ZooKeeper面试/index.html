@@ -4,7 +4,9 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
-  <title>ZooKeeper面试 | Hexo</title>
+  <title>ZooKeeper面试 | 蜗牛君</title>
+  
+  <meta name="keywords" content="IT民工,技术干货,避坑指南">
   
   
 
@@ -47,7 +49,7 @@
     <cover class='cover post half'>
       
         
-  <h1 class='title'>Demo</h1>
+  <h1 class='title'>蜗牛君的NoteBook</h1>
 
 
   <div class="m_search">
@@ -59,48 +61,6 @@
 
 <div class='menu navgation'>
   <ul class='h-list'>
-    
-      
-        <li>
-          <a class="nav home" href="/"
-            
-            
-            id="home">
-            <i class='fas fa-rss fa-fw'></i>&nbsp;博文
-          </a>
-        </li>
-      
-        <li>
-          <a class="nav home" href="/projects/"
-            
-            
-            id="projects">
-            <i class='fas fa-code-branch fa-fw'></i>&nbsp;项目
-          </a>
-        </li>
-      
-        <li>
-          <a class="nav home" href="/friends/"
-            
-              rel="nofollow"
-            
-            
-            id="friends">
-            <i class='fas fa-link fa-fw'></i>&nbsp;友链
-          </a>
-        </li>
-      
-        <li>
-          <a class="nav home" href="/about/"
-            
-              rel="nofollow"
-            
-            
-            id="about">
-            <i class='fas fa-info-circle fa-fw'></i>&nbsp;关于
-          </a>
-        </li>
-      
     
   </ul>
 </div>
@@ -116,7 +76,7 @@
 		<div class="nav-main container container--flex">
       <a class="logo flat-box" href='/' >
         
-          Hexo
+          蜗牛君
         
       </a>
 			<div class='menu navgation'>
@@ -373,7 +333,7 @@
 <li>容错和负载平衡</li>
 <li>自动服务注册和发现。</li>
 </ul>
-<img src="/10/20/ZooKeeper面试/ZooKeeper%E9%9D%A2%E8%AF%95.assets/architecture.png" alt="img" style="zoom: 50%;">
+<img src="/2019/10/20/ZooKeeper面试//architecture.png" alt="img" style="zoom: 50%;">
 
 <h3 id="2-测试和生产公用一套zookeeper，怎么保证消费不冲突"><a href="/2019/10/20/ZooKeeper面试/#2-测试和生产公用一套zookeeper，怎么保证消费不冲突" class="headerlink" title="2. 测试和生产公用一套zookeeper，怎么保证消费不冲突?"></a>2. 测试和生产公用一套zookeeper，怎么保证消费不冲突?</h3><ul>
 <li><p>dubbo白名单(Filter过滤器)    </p>
@@ -429,7 +389,7 @@ public Result invoke(Invoker&lt;?&gt; invoker, Invocation invocation) throws Rpc
 <h6 id="是否可以拒绝单个IP对ZK的访问操作"><a href="/2019/10/20/ZooKeeper面试/#是否可以拒绝单个IP对ZK的访问操作" class="headerlink" title="是否可以拒绝单个IP对ZK的访问操作 ?"></a>是否可以拒绝单个IP对ZK的访问操作 ?</h6><p>ZK本身不提供这样的功能，它仅仅提供了对单个IP的连接数的限制。你可以通过修改iptables来实现对单个ip的限制；当然，你也可以通过这样的方式来解决。</p>
 </li>
 </ul>
-  <img src="/10/20/ZooKeeper面试/Zookeeper/2428275037-5ad8ae48c46ec_articlex.png" alt="clipboard.png" style="zoom:67%;">
+  <img src="/2019/10/20/ZooKeeper面试//2428275037-5ad8ae48c46ec_articlex.png" alt="clipboard.png" style="zoom:67%;">
 
 <ul>
 <li><h4 id="5-2-通知机制"><a href="/2019/10/20/ZooKeeper面试/#5-2-通知机制" class="headerlink" title="5.2 通知机制"></a>5.2 通知机制</h4><p>client端会对某个znode建立一个<strong>watcher事件</strong>，当该<strong>znode发生变化</strong>时，这些client会收到zookeeper的通知，然后client可以根据znode变化来做出业务上的改变等。</p>
@@ -451,7 +411,7 @@ public Result invoke(Invoker&lt;?&gt; invoker, Invocation invocation) throws Rpc
 <li><p>对于第一类，我们将zookeeper上的一个<strong>znode看作是一把锁</strong>，通过create znode的方式来实现。所有<strong>客户端都去创建 /distribute_lock 节点</strong>，最终<strong>成功创建的那个客户端也即拥有了这把锁</strong>。用完<strong>删除掉自己创建的distribute_lock 节点就释放出锁</strong>。 <code>(思想就是: 去创建一个lock节点, 谁创建成功谁就能拿到这把锁, 用完后,删除掉自己创建的这个节点)</code></p>
 </li>
 <li><p>对于第二类， /distribute_lock 已经预先存在，<strong>所有客户端</strong>在它下面<strong>创建临时顺序编号目录节点</strong>，和选master一样，<strong>编号最小的获得锁</strong>，<strong>用完删除</strong>，依次方便。</p>
-<p> <em>获取分布式锁的流程</em>:<img src="https://segmentfault.com/img/bV8WZ1?w=605&h=483" alt="clipboard.png"><br>在获取分布式锁的时候在locker节点下创建临时顺序节点，释放锁的时候删除该临时节点。客户端调用createNode方法在locker下创建临时顺序节点，然后调用getChildren(“locker”)来获取locker下面的所有子节点，注意此时不用设置任何Watcher。<strong><em>客户端获取到所有的子节点path之后，如果发现自己创建的节点在所有创建的子节点序号最小，那么就认为该客户端获取到了锁</em></strong>。如果发现自己创建的节点并非locker所有子节点中最小的，说明<strong>自己还没有获取到锁</strong>，==此时客户端需要找到比自己小的那个节点，然后对其调用<strong>exist()</strong>方法，同时对其注册事件监听器==。之后，让这个被关注的节点删除，则客户端的Watcher会收到相应通知，此时<strong>再次判断自己创建的节点是否是locker子节点中序号最小的</strong>，如果是则获取到了锁，如果不是则重复以上步骤继续获取到比自己小的一个节点并注册监听。当前这个过程中还需要许多的逻辑判断。<br><img src="/10/20/ZooKeeper面试/Zookeeper/4251944855-5ad89b097484c_articlex.png" alt="clipboard.png"></p>
+<p> <em>获取分布式锁的流程</em>:<img src="https://segmentfault.com/img/bV8WZ1?w=605&h=483" alt="clipboard.png"><br>在获取分布式锁的时候在locker节点下创建临时顺序节点，释放锁的时候删除该临时节点。客户端调用createNode方法在locker下创建临时顺序节点，然后调用getChildren(“locker”)来获取locker下面的所有子节点，注意此时不用设置任何Watcher。<strong><em>客户端获取到所有的子节点path之后，如果发现自己创建的节点在所有创建的子节点序号最小，那么就认为该客户端获取到了锁</em></strong>。如果发现自己创建的节点并非locker所有子节点中最小的，说明<strong>自己还没有获取到锁</strong>，==此时客户端需要找到比自己小的那个节点，然后对其调用<strong>exist()</strong>方法，同时对其注册事件监听器==。之后，让这个被关注的节点删除，则客户端的Watcher会收到相应通知，此时<strong>再次判断自己创建的节点是否是locker子节点中序号最小的</strong>，如果是则获取到了锁，如果不是则重复以上步骤继续获取到比自己小的一个节点并注册监听。当前这个过程中还需要许多的逻辑判断。<br><img src="/2019/10/20/ZooKeeper面试//4251944855-5ad89b097484c_articlex.png" alt="clipboard.png"></p>
 <p>代码的实现主要是基于互斥锁，获取分布式锁的重点逻辑在于<strong>BaseDistributedLock</strong>，实现了基于Zookeeper实现分布式锁的细节。</p>
 </li>
 </ol>
@@ -486,7 +446,7 @@ public Result invoke(Invoker&lt;?&gt; invoker, Invocation invocation) throws Rpc
 <h3 id="8-Zookeeper-下-Server工作状态"><a href="/2019/10/20/ZooKeeper面试/#8-Zookeeper-下-Server工作状态" class="headerlink" title="8. Zookeeper 下 Server工作状态"></a>8. Zookeeper 下 Server工作状态</h3><p>每个Server在工作过程中有三种状态：<br>LOOKING：当前Server<strong>不知道leader是谁</strong>，正在搜寻<br>LEADING：当前Server即为选举出来的leader<br>FOLLOWING: leader已经选举出来，当前Server与之同步</p>
 <h3 id="9-zookeeper是如何选取主leader的？"><a href="/2019/10/20/ZooKeeper面试/#9-zookeeper是如何选取主leader的？" class="headerlink" title="9. zookeeper是如何选取主leader的？"></a>9. zookeeper是如何选取主leader的？</h3><p>当leader崩溃或者leader失去大多数的follower，这时zk进入恢复模式，恢复模式需要重新选举出一个新的leader，让所有的Server都恢复到一个正确的状态。Zk的选举算法有两种：一种是基于basic paxos实现的，另外一种是基于fast paxos算法实现的。系统默认的选举算法为<strong>fast paxos</strong>。</p>
 <ol>
-<li><h4 id="Zookeeper选主流程-basic-paxos-每个节点都发送一zxid-选举线程推荐zxid最大的那个server作为leader"><a href="/2019/10/20/ZooKeeper面试/#Zookeeper选主流程-basic-paxos-每个节点都发送一zxid-选举线程推荐zxid最大的那个server作为leader" class="headerlink" title="Zookeeper选主流程(basic paxos)(每个节点都发送一zxid, 选举线程推荐zxid最大的那个server作为leader)"></a>Zookeeper选主流程(basic paxos)<code>(每个节点都发送一zxid, 选举线程推荐zxid最大的那个server作为leader)</code></h4><p>（1）选举线程由当前Server发起选举的线程担任，其主要功能是对投票结果进行统计，并选出推荐的Server；<br>（2）选举线程首先向所有Server发起一次询问(包括自己)；<br>（3）选举线程收到回复后，验证是否是自己发起的询问(验证zxid是否一致)，然后获取对方的id(myid)，并存储到当前询问对象列表中，最后获取对方提议的leader相关信息(id,zxid)，并将这些信息存储到当次选举的投票记录表中；<br>（4）<strong>选举线程收到所有Server回复</strong>以后，就<strong>计算出zxid最大</strong>的那个<strong>Server</strong>，并将这个Server相关信息设置成下一次要投票的Server；<br>（5）线程将当前zxid最大的Server设置为当前Server要推荐的Leader，如果此时获胜的Server获得<strong>n/2 + 1</strong>(大于一般的投票数)的Server票数，设置当前推荐的leader为获胜的Server，将根据获胜的Server相关信息设置自己的状态，否则，继续这个过程，直到leader被选举出来。 通过流程分析我们可以得出：<strong>要使Leader获得多数Server的支持，则Server总数必须是奇数2n+1，且存活的Server的数目不得少于n+1</strong>. 每个Server启动后都会重复以上流程。在恢复模式下，如果是刚从崩溃状态恢复的或者刚启动的server还会从磁盘快照中恢复数据和会话信息，zk会记录事务日志并定期进行快照，方便在恢复时进行状态恢复。<br><img src="/10/20/ZooKeeper面试/Zookeeper/1858685425-5ad8ae835bf24_articlex.png" alt="clipboard.png"></p>
+<li><h4 id="Zookeeper选主流程-basic-paxos-每个节点都发送一zxid-选举线程推荐zxid最大的那个server作为leader"><a href="/2019/10/20/ZooKeeper面试/#Zookeeper选主流程-basic-paxos-每个节点都发送一zxid-选举线程推荐zxid最大的那个server作为leader" class="headerlink" title="Zookeeper选主流程(basic paxos)(每个节点都发送一zxid, 选举线程推荐zxid最大的那个server作为leader)"></a>Zookeeper选主流程(basic paxos)<code>(每个节点都发送一zxid, 选举线程推荐zxid最大的那个server作为leader)</code></h4><p>（1）选举线程由当前Server发起选举的线程担任，其主要功能是对投票结果进行统计，并选出推荐的Server；<br>（2）选举线程首先向所有Server发起一次询问(包括自己)；<br>（3）选举线程收到回复后，验证是否是自己发起的询问(验证zxid是否一致)，然后获取对方的id(myid)，并存储到当前询问对象列表中，最后获取对方提议的leader相关信息(id,zxid)，并将这些信息存储到当次选举的投票记录表中；<br>（4）<strong>选举线程收到所有Server回复</strong>以后，就<strong>计算出zxid最大</strong>的那个<strong>Server</strong>，并将这个Server相关信息设置成下一次要投票的Server；<br>（5）线程将当前zxid最大的Server设置为当前Server要推荐的Leader，如果此时获胜的Server获得<strong>n/2 + 1</strong>(大于一般的投票数)的Server票数，设置当前推荐的leader为获胜的Server，将根据获胜的Server相关信息设置自己的状态，否则，继续这个过程，直到leader被选举出来。 通过流程分析我们可以得出：<strong>要使Leader获得多数Server的支持，则Server总数必须是奇数2n+1，且存活的Server的数目不得少于n+1</strong>. 每个Server启动后都会重复以上流程。在恢复模式下，如果是刚从崩溃状态恢复的或者刚启动的server还会从磁盘快照中恢复数据和会话信息，zk会记录事务日志并定期进行快照，方便在恢复时进行状态恢复。<br><img src="/2019/10/20/ZooKeeper面试//1858685425-5ad8ae835bf24_articlex.png" alt="clipboard.png"></p>
 </li>
 <li><h4 id="Zookeeper选主流程-fast-paxos-有一个节点主动提出要成为leader-去问大家是否同意"><a href="/2019/10/20/ZooKeeper面试/#Zookeeper选主流程-fast-paxos-有一个节点主动提出要成为leader-去问大家是否同意" class="headerlink" title="Zookeeper选主流程(fast paxos)(有一个节点主动提出要成为leader,去问大家是否同意)"></a>Zookeeper选主流程(fast paxos)<strong><code>(有一个节点主动提出要成为leader,去问大家是否同意)</code></strong></h4><p>fast paxos流程是在选举过程中，某Server首先向所有Server提议自己要成为leader，当其它Server收到提议以后，解决epoch和 zxid的冲突，并接受对方的提议，然后向对方发送接受提议完成的消息，重复这个流程，最后一定能选举出Leader。<br><img src="https://segmentfault.com/img/bV8XeR?w=533&h=451" alt="clipboard.png"></p>
 </li>
@@ -553,7 +513,7 @@ public Result invoke(Invoker&lt;?&gt; invoker, Invocation invocation) throws Rpc
       
         <a class="-mob-share-qq" title="QQ好友" rel="external nofollow noopener noreferrer"
           
-          href="http://connect.qq.com/widget/shareqq/index.html?url=/2019/10/20/ZooKeeper%E9%9D%A2%E8%AF%95/&title=ZooKeeper面试 | Hexo&summary="
+          href="http://connect.qq.com/widget/shareqq/index.html?url=/2019/10/20/ZooKeeper%E9%9D%A2%E8%AF%95/&title=ZooKeeper面试 | 蜗牛君&summary="
           
           >
           
@@ -565,7 +525,7 @@ public Result invoke(Invoker&lt;?&gt; invoker, Invocation invocation) throws Rpc
       
         <a class="-mob-share-qzone" title="QQ空间" rel="external nofollow noopener noreferrer"
           
-          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=/2019/10/20/ZooKeeper%E9%9D%A2%E8%AF%95/&title=ZooKeeper面试 | Hexo&summary="
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=/2019/10/20/ZooKeeper%E9%9D%A2%E8%AF%95/&title=ZooKeeper面试 | 蜗牛君&summary="
           
           >
           
@@ -577,7 +537,7 @@ public Result invoke(Invoker&lt;?&gt; invoker, Invocation invocation) throws Rpc
       
         <a class="-mob-share-weibo" title="微博" rel="external nofollow noopener noreferrer"
           
-          href="http://service.weibo.com/share/share.php?url=/2019/10/20/ZooKeeper%E9%9D%A2%E8%AF%95/&title=ZooKeeper面试 | Hexo&summary="
+          href="http://service.weibo.com/share/share.php?url=/2019/10/20/ZooKeeper%E9%9D%A2%E8%AF%95/&title=ZooKeeper面试 | 蜗牛君&summary="
           
           >
           
@@ -747,9 +707,6 @@ public Result invoke(Invoker&lt;?&gt; invoker, Invocation invocation) throws Rpc
           
           
         
-          
-          
-        
       
         
           
@@ -775,9 +732,6 @@ public Result invoke(Invoker&lt;?&gt; invoker, Invocation invocation) throws Rpc
 
 
             
-          
-        
-          
           
         
           
@@ -835,40 +789,6 @@ public Result invoke(Invoker&lt;?&gt; invoker, Invocation invocation) throws Rpc
           文章归档
         </a></li>
       
-        <li><a class="flat-box" title="/projects/" href="/projects/"
-          
-          
-          id="projects">
-          
-            <i class="fas fa-code-branch fa-fw" aria-hidden="true"></i>
-          
-          开源项目
-        </a></li>
-      
-        <li><a class="flat-box" title="/friends/" href="/friends/"
-          
-            rel="nofollow"
-          
-          
-          id="friends">
-          
-            <i class="fas fa-link fa-fw" aria-hidden="true"></i>
-          
-          我的友链
-        </a></li>
-      
-        <li><a class="flat-box" title="https://xaoxuu.com/wiki/material-x/" href="https://xaoxuu.com/wiki/material-x/"
-          
-            rel="nofollow"
-          
-          
-          id="https:xaoxuu.comwikimaterial-x">
-          
-            <i class="fas fa-book fa-fw" aria-hidden="true"></i>
-          
-          主题文档
-        </a></li>
-      
         <li><a class="flat-box" title="/about/" href="/about/"
           
             rel="nofollow"
@@ -897,9 +817,6 @@ public Result invoke(Invoker&lt;?&gt; invoker, Invocation invocation) throws Rpc
           
           
         
-          
-          
-        
       
         
           
@@ -917,9 +834,6 @@ public Result invoke(Invoker&lt;?&gt; invoker, Invocation invocation) throws Rpc
               
 
             
-          
-        
-          
           
         
           
@@ -974,9 +888,6 @@ public Result invoke(Invoker&lt;?&gt; invoker, Invocation invocation) throws Rpc
           
           
         
-          
-          
-        
       
         
           
@@ -997,95 +908,7 @@ public Result invoke(Invoker&lt;?&gt; invoker, Invocation invocation) throws Rpc
           
           
         
-          
-          
-            
-              <section class='widget list'>
-  
-<header class='pure'>
-  <div><i class="fas fa-thumbs-up fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;强烈推荐</div>
-  
-</header>
-
-  <div class='content pure'>
-    <ul class="entry">
       
-        <li><a class="flat-box" title="https://xaoxuu.com/wiki/hexo.sh/" href="https://xaoxuu.com/wiki/hexo.sh/"
-          
-          
-          >
-          <div class='name'>
-            
-              <i class=" fa-fw" aria-hidden="true"></i>
-            
-            &nbsp;&nbsp;Hexo脚本（Mac）
-          </div>
-          
-        </a></li>
-      
-        <li><a class="flat-box" title="https://xaoxuu.com/wiki/vim-cn.sh/" href="https://xaoxuu.com/wiki/vim-cn.sh/"
-          
-          
-          >
-          <div class='name'>
-            
-              <i class=" fa-fw" aria-hidden="true"></i>
-            
-            &nbsp;&nbsp;图床脚本（Mac）
-          </div>
-          
-        </a></li>
-      
-        <li><a class="flat-box" title="https://yasuotu.com" href="https://yasuotu.com"
-          
-          
-          >
-          <div class='name'>
-            
-              <i class=" fa-fw" aria-hidden="true"></i>
-            
-            &nbsp;&nbsp;图片在线压缩
-          </div>
-          
-        </a></li>
-      
-        <li><a class="flat-box" title="https://realfavicongenerator.net" href="https://realfavicongenerator.net"
-          
-          
-          >
-          <div class='name'>
-            
-              <i class=" fa-fw" aria-hidden="true"></i>
-            
-            &nbsp;&nbsp;生成Favicon
-          </div>
-          
-        </a></li>
-      
-        <li><a class="flat-box" title="https://mxclub.github.io/resume/" href="https://mxclub.github.io/resume/"
-          
-          
-          >
-          <div class='name'>
-            
-              <i class=" fa-fw" aria-hidden="true"></i>
-            
-            &nbsp;&nbsp;简历主题
-          </div>
-          
-        </a></li>
-      
-    </ul>
-  </div>
-</section>
-
-            
-          
-        
-      
-        
-          
-          
         
           
           
@@ -1231,14 +1054,14 @@ public Result invoke(Invoker&lt;?&gt; invoker, Invocation invocation) throws Rpc
       $(function(){
         if ('.cover') {
           $('.cover').backstretch(
-          ["assets/cover.jpg"],
+          ["assets/cover5.jpg"],
           {
             duration: "6000",
             fade: "2500"
           });
         } else {
           $.backstretch(
-          ["assets/cover.jpg"],
+          ["assets/cover5.jpg"],
           {
             duration: "6000",
             fade: "2500"
