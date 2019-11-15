@@ -361,12 +361,12 @@
 
 <h3 id="2-更改数据库默认密码并授权访问"><a href="/2019/10/23/mysql8-0主从集群配置/#2-更改数据库默认密码并授权访问" class="headerlink" title="2. 更改数据库默认密码并授权访问"></a>2. 更改数据库默认密码并授权访问</h3><h4 id="更改密码"><a href="/2019/10/23/mysql8-0主从集群配置/#更改密码" class="headerlink" title="更改密码"></a>更改密码</h4><p>如果设置处初始密码,可以不更改, 视情况而定</p>
 <p>输入<strong>mysql -u root -p</strong>后会让你输入密码，密码为前面让你记住的密码，输入正确后就会出现如下界面，表示进入了MySQL命令模式。</p>
-<p><img src="/2019/10/23/mysql8-0主从集群配置//20180807094721434.png" alt="img"></p>
+<p><img src="/10/23/mysql8-0主从集群配置/mysql8-0%E4%B8%BB%E4%BB%8E%E9%9B%86%E7%BE%A4%E9%85%8D%E7%BD%AE/20180807094721434.png" alt="img"></p>
 <p>新用户需要修改密码先，输入</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">use mysql;</span><br><span class="line">ALTER USER &apos;root&apos;@&apos;%&apos; IDENTIFIED BY &apos;admin&apos; PASSWORD EXPIRE NEVER; #修改加密规则, 8.0 以后navicat连接会报错, 加密方案不支持</span><br><span class="line">ALTER USER &apos;root&apos;@&apos;%&apos; IDENTIFIED WITH mysql_native_password BY &apos;admin&apos;;  #更新一下用户的密码</span><br></pre></td></tr></table></figure>
 
 <p>  出现如下界面表示更改成功。</p>
-<p><img src="/2019/10/23/mysql8-0主从集群配置//20180807094946908.png" alt="img"></p>
+<p><img src="/10/23/mysql8-0主从集群配置/mysql8-0%E4%B8%BB%E4%BB%8E%E9%9B%86%E7%BE%A4%E9%85%8D%E7%BD%AE/20180807094946908.png" alt="img"></p>
 <p>到此，MySQL8.0.12数据库就安装完成了。</p>
 <h4 id="更改权限"><a href="/2019/10/23/mysql8-0主从集群配置/#更改权限" class="headerlink" title="更改权限"></a>更改权限</h4><p>查询用户权限情况</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">use mysql;</span><br><span class="line">select  User,authentication_string,Host from user;</span><br></pre></td></tr></table></figure>
@@ -383,7 +383,7 @@
 <p>查看默认MySQL用户的权限与加密情况：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select host, user, authentication_string, plugin from user;</span><br></pre></td></tr></table></figure>
 
-<p><img src="/2019/10/23/mysql8-0主从集群配置//20180807095548335.png" alt="img"></p>
+<p><img src="/10/23/mysql8-0主从集群配置/mysql8-0%E4%B8%BB%E4%BB%8E%E9%9B%86%E7%BE%A4%E9%85%8D%E7%BD%AE/20180807095548335.png" alt="img"></p>
 <h4 id="创建新用户并添加权限"><a href="/2019/10/23/mysql8-0主从集群配置/#创建新用户并添加权限" class="headerlink" title="创建新用户并添加权限"></a>创建新用户并添加权限</h4><p>创建新用户：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CREATE USER &apos;slave&apos;@&apos;%&apos; IDENTIFIED WITH mysql_native_password BY &apos;admin&apos;;</span><br></pre></td></tr></table></figure>
 
@@ -396,7 +396,7 @@
 <h2 id="基础安装问题详解"><a href="/2019/10/23/mysql8-0主从集群配置/#基础安装问题详解" class="headerlink" title="基础安装问题详解"></a>基础安装问题详解</h2><h3 id="1-MySQL8-0-12不能连接Navicat"><a href="/2019/10/23/mysql8-0主从集群配置/#1-MySQL8-0-12不能连接Navicat" class="headerlink" title="1. MySQL8.0.12不能连接Navicat"></a>1. MySQL8.0.12不能连接Navicat</h3><p>原因：MySQL8.0与MySQL5.0所采用的加密方式规则不一样，所以导致 Navicat打不开。可一下命令查看密码的规则。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select host, user, authentication_string, plugin from user;</span><br></pre></td></tr></table></figure>
 
-<p><img src="/2019/10/23/mysql8-0主从集群配置//20180807101413835.png" alt="img"></p>
+<p><img src="/10/23/mysql8-0主从集群配置/mysql8-0%E4%B8%BB%E4%BB%8E%E9%9B%86%E7%BE%A4%E9%85%8D%E7%BD%AE/20180807101413835.png" alt="img"></p>
 <p>如上图，plugin这一列就是对应用户的加密规则，可以看到我的root用户的加密规则是：mysql_native_password，这是因为我已经设置过了，默认的是：caching_sha2_password，所以我们只需要将默认的caching_sha2_password改为mysql_native_password即可。</p>
 <p>解决方案：输入<strong>ALTER USER ‘root’@’localhost’ IDENTIFIED WITH mysql_native_password BY ‘新密码’;</strong>即可修改root用户的加密规则以及密码。</p>
  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER USER &apos;root&apos;@&apos;%&apos; IDENTIFIED WITH mysql_native_password BY &apos;admin&apos;;</span><br></pre></td></tr></table></figure>
