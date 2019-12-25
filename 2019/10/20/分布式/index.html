@@ -341,7 +341,7 @@
 <p>所有的代码都在一个工程里，最多可能就是通过maven等构件工具拆分了一下代码工程模块，不同的模块可以放在不同的工程代码里。</p>
 </blockquote>
 <p>在部署的时候，可能就是直接在线上的几台机器里直接放到里面的tomcat下来运行。很多流量很小的企业内部系统，比如OA、CRM、财务等系统，甚至可能就直接在一台机器的tomcat下部署一下。然后直接配置一下域名解析，就可以让这个系统的可能几十个，或者几百个用户通过访问域名来使用这个软件了。</p>
-<p><img src="/10/20/分布式/Java/13394159-1ac3a7b4a8e6c0a6.webp" alt="img"></p>
+<p><img src="/2019/10/20/分布式//13394159-1ac3a7b4a8e6c0a6.webp" alt="img"></p>
 <p>只不过为了所谓的“高可用”，可能一般会部署两台机器，前面加一层<strong>负载均衡设备</strong>，这样其中一个机器挂了，另外一个机器上还有一个系统可以用。</p>
 <p><strong>但是团队越来越大，业务越来越复杂</strong>, 小团队你搞一个代码仓库，然后就一份代码，每个人都在自己本地写代码，最后把代码合并一下，做做测试，然后就直接部署基于Tomcat来就可以了。几十个人维护一个单块系统，大家在一个工程里写代码，大量的冲突以及代码合并都会让人崩溃。比如某个功能模块要上线了，但是他必须得把整个单块系统所有的功能都回归测试一遍才敢上线. 因为`<strong>大家的代码</strong>都在一个工程里，都是<strong>耦合在一起的</strong>，你修改了代码，必须全部测试一遍才能保证系统正常。</p>
 <h3 id="分布式系统"><a href="/2019/10/20/分布式/#分布式系统" class="headerlink" title="分布式系统"></a>分布式系统</h3><p><strong>因此分布式出现</strong>：庞大系统分而治之</p>
@@ -350,7 +350,7 @@
 </blockquote>
 <p>不同的小系统自己开发、测试和上线，都不会跟别人耦合在一起，可以自己独立进行，非常的方便，大大简化了大规模系统的开发成本。</p>
 <p>不同的<strong>子系统之间</strong>，就是<strong>通过接口互相来回调用</strong>，每个<strong>子系统都有自己的数据库</strong>，大家看下面的图。</p>
-<img src="/10/20/分布式/Java/13394159-1e816247147c8fef.webp" alt="img" style="zoom:67%;">
+<img src="/2019/10/20/分布式//13394159-1e816247147c8fef.webp" alt="img" style="zoom:67%;">
 
 <h3 id="分布式系统所带来的技术问题"><a href="/2019/10/20/分布式/#分布式系统所带来的技术问题" class="headerlink" title="分布式系统所带来的技术问题"></a>分布式系统所带来的技术问题</h3><blockquote>
 <p>你的系统一旦分布式了之后，通信、缓存、消息、事务、锁、配置、日志、监控、会话，等等各种原来单块系统场景下很容易解决的问题，都会变得很复杂，需要引入大量外部的技术。</p>
@@ -480,16 +480,16 @@
                       <span class="art-item-right" aria-hidden="true">
                           <h6>Next&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
                           <h4>
-                              <a href="/2019/10/20/Linux/" rel="prev" title="Linux">
+                              <a href="/2019/10/20/ZooKeeper%E9%9D%A2%E8%AF%95/" rel="prev" title="ZooKeeper面试">
                                   
-                                      Linux
+                                      ZooKeeper面试
                                   
                               </a>
                           </h4>
                           
                               
                               <h6 class="tags">
-                                  <a class="tag" href="/tags/IT/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> IT</a> <a class="tag" href="/tags/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> 技术笔记</a> <a class="tag" href="/tags/Job/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> Job</a> <a class="tag" href="/tags/Linux/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> Linux</a>
+                                  <a class="tag" href="/tags/IT-%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-Job-zookeeper/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> IT - 技术笔记 - Job - zookeeper</a>
                               </h6>
                           
                       </span>

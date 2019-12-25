@@ -394,19 +394,19 @@
 <li>具体的合并命令: <code>git merge --no-ff dev (dev为本地被合并的分支名字)</code> </li>
 </ul>
 <h4 id="二、Gitflow总览"><a href="/2019/11/19/GIT项目中的实际使用分析/#二、Gitflow总览" class="headerlink" title="二、Gitflow总览"></a>二、Gitflow总览</h4><hr>
- <img src="/11/19/GIT项目中的实际使用分析/GIT-项目中的实际使用分析/18747624-2271fe92cb80f2fb-1574136131689.webp" alt="img" style="zoom:67%;"> 
+ <img src="/2019/11/19/GIT项目中的实际使用分析//18747624-2271fe92cb80f2fb-1574136131689.webp" alt="img" style="zoom:67%;"> 
 
 <p>git_flow流程图.png</p>
 <p>从上图可以看到主要包含下面几个分支：<br> <code>master</code> : 主分支，主要用来版本发布。<br> <code>develop</code>：日常开发分支，该分支正常保存了开发的最新代码。<br> <code>feature</code>：具体的功能开发分支，只与 develop 分支交互。<br> <code>release</code>：<code>release</code>分支可以认为是<code>master</code> 分支的未测试版。比如说某一期的功能全部开发完成，那么就将 <code>develop</code> 分支合并到 <code>release</code> 分支，测试没有问题并且到了发布日期就合并到<code>master</code> 分支，进行发布。<br> <code>hotfix</code>：线上 bug 修复分支。<br> 除此之后还可以有 <code>fast-track</code> 等分支。</p>
 <h5 id="2-1-主分支"><a href="/2019/11/19/GIT项目中的实际使用分析/#2-1-主分支" class="headerlink" title="2.1 主分支"></a>2.1 主分支</h5><p>主分支包括 <code>master</code> 分支和 <code>develop</code> 分支。<code>master</code> 分支用来发布，<code>HEAD</code> 就是当前线上的运行代码。<code>develop</code>分支就是我们的日常开发。使用这两个分支就具有了最简单的开发模式：<code>develop</code>分支用来开发功能，开发完成并且测试没有问题则将 <code>develop</code>分支的代码合并到 <code>master</code>分支并发布。</p>
-<img src="/11/19/GIT项目中的实际使用分析/GIT-项目中的实际使用分析/18747624-c4421d847e40f977.webp" alt="img" style="zoom:67%;">
+<img src="/2019/11/19/GIT项目中的实际使用分析//18747624-c4421d847e40f977.webp" alt="img" style="zoom:67%;">
 
 <p>master-develop.png</p>
 <p>这引入了几个问题：</p>
 <p><code>develop</code>分支只有发布完了才能进行下一个版本开发，开发会比较缓慢。<br> 线上代码出现 bug 如何进行 bug 修复。<br> 带着这两个问题往下看。</p>
 <h5 id="2-2-辅助分支"><a href="/2019/11/19/GIT项目中的实际使用分析/#2-2-辅助分支" class="headerlink" title="2.2 辅助分支"></a>2.2 辅助分支</h5><p>主要介绍的辅助分支如下：<br> <code>feature</code>分支<br> <code>release</code>分支<br> <code>hotfix</code>分支<br> 通过这些分支，我们可以做到：团队成员之间并行开发，<code>feature track</code>更加容易，开发和发布并行以及线上问题修复。</p>
 <h6 id="2-2-1-Feature-分支"><a href="/2019/11/19/GIT项目中的实际使用分析/#2-2-1-Feature-分支" class="headerlink" title="2.2.1 Feature 分支"></a>2.2.1 Feature 分支</h6><p><strong><code>feature</code>分支用来开发具体的功能，一般 fork 自 <code>develop</code>分支，最终可能会合并到<code>develop</code>分支。</strong>比如我们要在下一个版本增加<code>功能1</code>、<code>功能2</code>、<code>功能3</code>。那么我们就可以起三个<code>feature</code>分支：<code>feature1</code>，<code>feature2</code>，<code>feature3</code>。（<code>feature</code>分支命名最好能够自解释，这并不是一种好的命名。）随着我们开发，<code>功能1</code>和<code>功能2</code>都被完成了，而<code>功能3</code>因为某些原因完成不了，那么最终 <code>feature1</code> 和 <code>feature2</code>分支将被合并到 <code>develop</code>分支，而 <code>feature3</code>分支将被干掉。</p>
- <img src="/11/19/GIT项目中的实际使用分析/GIT-项目中的实际使用分析/18747624-c7cefa74f7bd1b0a.webp" alt="img" style="zoom:67%;"> 
+ <img src="/2019/11/19/GIT项目中的实际使用分析//18747624-c7cefa74f7bd1b0a.webp" alt="img" style="zoom:67%;"> 
 
 <p>develop-feature.png</p>
 <p>我们来看几个相关的命令。</p>
@@ -416,7 +416,7 @@
 <h6 id="2-2-1-2-合并feature-分支到-develop"><a href="/2019/11/19/GIT项目中的实际使用分析/#2-2-1-2-合并feature-分支到-develop" class="headerlink" title="2.2.1.2 合并feature 分支到 develop"></a>2.2.1.2 合并feature 分支到 develop</h6><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout develop</span><br><span class="line">Switched to branch <span class="string">'develop'</span></span><br><span class="line">$ git merge --no-ff myfeature</span><br><span class="line">Updating ea1b82a..<span class="number">05</span>e9557</span><br><span class="line">(Summary of changes)</span><br><span class="line">$ git branch -d myfeature</span><br><span class="line">Deleted branch myfeature</span><br><span class="line">$ git push origin develop</span><br></pre></td></tr></table></figure>
 
 <p>上面我们 merge 分支的时候使用了参数 <code>--no-ff</code>，<strong>ff</strong> 是<code>fast-forward</code>的意思，<code>--no-ff</code>就是禁用<code>fast-forward</code>。关于这两种模式的区别如下图。（可以使用 sourceTree 或者命令git log –graph查看。）</p>
- <img src="/11/19/GIT项目中的实际使用分析/GIT-项目中的实际使用分析/18747624-f8962786c72acf84.webp" alt="img" style="zoom:67%;"> 
+ <img src="/2019/11/19/GIT项目中的实际使用分析//18747624-f8962786c72acf84.webp" alt="img" style="zoom:67%;"> 
 
 <p>fast-forward模式的效果.png</p>
 <p>看了上面的图，那么使用<code>非fast-forward</code>模式来 merge 的好处就不言而喻了：我们知道哪些<code>commit</code> 是某些<code>feature</code> 相关的。虽然 <code>git merge</code>的时候会自动判断是否使用<code>fast-farward</code>模式，但是有时候为了更明确，我们还是要加参数<code>--no-ff</code>或者<code>--ff</code>。</p>
@@ -434,7 +434,7 @@
 <h6 id="2-2-2-3-最后，删除-release-分支"><a href="/2019/11/19/GIT项目中的实际使用分析/#2-2-2-3-最后，删除-release-分支" class="headerlink" title="2.2.2.3 最后，删除 release 分支"></a>2.2.2.3 最后，删除 release 分支</h6><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git branch -d release-<span class="number">1.2</span></span><br><span class="line">Deleted branch release-<span class="number">1.2</span> (was ff452fe).</span><br></pre></td></tr></table></figure>
 
 <h6 id="2-2-3-Hotfix-分支"><a href="/2019/11/19/GIT项目中的实际使用分析/#2-2-3-Hotfix-分支" class="headerlink" title="2.2.3 Hotfix 分支"></a>2.2.3 Hotfix 分支</h6><p>顾名思义，<code>hotfix</code>分支用来修复线上 bug。当线上代码出现 bug 时，我们基于 <code>master</code>分支开一个 <code>hotfix</code>分支，修复 bug 之后再将 <code>hotfix</code>分支合并到<code>master</code>分支并进行发布，同时 <code>develop</code>分支作为最新最全的代码分支，<code>hotfix</code>分支也需要合并到 <code>develop</code>分支上去。仔细想一想，其实 <code>hotfix</code>分支和 <code>release</code>分支功能类似。<code>hotfix</code>的好处是不打断<code>develop</code> 分支正常进行，同时对于生产代码的修复貌似也没有更好的方法了（总不能直接修改 <code>master</code>代码吧）。</p>
- <img src="/11/19/GIT项目中的实际使用分析/GIT-项目中的实际使用分析/18747624-610c3154a556b070.webp" alt="img" style="zoom:67%;"> 
+ <img src="/2019/11/19/GIT项目中的实际使用分析//18747624-610c3154a556b070.webp" alt="img" style="zoom:67%;"> 
 
 <p>hotfixes.png</p>
 <p>一些相关的命令。</p>
@@ -492,7 +492,7 @@
 
 <p>那这两个命令有何区别呢？先不急，我们后文详细介绍。</p>
 <h5 id="4-1-git-reset"><a href="/2019/11/19/GIT项目中的实际使用分析/#4-1-git-reset" class="headerlink" title="4.1 git reset"></a>4.1 git reset</h5><p>假如我们的系统现在有如下几个提交：</p>
-<img src="/11/19/GIT项目中的实际使用分析/GIT-项目中的实际使用分析/18747624-3329e55d0a95f128.webp" alt="img" style="zoom:67%;"> 
+<img src="/2019/11/19/GIT项目中的实际使用分析//18747624-3329e55d0a95f128.webp" alt="img" style="zoom:67%;"> 
 
 <p>错误提交.png</p>
 <p>其中：A 和 B 是正常提交，而 C 和 D 是错误提交。现在，我们想把 C 和 D 回退掉。而此时，HEAD 指针指向 D 提交（5lk4er）。我们只需将 HEAD 指针移动到 B 提交（a0fvf8），就可以达到目的。</p>
@@ -500,7 +500,7 @@
 <figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git reset --hard a0fvf8</span><br></pre></td></tr></table></figure>
 
 <p>命令运行之后，HEAD 指针就会移动到 B 提交下，如下图示：</p>
- <img src="/11/19/GIT项目中的实际使用分析/GIT-项目中的实际使用分析/18747624-5840c2017c6964b2.webp" alt="img" style="zoom:67%;"> 
+ <img src="/2019/11/19/GIT项目中的实际使用分析//18747624-5840c2017c6964b2.webp" alt="img" style="zoom:67%;"> 
 
 <p>reset以后效果.png</p>
 <p> 而这个时候，远程仓库的 HEAD 指针依然不变，仍在 D 提交上。所以，如果直接使用命令的话，将无法将更改推到远程仓库。此时，只能使用 选项将提交强制推到远程仓库：</p>
@@ -512,7 +512,7 @@
 <p>使用 <code>git revert</code>命令来实现上述例子的话，我们可以这样做：先 revert D，再 revert C （有多个提交需要回退的话需要由新到旧进行 revert）：</p>
 <figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git revert <span class="number">5</span>lk4er</span><br><span class="line">$ git revert <span class="number">76</span>sdeb</span><br></pre></td></tr></table></figure>
 
- <img src="/11/19/GIT项目中的实际使用分析/GIT-项目中的实际使用分析/18747624-c96f46946cf01cb9.webp" alt="img" style="zoom:67%;"> 
+ <img src="/2019/11/19/GIT项目中的实际使用分析//18747624-c96f46946cf01cb9.webp" alt="img" style="zoom:67%;"> 
 
 <p>反向创建版本回退.png</p>
 <p>这里只有两个提交需要 revert，我们可以一个个回退。但如果有几十个呢？一个个回退肯定效率太低而且容易出错。我们可以使用以下方法进行批量回退：</p>
@@ -521,11 +521,11 @@
 <p>这时，错误的提交 C 和 D 依然保留，将来进行甩锅的时候也有依可循。而且，这样操作的话 HEAD 指针是往后移动的，可以直接使用 <code>git push</code>命令推送到远程仓库里。而这种做法，正是企业所鼓励的。</p>
 <p>我们再举个更难一点的例子。</p>
 <p>假如现在有三个提交，但很不巧的是，那个错误的提交刚好位于中间。如下图示：</p>
- <img src="/11/19/GIT项目中的实际使用分析/GIT-项目中的实际使用分析/18747624-0e0385f7011f76ce.webp" alt="img" style="zoom:67%;"> 
+ <img src="/2019/11/19/GIT项目中的实际使用分析//18747624-0e0385f7011f76ce.webp" alt="img" style="zoom:67%;"> 
 
 <p>位于中间的错误提交.png</p>
 <p>这时，直接使用 git reset命令将 HEAD 指针重置到 A 提交显然是不行的，因为 C 提交是正确的，需要保留的。先把 C 提交 及 B 提交全部回退，再使用 cherry-pick 命令将 C 提交重新再生成一个新的提交 C’’，这样就实现了将 B提交回退的需求。完整的过程如下：</p>
- <img src="/11/19/GIT项目中的实际使用分析/GIT-项目中的实际使用分析/18747624-c9d149fa07eaa5e7.webp" alt="img" style="zoom:67%;"> 
+ <img src="/2019/11/19/GIT项目中的实际使用分析//18747624-c9d149fa07eaa5e7.webp" alt="img" style="zoom:67%;"> 
 
 <p>1.png</p>
 <p> 通过以上对比可以发现，与 最大的差别就在于，会失去后面的提交，而是通过反做的方式重新创建一个新的提交，而保留原有的提交。在企业里，应尽量使用 命令，能不用 命令尽量不用。</p>
