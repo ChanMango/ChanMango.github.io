@@ -339,58 +339,66 @@
 <p>系统支持：CentOS，Debian，Ubuntu</p>
 <p>一键安装 go 版的 shadowsocks 最新版本 1.1.4。据说 go 版本有加成 buff 。与 python 版不同的是，其客户端程序能使用多个服务端配置，本脚本安装的是服务端程序。作者默认推荐 aes-128-cfb 加密，基于一致性，脚本使用了 aes-256-cfb 加密方式。</p>
 </blockquote>
-<h2 id="安装shadowsocks"><a href="/2019/10/09/vps文档/#安装shadowsocks" class="headerlink" title="安装shadowsocks"></a>安装shadowsocks</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">wget --no-check-certificate https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocks.sh</span><br><span class="line"></span><br><span class="line">chmod +x shadowsocks.sh</span><br><span class="line"> </span><br><span class="line">./shadowsocks.sh 2&gt;&amp;1 | tee shadowsocks.log</span><br></pre></td></tr></table></figure>
+<h2 id="1、安装shadowsocks"><a href="/2019/10/09/vps文档/#1、安装shadowsocks" class="headerlink" title="1、安装shadowsocks"></a>1、安装shadowsocks</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget --no-check-certificate https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocks.sh</span><br><span class="line">chmod +x shadowsocks.sh</span><br><span class="line">./shadowsocks.sh 2&gt;&amp;1 | tee shadowsocks.log</span><br></pre></td></tr></table></figure>
 
-<p>\1. 输入shadowsocks 的链接密码</p>
-<p>\2. 输入连接端口号:</p>
-<p>\3. 选择加密方式</p>
-<p>4回车开始安装(显示successful 则安装成功)</p>
-<h2 id="更新内核"><a href="/2019/10/09/vps文档/#更新内核" class="headerlink" title="更新内核"></a>更新内核</h2><p>CentOS 7支持安装锐速的内核：3.10.0-327.el7.x86_64</p>
-<p>1、首先使用下面命令下载及更换内核，</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -ivh https://dl.lancdn.com/landian/Kernel/CentOS/7.x/kernel-3.10.0-229.1.2.el7.x86_64.rpm --force</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>输入shadowsocks 的链接密码</p>
+</li>
+<li><p>输入连接端口号:</p>
+</li>
+<li><p>选择加密方式</p>
+</li>
+<li><p>回车开始安装(显示successful 则安装成功)</p>
+</li>
+</ul>
+<h2 id="2、更新内核"><a href="/2019/10/09/vps文档/#2、更新内核" class="headerlink" title="2、更新内核"></a>2、更新内核</h2><p>CentOS 7支持安装锐速的内核：3.10.0-327.el7.x86_64</p>
+<h4 id="2-1、首先使用下面命令下载及更换内核"><a href="/2019/10/09/vps文档/#2-1、首先使用下面命令下载及更换内核" class="headerlink" title="2.1、首先使用下面命令下载及更换内核"></a>2.1、首先使用下面命令下载及更换内核</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -ivh https://dl.lancdn.com/landian/Kernel/CentOS/7.x/kernel-3.10.0-229.1.2.el7.x86_64.rpm --force</span><br></pre></td></tr></table></figure>
 
-<ol>
-<li><code>//执行过程中可能会卡1~3分钟左右，请耐心等待</code></li>
-<li><code>//执行完成后请执行以下命令查看内核是否安装成功：</code></li>
-<li><code>//若安装成功则会在输出的所有内核版本里显示我们刚刚安装的2.6或者3.1版</code></li>
-<li><code>不行的话 执行</code></li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rpm -ivh http://xz.wn789.com/CentOSkernel/kernel-3.10.0-229.1.2.el7.x86_64.rpm --force</span><br><span class="line"></span><br><span class="line">rpm -qa | grep kernel</span><br></pre></td></tr></table></figure>
+<p>执行过程中可能会卡1~3分钟左右，请耐心等待</p>
+<p>执行完成后请执行以下命令查看内核是否安装成功：</p>
+<p>若安装成功则会在输出的所有内核版本里显示我们刚刚安装的2.6或者3.1</p>
+<p><strong>不行的话 执行以下地址的更换命令</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rpm -ivh http://xz.wn789.com/CentOSkernel/kernel-3.10.0-229.1.2.el7.x86_64.rpm --force</span><br><span class="line">rpm -qa | grep kernel</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly93d3cud243ODkuY29tL3dwLWNvbnRlbnQvdXBsb2Fkcy8yMDE3LzAyLzIwMTcwMjIzMjIwNjMxLTEucG5n?x-oss-process=image/format,png" alt="img"></p>
-<p>2、重启VPS，查看内核是否修改成功。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">reboot #重启VPS</span><br><span class="line">uname -r #当前使用内核版本</span><br></pre></td></tr></table></figure>
+<img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly93d3cud243ODkuY29tL3dwLWNvbnRlbnQvdXBsb2Fkcy8yMDE3LzAyLzIwMTcwMjIzMjIwNjMxLTEucG5n?x-oss-process=image/format,png" alt="img" style="zoom:67%;">
 
-<p><img src="/2019/10/09/vps文档/data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<h4 id="2-2、重启VPS，查看内核是否修改成功"><a href="/2019/10/09/vps文档/#2-2、重启VPS，查看内核是否修改成功" class="headerlink" title="2.2、重启VPS，查看内核是否修改成功"></a>2.2、重启VPS，查看内核是否修改成功</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">reboot #重启VPS</span><br><span class="line">uname -r #当前使用内核版本</span><br></pre></td></tr></table></figure>
+
 <p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly93d3cud243ODkuY29tL3dwLWNvbnRlbnQvdXBsb2Fkcy8yMDE3LzAyLzIwMTcwMjIzMjIwNzI2LnBuZw?x-oss-process=image/format,png" alt="img"></p>
-<p>3、目前Centos 7小问题比较多，锐速针对centos 7的版版本较少。推荐在CentOS 6.中安装。</p>
-<h2 id="锐速破解版安装"><a href="/2019/10/09/vps文档/#锐速破解版安装" class="headerlink" title="锐速破解版安装"></a>锐速破解版安装</h2><p>1、执行上面的脚本下载命令，下载脚本到服务器。然后再执行脚本安装。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget -N --no-check-certificate https://raw.githubusercontent.com/wn789/serverspeeder/master/serverspeeder.sh</span><br><span class="line">bash serverspeeder.sh</span><br></pre></td></tr></table></figure>
+<p>目前Centos 7小问题比较多，锐速针对centos 7的版版本较少。推荐在CentOS 6.中安装。</p>
+<h2 id="3、锐速破解版安装"><a href="/2019/10/09/vps文档/#3、锐速破解版安装" class="headerlink" title="3、锐速破解版安装"></a>3、锐速破解版安装</h2><h4 id="3-1、下载锐速并执行安装脚本"><a href="/2019/10/09/vps文档/#3-1、下载锐速并执行安装脚本" class="headerlink" title="3.1、下载锐速并执行安装脚本"></a>3.1、下载锐速并执行安装脚本</h4><p>下载地址1</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -N --no-check-certificate https://raw.githubusercontent.com/wn789/serverspeeder/master/serverspeeder.sh &amp;&amp; bash serverspeeder.sh</span><br></pre></td></tr></table></figure>
 
-<ol>
-<li><p>#通过SSH连接服务器后执行以下命令进行自动化安装：</p>
+<p>下载地址2</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget http://dl.lancdn.com/landian/tools/serverspeeder.sh &amp;&amp; bash serverspeeder.sh</span><br></pre></td></tr></table></figure>
 
-
-</li>
-</ol>
-<p>如果提示没有ifconfig命令</p>
-<p>则安装:</p>
+<p><strong>如果提示没有ifconfig命令</strong></p>
+<p>则安装工具软件  net-tools:</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install net-tools</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly93d3cud243ODkuY29tL3dwLWNvbnRlbnQvdXBsb2Fkcy8yMDE3LzAyLzIwMTcwMjIzMTcyNTM0LTEucG5n?x-oss-process=image/format,png" alt="img">)<img src="/2019/10/09/vps文档/data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动">2、安装过程很简单，如果你的VPS内核支持安装，根本无需你手动操作，直接一键完成。</p>
-<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly93d3cud243ODkuY29tL3dwLWNvbnRlbnQvdXBsb2Fkcy8yMDE3LzAyLzIwMTcwMjIzMjEyNDEyLTEucG5n?x-oss-process=image/format,png" alt="img">)<img src="/2019/10/09/vps文档/data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
-<p>3、如果你VPS内核没有找到匹配的锐速版本，会自动提示选择接近版本。</p>
-<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly93d3cud243ODkuY29tL3dwLWNvbnRlbnQvdXBsb2Fkcy8yMDE3LzAyLzIwMTcwMjIzMjIxMTMxLTEucG5n?x-oss-process=image/format,png" alt="img">)<img src="/2019/10/09/vps文档/data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动">4、当然你还肯会遇到内核不支持的情况，那么需要我们先手动更改可以匹配锐速的内核。目前此破解版锐速支持的内核有：“CentOS-6.8：2.6.32-642.el7.x86_64、CentOS-7.2：3.10.0-327.el7.x86_64、CentOS：4.4.0-x86_64-linode63、Ubuntu_14.04：4.2.0-35-generic、Debian_8：3.16.0-4-amd64”。</p>
-<blockquote>
-<p>如何修改内核，请查看：</p>
-<ul>
-<li><a href="https://www.wn789.com/4689.html">如何修改CentOS6、CentOS7内核支持安装锐速破解版</a></li>
-</ul>
-</blockquote>
-<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly93d3cud243ODkuY29tL3dwLWNvbnRlbnQvdXBsb2Fkcy8yMDE3LzAyLzIwMTcwMjIzMjI1MzI3LTEucG5n?x-oss-process=image/format,png" alt="img"></p>
-<p>5、锐速serverspeeder常用命令：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">service serverSpeeder start #启动</span><br><span class="line">service serverSpeeder stop #停止</span><br><span class="line">service serverSpeeder reload #重新加载配置</span><br><span class="line">service serverSpeeder restart #重启</span><br><span class="line">service serverSpeeder status #状态</span><br><span class="line">service serverSpeeder stats #统</span><br><span class="line">service serverSpeeder renewLic #更新许可文件`</span><br><span class="line">8service serverSpeeder update #更新</span><br><span class="line">chattr -i /serverspeeder/etc/apx* &amp;&amp; /serverspeeder/bin/serverSpeeder.sh uninstall -f #卸载</span><br></pre></td></tr></table></figure>
+<img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly93d3cud243ODkuY29tL3dwLWNvbnRlbnQvdXBsb2Fkcy8yMDE3LzAyLzIwMTcwMjIzMTcyNTM0LTEucG5n?x-oss-process=image/format,png" alt="img" style="zoom:67%;">
+
+<h4 id="3-2、自动安装"><a href="/2019/10/09/vps文档/#3-2、自动安装" class="headerlink" title="3.2、自动安装"></a>3.2、自动安装</h4><p>安装过程很简单，如果你的VPS内核支持安装，根本无需你手动操作，直接一键完成。如果没有自动执行安装</p>
+<p>可以切换到serverspeeder.sh文件所在目录执行以下命令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash serverspeeder.sh</span><br></pre></td></tr></table></figure>
+
+<img src="/10/09/vps文档/vps文档/aHR0cHM6Ly93d3cud243ODkuY29tL3dwLWNvbnRlbnQvdXBsb2Fkcy8yMDE3LzAyLzIwMTcwMjIzMjEyNDEyLTEucG5n.jpg" alt="img" style="zoom:67%;">
+
+<h4 id="3-3、内核自动匹配"><a href="/2019/10/09/vps文档/#3-3、内核自动匹配" class="headerlink" title="3.3、内核自动匹配"></a>3.3、内核自动匹配</h4><p>如果你VPS内核没有找到匹配的锐速版本，会自动提示选择接近版本。</p>
+<img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly93d3cud243ODkuY29tL3dwLWNvbnRlbnQvdXBsb2Fkcy8yMDE3LzAyLzIwMTcwMjIzMjIxMTMxLTEucG5n?x-oss-process=image/format,png" alt="img" style="zoom: 67%;">
+
+<h4 id="3-4、内核不支持的情况"><a href="/2019/10/09/vps文档/#3-4、内核不支持的情况" class="headerlink" title="3.4、内核不支持的情况"></a>3.4、内核不支持的情况</h4><p>当然你还肯会遇到内核不支持的情况，那么需要我们先手动更改可以匹配锐速的内核。目前此破解版锐速支持的内核有：</p>
+<ol>
+<li>CentOS-6.8：2.6.32-642.el7.x86_64</li>
+<li>CentOS-7.2：3.10.0-327.el7.x86_64</li>
+<li>CentOS：4.4.0-x86_64-linode63</li>
+<li>Ubuntu_14.04：4.2.0-35-generic</li>
+<li>Debian_8：3.16.0-4-amd64</li>
+</ol>
+<img src="/10/09/vps文档/vps文档/aHR0cHM6Ly93d3cud243ODkuY29tL3dwLWNvbnRlbnQvdXBsb2Fkcy8yMDE3LzAyLzIwMTcwMjIzMjI1MzI3LTEucG5n.jpg" alt="img" style="zoom:67%;">
+
+<p><a href="https://www.wn789.com/4689.html">如何修改CentOS6、CentOS7内核支持安装锐速破解版</a></p>
+<h4 id="3-5、锐速serverspeeder常用命令："><a href="/2019/10/09/vps文档/#3-5、锐速serverspeeder常用命令：" class="headerlink" title="3.5、锐速serverspeeder常用命令："></a>3.5、锐速serverspeeder常用命令：</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">service serverSpeeder start #启动</span><br><span class="line">service serverSpeeder stop #停止</span><br><span class="line">service serverSpeeder reload #重新加载配置</span><br><span class="line">service serverSpeeder restart #重启</span><br><span class="line">service serverSpeeder status #状态</span><br><span class="line">service serverSpeeder stats #统</span><br><span class="line">service serverSpeeder renewLic #更新许可文件`</span><br><span class="line">8service serverSpeeder update #更新</span><br><span class="line">chattr -i /serverspeeder/etc/apx* &amp;&amp; /serverspeeder/bin/serverSpeeder.sh uninstall -f #卸载</span><br></pre></td></tr></table></figure>
 
 
       </div>
@@ -403,7 +411,7 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-12-30T10:42:19+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-12-30T11:06:09+08:00">
   <a class='notlink'>
     <i class="fas fa-clock" aria-hidden="true"></i>
     <p>updated at Dec 30, 2019</p>
@@ -631,7 +639,7 @@
 </header>
 
     <div class='content pure'>
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#本脚本适用环境"><span class="toc-text">本脚本适用环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装shadowsocks"><span class="toc-text">安装shadowsocks</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#更新内核"><span class="toc-text">更新内核</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#锐速破解版安装"><span class="toc-text">锐速破解版安装</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#本脚本适用环境"><span class="toc-text">本脚本适用环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1、安装shadowsocks"><span class="toc-text">1、安装shadowsocks</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2、更新内核"><span class="toc-text">2、更新内核</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1、首先使用下面命令下载及更换内核"><span class="toc-text">2.1、首先使用下面命令下载及更换内核</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2、重启VPS，查看内核是否修改成功"><span class="toc-text">2.2、重启VPS，查看内核是否修改成功</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3、锐速破解版安装"><span class="toc-text">3、锐速破解版安装</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1、下载锐速并执行安装脚本"><span class="toc-text">3.1、下载锐速并执行安装脚本</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2、自动安装"><span class="toc-text">3.2、自动安装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3、内核自动匹配"><span class="toc-text">3.3、内核自动匹配</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-4、内核不支持的情况"><span class="toc-text">3.4、内核不支持的情况</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-5、锐速serverspeeder常用命令："><span class="toc-text">3.5、锐速serverspeeder常用命令：</span></a></li></ol></li></ol></li></ol>
     </div>
   </section>
 
