@@ -372,7 +372,7 @@
 <p>当session  close()完之后，变成Detached。数据库中有对应的记录</p>
 </li>
 </ul>
-<img src="/10/20/Hibernate/Hibernate/702434-20151004095413746-2129601422.png" alt="img" style="zoom:67%;">
+<img src="/2019/10/20/Hibernate//702434-20151004095413746-2129601422.png" alt="img" style="zoom:67%;">
 
 
 
@@ -440,7 +440,7 @@
 </ul>
 <p>如果用户觉得hibernate提供的框架框架不好用，<strong>自己可以换其他的缓存框架或自己实现缓存框架都可以</strong>。</p>
 <p>Hibernate二级缓存：<strong>存储的是常用的类</strong></p>
-<img src="/10/20/Hibernate/Hibernate/20170508165832948.png" alt="这里写图片描述" style="zoom:67%;">
+<img src="/2019/10/20/Hibernate//20170508165832948.png" alt="这里写图片描述" style="zoom:67%;">
 
 <h3 id="9、Hibernate的查询方式有几种"><a href="/2019/10/20/Hibernate/#9、Hibernate的查询方式有几种" class="headerlink" title="9、Hibernate的查询方式有几种"></a>9、Hibernate的查询方式有几种</h3><ul>
 <li>对象导航查询(objectcomposition)</li>
@@ -505,9 +505,9 @@
 </ul>
 <h3 id="14、什么是SessionFactory-是线程安全么"><a href="/2019/10/20/Hibernate/#14、什么是SessionFactory-是线程安全么" class="headerlink" title="14、什么是SessionFactory,是线程安全么?"></a>14、什么是SessionFactory,是线程安全么?</h3><p><strong>SessionFactory 是Hibrenate单例数据存储和线程安全的，以至于可以多线程同时访问</strong>。一个SessionFactory 在启动的时候只能建立一次。SessionFactory应该包装各种单例以至于它能很简单的在一个应用代码中储存.</p>
 <h3 id="15、get和load区别"><a href="/2019/10/20/Hibernate/#15、get和load区别" class="headerlink" title="15、get和load区别"></a>15、get和load区别</h3><p><strong>get()立即查询</strong></p>
-<p><img src="/10/20/Hibernate/Hibernate/20170508145321028.png" alt="这里写图片描述"></p>
+<p><img src="/2019/10/20/Hibernate//20170508145321028.png" alt="这里写图片描述"></p>
 <p><strong>load()懒加载</strong></p>
-<p><img src="/10/20/Hibernate/Hibernate/20170508145357323.png" alt="这里写图片描述"></p>
+<p><img src="/2019/10/20/Hibernate//20170508145357323.png" alt="这里写图片描述"></p>
 <ul>
 <li><strong>get</strong>如果没有找到<strong>会返回null</strong>， <strong>load</strong>如果没有找到<strong>会抛出异常</strong>。</li>
 <li>get会先查一级缓存， 再查二级缓存，然后查数据库；load会先查一级缓存，如果没有找到，就创建代理对象， ==等需要的时候去查询二级缓存和数据库==。</li>
@@ -666,16 +666,16 @@
                       <span class="art-item-left">
                           <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;Previous</h6>
                           <h4>
-                              <a href="/2019/10/20/%E5%88%86%E5%B8%83%E5%BC%8F/" rel="prev" title="分布式">
+                              <a href="/2019/10/20/ZooKeeper%E9%9D%A2%E8%AF%95/" rel="prev" title="ZooKeeper面试">
                                 
-                                    分布式
+                                    ZooKeeper面试
                                 
                               </a>
                           </h4>
                           
                               
                               <h6 class="tags">
-                                  <a class="tag" href="/tags/IT/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> IT</a> <a class="tag" href="/tags/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> 技术笔记</a> <a class="tag" href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> 分布式</a>
+                                  <a class="tag" href="/tags/IT-%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-Job-zookeeper/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> IT - 技术笔记 - Job - zookeeper</a>
                               </h6>
                           
                       </span>
@@ -686,16 +686,16 @@
                       <span class="art-item-right" aria-hidden="true">
                           <h6>Next&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
                           <h4>
-                              <a href="/2019/10/20/Java%E9%AB%98%E7%BA%A7/" rel="prev" title="Java高级核心">
+                              <a href="/2019/10/20/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/" rel="prev" title="算法笔记">
                                   
-                                      Java高级核心
+                                      算法笔记
                                   
                               </a>
                           </h4>
                           
                               
                               <h6 class="tags">
-                                  <a class="tag" href="/tags/Java/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> Java</a> <a class="tag" href="/tags/IT/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> IT</a> <a class="tag" href="/tags/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> 技术笔记</a> <a class="tag" href="/tags/Job/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> Job</a>
+                                  <a class="tag" href="/tags/IT/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> IT</a> <a class="tag" href="/tags/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> 技术笔记</a> <a class="tag" href="/tags/Job/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> Job</a> <a class="tag" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> 数据结构</a> <a class="tag" href="/tags/%E7%AE%97%E6%B3%95/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> 算法</a> <a class="tag" href="/tags/%E6%8E%92%E5%BA%8F/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> 排序</a>
                               </h6>
                           
                       </span>

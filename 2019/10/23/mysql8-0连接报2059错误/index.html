@@ -339,7 +339,7 @@
 <p>docker：Version 18.06.1-ce-win73 (19507)</p>
 <p>mysql：8.x（docker store中最新版）</p>
 <h2 id="2-报错描述"><a href="/2019/10/23/mysql8-0连接报2059错误/#2-报错描述" class="headerlink" title="2.报错描述"></a>2.报错描述</h2><p>使用navicat连接工具，连接报错如下：</p>
-<p> <img src="/10/23/mysql8-0连接报2059错误/mysql8-0%E8%BF%9E%E6%8E%A5%E6%8A%A52059%E9%94%99%E8%AF%AF/20181106210629597.png" alt="img"> </p>
+<p> <img src="/2019/10/23/mysql8-0连接报2059错误//20181106210629597.png" alt="img"> </p>
 <h2 id="3-报错原因说明"><a href="/2019/10/23/mysql8-0连接报2059错误/#3-报错原因说明" class="headerlink" title="3.报错原因说明"></a>3.报错原因说明</h2><p>由于新版本的MySQL新特性导致的，通过查询mysql</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select Host,User,plugin from mysql.user;</span><br></pre></td></tr></table></figure>
 
@@ -347,7 +347,7 @@
 <p>查询结果如上，在老版本里，一般使用加密方式为mysql_native_password，因为认证方式改变导致的。</p>
 <h2 id="4-修改方案"><a href="/2019/10/23/mysql8-0连接报2059错误/#4-修改方案" class="headerlink" title="4.修改方案"></a>4.修改方案</h2><p> 修改加密方式为老版本加密方式。</p>
 <h2 id="5-修改"><a href="/2019/10/23/mysql8-0连接报2059错误/#5-修改" class="headerlink" title="5.修改"></a>5.修改</h2><h3 id="5-1-查看docker容器ID"><a href="/2019/10/23/mysql8-0连接报2059错误/#5-1-查看docker容器ID" class="headerlink" title="5.1  查看docker容器ID"></a>5.1  查看docker容器ID</h3><p>docker ps -a</p>
-<h3 id="5-2-docker-exec-：在运行的容器中执行命令"><a href="/2019/10/23/mysql8-0连接报2059错误/#5-2-docker-exec-：在运行的容器中执行命令" class="headerlink" title="5.2 docker exec ：在运行的容器中执行命令"></a>5.2 docker exec ：在运行的容器中执行命令</h3><p> <img src="/10/23/mysql8-0连接报2059错误/mysql8-0%E8%BF%9E%E6%8E%A5%E6%8A%A52059%E9%94%99%E8%AF%AF/20181106211256148-1571741802901.png" alt="img"> </p>
+<h3 id="5-2-docker-exec-：在运行的容器中执行命令"><a href="/2019/10/23/mysql8-0连接报2059错误/#5-2-docker-exec-：在运行的容器中执行命令" class="headerlink" title="5.2 docker exec ：在运行的容器中执行命令"></a>5.2 docker exec ：在运行的容器中执行命令</h3><p> <img src="/2019/10/23/mysql8-0连接报2059错误//20181106211256148-1571741802901.png" alt="img"> </p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it 236b2624632d bash   <span class="comment"># 进入到自己的容器中操作</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="5-3-连接mysql"><a href="/2019/10/23/mysql8-0连接报2059错误/#5-3-连接mysql" class="headerlink" title="5.3 连接mysql"></a>5.3 连接mysql</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root -p</span><br></pre></td></tr></table></figure>
@@ -361,8 +361,8 @@
 
 
 
-<p> <img src="/10/23/mysql8-0连接报2059错误/mysql8-0%E8%BF%9E%E6%8E%A5%E6%8A%A52059%E9%94%99%E8%AF%AF/20181106212146347.png" alt="img"> </p>
-<p><img src="/10/23/mysql8-0连接报2059错误/mysql8-0%E8%BF%9E%E6%8E%A5%E6%8A%A52059%E9%94%99%E8%AF%AF/1571741860100.png" alt="1571741860100"></p>
+<p> <img src="/2019/10/23/mysql8-0连接报2059错误//20181106212146347.png" alt="img"> </p>
+<p><img src="/2019/10/23/mysql8-0连接报2059错误//1571741860100.png" alt="1571741860100"></p>
 
       </div>
       
